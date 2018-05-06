@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 CWD=$(pwd)
 NWD=$(dirname $0)
@@ -23,23 +24,23 @@ else
     echo " === .bashrc already installed"
 fi
 
-
+echo " == .vimrc"
 if [[ -f ~/.vimrc && ! -h ~/.vimrc  ]]; then 
     mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
     ln -s "$(pwd)/.vimrc" ~/.vimrc
 elif [[ -h ~/.vimrc && $(readlink ~/.vimrc) != "$(pwd)/.vimrc" ]]; then 
     mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
     ln -s "$(pwd)/.vimrc" ~/.vimrc
-else 
+elif [[ ! -f ~/.vimrc ]]; then
     ln -s "$(pwd)/.vimrc" ~/.vimrc
+else
+    echo " === .vimrc already installed"
 fi
 
 # Install Vundle 
-if [[ ! -f $(pwd)/.vim/bundle/vundle.vim ]]; then 
+if [[ ! -d "$(pwd)/.vim/bundle/Vundle.vim" ]]; then 
     git clone https://github.com/VundleVim/Vundle.vim .vim/bundle/Vundle.vim
 fi
-
-
 
 
 printf " === Restoring Directory (%s)\n" $CWD;
