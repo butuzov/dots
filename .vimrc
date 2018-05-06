@@ -22,11 +22,11 @@ set term=xterm-256color                   " 256 Colors for Terminal
 let os=GetRunningOS()                     " Operating System Name
 
 " -- Colors -------------------------------------------------------------------|
-"exec 'source '. substitute(directory, '_F_', 'onedark.vim', 'g')
 
 " -- Editor -------------------------------------------------------------------|
 syntax      enable                        " Enables Syntax Highlight
- 
+colorscheme onedark
+
 set         number                        " Shows Line Numbers
 set         ruler
 set         rulerformat=%l,%v             " Ruller
