@@ -1,0 +1,46 @@
+
+CWD=$(pwd)
+NWD=$(dirname $0)
+# change directory 
+printf " === Change Directory (%s)\n" $NWD;
+cd $NWD
+
+
+function setup_dotfile() { 
+    echo $1
+}
+
+# General Setup for .bashrc (which is .bash_profile on mac)
+echo " == .bashrc"
+bashrc=$(cat ~/.bash_profile | grep $(pwd)/.bashrc)
+if [[ -z $bashrc ]]; then
+    echo "" >> ~/.bash_profile
+    echo "# this file added automatically by " >> ~/.bash_profile
+    echo "# https://github.com/butuzov/.dotfiles" >> ~/.bash_profile
+    echo "source \"$(pwd)/.bashrc\"" >> ~/.bash_profile
+    echo " === .bashrc"
+else 
+    echo " === .bashrc already installed"
+fi
+
+
+if [[ -f ~/.vimrc && ! -h ~/.vimrc  ]]; then 
+    mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
+    ln -s "$(pwd)/.vimrc" ~/.vimrc
+elif [[ -h ~/.vimrc && $(readlink ~/.vimrc) != "$(pwd)/.vimrc" ]]; then 
+    mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
+    ln -s "$(pwd)/.vimrc" ~/.vimrc
+else 
+    ln -s "$(pwd)/.vimrc" ~/.vimrc
+fi
+
+# Install Vundle 
+if [[ ! -f $(pwd)/.vim/bundle/vundle.vim ]]; then 
+    git clone https://github.com/VundleVim/Vundle.vim .vim/bundle/Vundle.vim
+fi
+
+
+
+
+printf " === Restoring Directory (%s)\n" $CWD;
+cd $CWD
