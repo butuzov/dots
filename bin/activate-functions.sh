@@ -109,6 +109,11 @@ function install_php_tooling(){
     printf "\n"
 }
 
+function install_python_tooling(){
+    printf "# Installing Python3 Packages\n\n"
+
+    python3.6 -m pip install --upgrade -r "${NWD}/development-python/requirements.txt" > /dev/null 2>&1
+}
 
 # Convert version to number in order to sort it.
 # Becouse there are no -V in mac sort

@@ -4,7 +4,7 @@ CWD=$(pwd)
 NWD=$(dirname $0)
 # change directory
 printf "# Activation Procedure Triggered \n\n";
-cd $NWD
+cd "${NWD}"
 
 source "${NWD}/bin/activate-functions.sh"
 
@@ -21,6 +21,9 @@ install_dot .editorconfig
 
 # installing php tooling
 install_php_tooling
+
+# installing php tooling
+install_python_tooling
 
 # installing devops tooling
 install_devops_tooling

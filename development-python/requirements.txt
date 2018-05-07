@@ -1,0 +1,7 @@
+pip
+youtube-dl
+Django
+icecream
+numpy
+matplotlib
+pandas
