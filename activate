@@ -42,6 +42,67 @@ if [[ ! -d "$(pwd)/.vim/bundle/Vundle.vim" ]]; then
     git clone https://github.com/VundleVim/Vundle.vim .vim/bundle/Vundle.vim
 fi
 
+printf "\n\nPHP tooling\n\n"
+
+DEV_TOOLS=( 
+    "phpcs|https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar"
+    "phpunit|https://phar.phpunit.de/phpunit-7.phar"
+    "phpmd|http://static.phpmd.org/php/latest/phpmd.phar"
+    "phpcbf|https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar"
+    "composer|https://getcomposer.org/composer.phar"
+)
+
+for tool in "${DEV_TOOLS[@]}" ; do
+    TOOL="${tool%%|*}"
+    URL="${tool##*|}"
+    exists="$(which $TOOL)"
+    if [[ -z $exists ]]; then 
+        printf "=== PHPDevTooling : installing %s \n" $TOOL
+        curl -Ls -o $TOOL $URL
+        chmod +x $TOOL
+        mv $TOOL /usr/local/bin/
+    fi
+
+    printf "=== PHPDevTooling : %s installed (%s)\n" $TOOL  $(which $TOOL)
+done
+
+printf "\n\nHashicolp tooling\n\n"
+
+HASHICORP_TOOLS=( 
+    "packer|https://www.packer.io/downloads.html" 
+    "consul|https://www.consul.io/downloads.html"
+    "consul|https://www.consul.io/downloads.html"
+    "nomad|https://www.nomadproject.io/downloads.html"
+    "terraform|https://www.terraform.io/downloads.html"
+)
+
+for tool in "${HASHICORP_TOOLS[@]}" ; do
+    TOOL="${tool%%|*}"
+    URL="${tool##*|}"
+    exists="$(which $TOOL)"
+    if [[ -z $exists ]]; then 
+        printf "=== HASHICORP_TOOLS : installing %s \n" $TOOL
+        curl -sL $URL \
+            | grep -Eoi '<a [^>]+\>'  \
+            | grep -Eoi "https[^>]+darwin_amd64.zip" \
+            | xargs curl -sL -o archive.zip 
+        unzip -q archive.zip -d /usr/local/bin/    
+    fi 
+
+    printf "=== HASHICORP_TOOLS : %s installed (%s)\n" $TOOL  $(which $TOOL)
+done
+
+
+# Python3
+printf "\n\nPython3 Packages\n\n"
+# Should I do it via requirments.txt ?
+python3.6 -m pip install --upgrade pip
+python3.6 -m pip install --upgrade youtube-dl
+python3.6 -m pip install --upgrade Django
+python3.6 -m pip install --upgrade icecream
+python3.6 -m pip install --upgrade numpy
+python3.6 -m pip install --upgrade matplotlib
+python3.6 -m pip install --upgrade pandas
 
 printf " === Restoring Directory (%s)\n" $CWD;
 cd $CWD
