@@ -2,107 +2,25 @@
 
 CWD=$(pwd)
 NWD=$(dirname $0)
-# change directory 
-printf " === Change Directory (%s)\n" $NWD;
+# change directory
+printf "# Activation Procedure Triggered \n\n";
 cd $NWD
 
+source "${NWD}/bin/activate-functions.sh"
 
-function setup_dotfile() { 
-    echo $1
-}
+# Actual bashrc and supported variable
+install_bashrc
 
-# General Setup for .bashrc (which is .bash_profile on mac)
-echo " == .bashrc"
-bashrc=$(cat ~/.bash_profile | grep $(pwd)/.bashrc)
-if [[ -z $bashrc ]]; then
-    echo "" >> ~/.bash_profile
-    echo "# this file added automatically by " >> ~/.bash_profile
-    echo "# https://github.com/butuzov/.dotfiles" >> ~/.bash_profile
-    echo "source \"$(pwd)/.bashrc\"" >> ~/.bash_profile
-    echo " === .bashrc"
-else 
-    echo " === .bashrc already installed"
-fi
+# vim settings & initial Vundle.vim
+install_dot .vimrc
+install_git_repository "https://github.com/VundleVim/Vundle.vim" \
+						".vim/bundle/Vundle.vim"
 
-echo " == .vimrc"
-if [[ -f ~/.vimrc && ! -h ~/.vimrc  ]]; then 
-    mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
-    ln -s "$(pwd)/.vimrc" ~/.vimrc
-elif [[ -h ~/.vimrc && $(readlink ~/.vimrc) != "$(pwd)/.vimrc" ]]; then 
-    mv ~/.vimrc{,-backup_$(date +%Y-%m-%d)}
-    ln -s "$(pwd)/.vimrc" ~/.vimrc
-elif [[ ! -f ~/.vimrc ]]; then
-    ln -s "$(pwd)/.vimrc" ~/.vimrc
-else
-    echo " === .vimrc already installed"
-fi
+# installing php tooling
+install_php_tooling
 
-# Install Vundle 
-if [[ ! -d "$(pwd)/.vim/bundle/Vundle.vim" ]]; then 
-    git clone https://github.com/VundleVim/Vundle.vim .vim/bundle/Vundle.vim
-fi
-
-printf "\n\nPHP tooling\n\n"
-
-DEV_TOOLS=( 
-    "phpcs|https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar"
-    "phpunit|https://phar.phpunit.de/phpunit-7.phar"
-    "phpmd|http://static.phpmd.org/php/latest/phpmd.phar"
-    "phpcbf|https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar"
-    "composer|https://getcomposer.org/composer.phar"
-)
-
-for tool in "${DEV_TOOLS[@]}" ; do
-    TOOL="${tool%%|*}"
-    URL="${tool##*|}"
-    exists="$(which $TOOL)"
-    if [[ -z $exists ]]; then 
-        printf "=== PHPDevTooling : installing %s \n" $TOOL
-        curl -Ls -o $TOOL $URL
-        chmod +x $TOOL
-        mv $TOOL /usr/local/bin/
-    fi
-
-    printf "=== PHPDevTooling : %s installed (%s)\n" $TOOL  $(which $TOOL)
-done
-
-printf "\n\nHashicolp tooling\n\n"
-
-HASHICORP_TOOLS=( 
-    "packer|https://www.packer.io/downloads.html" 
-    "consul|https://www.consul.io/downloads.html"
-    "consul|https://www.consul.io/downloads.html"
-    "nomad|https://www.nomadproject.io/downloads.html"
-    "terraform|https://www.terraform.io/downloads.html"
-)
-
-for tool in "${HASHICORP_TOOLS[@]}" ; do
-    TOOL="${tool%%|*}"
-    URL="${tool##*|}"
-    exists="$(which $TOOL)"
-    if [[ -z $exists ]]; then 
-        printf "=== HASHICORP_TOOLS : installing %s \n" $TOOL
-        curl -sL $URL \
-            | grep -Eoi '<a [^>]+\>'  \
-            | grep -Eoi "https[^>]+darwin_amd64.zip" \
-            | xargs curl -sL -o archive.zip 
-        unzip -q archive.zip -d /usr/local/bin/    
-    fi 
-
-    printf "=== HASHICORP_TOOLS : %s installed (%s)\n" $TOOL  $(which $TOOL)
-done
+# installing devops tooling
+install_devops_tooling
 
 
-# Python3
-printf "\n\nPython3 Packages\n\n"
-# Should I do it via requirments.txt ?
-python3.6 -m pip install --upgrade pip
-python3.6 -m pip install --upgrade youtube-dl
-python3.6 -m pip install --upgrade Django
-python3.6 -m pip install --upgrade icecream
-python3.6 -m pip install --upgrade numpy
-python3.6 -m pip install --upgrade matplotlib
-python3.6 -m pip install --upgrade pandas
-
-printf " === Restoring Directory (%s)\n" $CWD;
-cd $CWD
+cd "${CWD}"
