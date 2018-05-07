@@ -87,6 +87,55 @@ function install_php_tooling(){
 
         printf "## PHPDevTooling : %s installed (%s)\n" $TOOL  $(which $TOOL)
     done
+
+        printf "## PHPDevTooling : Installing Additional Code Standartds:\n"
+
+    # PHP Compatibility Standards
+    printf "   Checking out Code Standard (%s)\n" "PHP_Compatibility"
+
+    install_git_repository  "https://github.com/wimg/PHPCompatibility" \
+                            "development-php/CS_PHP_Compatibility" \
+    && checkout_last_release "development-php/CS_PHP_Compatibility"
+
+    # WordPress Code Standards
+    printf "   Checking out Code Standard (%s)\n" "WordPress Code Standards"
+    install_git_repository  \
+    "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards" \
+    "development-php/CS_WordPress-Coding-Standards" \
+    && checkout_last_release "development-php/CS_WordPress-Coding-Standards"
+
+    phpcs --config-set installed_paths "${NWD}/development-php/CS_WordPress-Coding-Standards,${NWD}/development-php/CS_PHP_Compatibility" > /dev/null 2>&1
+
+    printf "\n"
+}
+
+
+# Convert version to number in order to sort it.
+# Becouse there are no -V in mac sort
+# https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
+function version {
+    echo "$@" | awk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }';
+}
+
+# Obtain last release and checkout it.
+function checkout_last_release(){
+
+    local DIRECTORY=$1
+    local PWD="$(pwd)"
+
+    cd "${NWD}/${DIRECTORY}"
+    local VERSION=$(git tag -l | \
+        git tag -l | \
+        grep "\." | \
+        awk -F'.' '{printf("%03d%03d%03d:%s\n", $1,$2,$3, $0);}' | \
+        sort -nr | \
+        head -n 1 | \
+        awk -F':' '{print $2}'
+    )
+
+    git checkout "tags/${VERSION}" 2>1 /dev/null
+
+    cd "${PWD}"
 }
 
 # Installs common devops tools
