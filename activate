@@ -16,6 +16,9 @@ install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" \
 						".vim/bundle/Vundle.vim"
 
+# global .editorconfig
+install_dot .editorconfig
+
 # installing php tooling
 install_php_tooling
 
