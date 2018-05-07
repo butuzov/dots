@@ -1,5 +1,5 @@
 export TERM="xterm-color"
- 
+
 # How it looks
 GREEN="\[\e[102;30m\]"
 WHITE="\[\e[107;30m\]"
@@ -16,6 +16,7 @@ export LC_CTYPE="UTF-8"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+
 alias reload='source ~/.bash_profile'
 
 # shortcats for tools
@@ -26,22 +27,11 @@ alias grep='grep --color=auto'
 alias video_dir='cd /Volumes/Developer/Video-Library/Videos'
 alias video_convert='go run converter.go -directory=__converting'
 
-# Python
-export PYTHONPATH="/Library/Frameworks/Python.framework/Versions/3.6"
-export PATH="${PATH}:${PYTHONPATH}/bin"
 
-# Go
-export GOPATH="$HOME/go"
-export PATH="${PATH}:${GOPATH}/bin"
+source "${DOTS_PATH}/development-python/init.sh" # Python 3.6
+source "${DOTS_PATH}/development-go/init.sh"     # Go
+source "${DOTS_PATH}/development-cuda/init.sh"   # Cuda
 
-# Cuda
-export CUDA_PATH="/Developer/NVIDIA/CUDA-9.1"
-export DYLD_LIBRARY_PATH="$CUDA_PATH/lib":$DYLD_LIBRARY_PATH
-export PATH="$PATH:$CUDA_PATH/bin"
-export CPATH="$CUDA_PATH/include/"
-export CGO_LDFLAGS="/usr/local/cuda/lib/libcuda.dylib $CUDA_PATH/lib/libcudart.dylib $CUDA_PATH/lib/libcublas.dylib $CUDA_PATH/lib/libcurand.dylib"
-
-# PHP (no need atm)
 
 # User space commands
 alias conf-dl="youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s' $1"
