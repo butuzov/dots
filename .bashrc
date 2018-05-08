@@ -22,9 +22,10 @@ source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
 
 # Development
 
-source "${DOTS_PATH}/development-python/init.sh" # Python 3.6
-source "${DOTS_PATH}/development-go/init.sh"     # Go
-source "${DOTS_PATH}/development-cuda/init.sh"   # Cuda
+source "${DOTS_PATH}/programming/php.sh"         # PHP 7.1
+source "${DOTS_PATH}/programming/python.sh"      # Python 3.6
+source "${DOTS_PATH}/programming/go.sh"          # Go
+source "${DOTS_PATH}/programming/cuda.sh"        # Cuda
 
 
 

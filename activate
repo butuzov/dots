@@ -1,37 +1,63 @@
 #!/usr/bin/env bash
 
-CWD=$(pwd)
-NWD=$(realpath $(dirname $0))
-# change directory
-printf "# Activation Procedure Triggered \n\n";
-cd "${NWD}"
+source "bin/functions.sh"
 
-source "${NWD}/bin/activate-functions.sh"
+header "# Activation Procedure Triggered"
+install_brew
+install_brew coreutils
 
-# Git Attributes
+# global .general bashrc
+header "# .bashrc installation"
+NWD=$(dirname $(realpath $0))
+DOTS_PATH=$NWD
+install_bashrc
+source $NWD/.bashrc
+
+# global .editorconfig
+header "# Development"
+install_dot .editorconfig
+
+# git and related configs
+header "# Git"
+install_brew git
+message 2 "$( printf "installed: %s " "$(git version)" )"
 install_dot .gitconfig
 install_dot .gitignore_global
 install_dot .gitattributes
 install_dot .gitmessage
 
-# Actual bashrc and supported variable
-install_bashrc
+
+# PHP && Tooling
+header "# PHP"
+install_brew php@7.1
+message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
+install_php_tooling
+
+# Python && Tooling
+header "# Go"
+install_brew go
+message 2 "$( printf "installed: %s " "$(go version)" )"
+
+# Python && Tooling
+header "# Python"
+install_brew python
+message 2 "$( printf "installed: %s " "$(python3 -V)" )"
+install_python_tooling
+
 
 # vim settings & initial Vundle.vim
+header "# vim"
+install_brew "vim --with-override-system-vi"
 install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" \
 						".vim/bundle/Vundle.vim"
 
-# global .editorconfig
-install_dot .editorconfig
+header "# DevOps tooling"
 
-# installing php tooling
-install_php_tooling
-
-# installing php tooling
-install_python_tooling
-
-# installing devops tooling
-install_devops_tooling
-
-cd "${CWD}"
+install_brew terraform
+install_brew nomad
+install_brew consul
+install_brew vault
+install_brew packer
+install_brew kubectl
+# python3 -m pip install ansible
