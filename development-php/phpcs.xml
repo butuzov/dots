@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Made_in_Ukraine">
+<ruleset name="Made_In_Ukraine">
 	<description>PHP Code Standards used at made.ua</description>
 
 	<rule ref="WordPress" />
@@ -7,7 +7,8 @@
 	<!--
 	#########################################################################
 		These Code Standards (mostly) Adopted From WordPress Code Standards.
-		Revision date - 13.03.2017
+		Revision date - 08.05.2018 (ongoing)
+		Previous Revision date - 13.03.2017
 	#########################################################################
 	-->
 
@@ -321,9 +322,17 @@
 		Ref: https://vip.wordpress.com/documentation/code-review-what-we-look-for/#validation-sanitization-and-escaping
 		Ref: https://vip.wordpress.com/documentation/best-practices/security/validating-sanitizing-escaping/
 	//-->
-	<rule ref="WordPress.XSS.EscapeOutput"/>
-	<rule ref="WordPress.CSRF.NonceVerification" />
-
+	<rule ref="WordPress.Security.EscapeOutput">
+		<properties>
+			<!-- e.g. esc_attr, esc_html, esc_url-->
+			<property name="customEscapingFunctions" type="array" value="0=>allowed_esc_func"/>
+			<!-- e.g. body_class, the_content, the_excerpt -->
+			<property name="customAutoEscapedFunctions" type="array" value="0=>fobar_esc_echo"/>
+			<!-- e.g. _deprecated_argument, printf, _e-->
+			<property name="customPrintingFunctions" type="array" value=""/>
+		</properties>
+	</rule>
+	<rule ref="WordPress.Security.NonceVerification" />
 
 	<!--
 		eval() and create_function()
