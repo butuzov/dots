@@ -35,7 +35,6 @@ function install_dot(){
         LINK_MOVED=1
         CREATE_LINK=1
     elif [[ ! -f ~/$TARGET ]]; then
-        echo "ok?";
         CREATE_LINK=1
     else
         printf "## %s already installed\n" $TARGET
