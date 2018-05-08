@@ -1,0 +1,55 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
+
+[user]
+	name = Oleg Butuzov
+	email = butuzov@made.ua
+
+[commit]
+	template = ~/.gitmessage
+
+[diff]
+	tool = vimdiff
+
+[alias]
+	# Shows last 20 records from git log
+	l20 = log --pretty=oneline -n 20 --graph --abbrev-commit
+	# nice + coments + authors
+	log-nice = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commi
+	# show all records in simple graph view
+	lall = log --color --graph --oneline --decorate --all --
+
+	# Show sorted contributors
+	who = shortlog -s -n --no-merges
+	# Show commits since yesterday
+	standup = shortlog --since=yesterday
+	# Show commits since midnight
+	today = shortlog --since=midnight
+
+	# show local updates diff
+	updates = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# show shortly status
+	shortly = status -s
+
+	# verbose shows
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	# list aliases
+	aliases = config --get-regexp alias
+
+	# amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
+
+	# forced push
+	jedypush = push --force-with-lease
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

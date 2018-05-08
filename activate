@@ -8,6 +8,12 @@ cd "${NWD}"
 
 source "${NWD}/bin/activate-functions.sh"
 
+# Git Attributes
+install_dot .gitconfig
+install_dot .gitignore_global
+install_dot .gitattributes
+install_dot .gitmessage
+
 # Actual bashrc and supported variable
 install_bashrc
 
@@ -27,6 +33,5 @@ install_python_tooling
 
 # installing devops tooling
 install_devops_tooling
-
 
 cd "${CWD}"
