@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "bash/functions.sh"
+source "bash/funcs.sh"
 
 header "# Activation Procedure Triggered"
 install_brew
@@ -61,3 +61,7 @@ install_brew vault
 install_brew packer
 install_brew kubectl
 # python3 -m pip install ansible
+
+# additional software
+header "# Additional Software"
+install_brew ffmpeg

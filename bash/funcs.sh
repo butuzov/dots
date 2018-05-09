@@ -184,8 +184,6 @@ function version {
 function checkout_last_release(){
 
     local DIRECTORY=$1
-    local PWD="$(pwd)"
-
     cd "${NWD}/${DIRECTORY}"
     local VERSION=$(git tag -l | \
         git tag -l | \
