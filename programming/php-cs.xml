@@ -322,7 +322,7 @@
 		Ref: https://vip.wordpress.com/documentation/code-review-what-we-look-for/#validation-sanitization-and-escaping
 		Ref: https://vip.wordpress.com/documentation/best-practices/security/validating-sanitizing-escaping/
 	//-->
-	<rule ref="WordPress.Security.EscapeOutput">
+	<rule ref="WordPress.XSS.EscapeOutput">
 		<properties>
 			<!-- e.g. esc_attr, esc_html, esc_url-->
 			<property name="customEscapingFunctions" type="array" value="0=>allowed_esc_func"/>
@@ -332,7 +332,7 @@
 			<property name="customPrintingFunctions" type="array" value=""/>
 		</properties>
 	</rule>
-	<rule ref="WordPress.Security.NonceVerification" />
+	<rule ref="WordPress.CSRF.NonceVerification" />
 
 	<!--
 		eval() and create_function()
