@@ -116,10 +116,8 @@ function install_php_tooling(){
 
     message $padding "$(echo "PHP: Installing PHP Tools ")"
 
-
     local DEV_TOOLS=(
         "phpmd|http://static.phpmd.org/php/latest/phpmd.phar"
-        "phpcbf|https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar"
     )
 
     for tool in "${DEV_TOOLS[@]}" ; do
