@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "bin/functions.sh"
+source "bash/functions.sh"
 
 header "# Activation Procedure Triggered"
 install_brew

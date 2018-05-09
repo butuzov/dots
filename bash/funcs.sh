@@ -10,8 +10,8 @@ function install_brew(){
         message="$(printf "# Please install Brew (%s) first\n" "https://brew.sh/")"
 
         message $padding $message
-
         exit 1;
+
     else
         if [ -z "${pkg}"  ]; then
             message $padding "$(echo "brew installed")"
@@ -108,6 +108,7 @@ function install_git_repository(){
     fi
 }
 
+# installs some tools using brew and standalone install
 function install_php_tooling(){
 
     local padding=$(padding)
@@ -168,6 +169,7 @@ function install_php_tooling(){
 
 }
 
+# installs some tools using pip
 function install_python_tooling(){
     message 2 "installing python packages using pip"
 
@@ -221,6 +223,5 @@ function padding(){
         echo 2;
         return 0;
     fi
-
     echo $(( 2 + $1 ))
 }
