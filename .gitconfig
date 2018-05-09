@@ -7,9 +7,6 @@
 	name = Oleg Butuzov
 	email = butuzov@made.ua
 
-[commit]
-	template = ~/.gitmessage
-
 [diff]
 	tool = vimdiff
 
