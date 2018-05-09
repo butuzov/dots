@@ -2,8 +2,8 @@
 " --- By Oleg Butuzov  --------------------------------------------------------|
 " -----------------------------------------------------------------------------|
 
-set nocompatible 
-let directory=system('echo $(dirname $(realpath ~/.vimrc))/.vim/_F_')
+set nocompatible
+let directory=system('echo $(dirname $(realpath ~/.vimrc))/vim/_F_')
 let directory=substitute(directory, '\n', '', 'g')
 
 exe 'set rtp+=,' . substitute(directory, '_F_', '', 'g')
@@ -32,12 +32,12 @@ set         ruler
 set         rulerformat=%l,%v             " Ruller
 
 set list
-set showbreak=↪\ 
+set showbreak=↪\
 set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:·,trail:·
 
 set backspace=indent,eol,start            " Backspace in Insert mode"
-set tabstop=4                             " 
-set softtabstop=0 noexpandtab             " 
+set tabstop=4                             "
+set softtabstop=0 noexpandtab             "
 
 " -- Splits -------------------------------------------------------------------"
 
@@ -59,4 +59,4 @@ nmap <S-M> :tabnext<CR>
 
 
 " --Search --------------------------------------------------------------------|
-set hlsearch                              " Search HighLight  
+set hlsearch                              " Search HighLight

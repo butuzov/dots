@@ -50,7 +50,7 @@ header "# vim"
 install_brew "vim --with-override-system-vi"
 install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" \
-						".vim/bundle/Vundle.vim"
+						"vim/bundle/Vundle.vim"
 
 header "# DevOps tooling"
 
