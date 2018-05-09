@@ -15,16 +15,16 @@ function install_brew(){
     else
         if [ -z "${pkg}"  ]; then
             message $padding "$(echo "brew installed")"
-            brew upgrade 1>/dev/null 2>/dev/null
+            brew upgrade > /dev/null 2>&1
             message $padding "$(echo "brew updating packages")"
-            brew update 1>/dev/null 2>/dev/null
+            brew update > /dev/null 2>&1
 
         fi
     fi
 
     if [ ! -z "${pkg}" ]; then
         message $padding "$(printf "brew reinstalling %s" "${pkg}")"
-        brew install $pkg 1>/dev/null 2>/dev/null
+        brew install $pkg > /dev/null 2>&1
     fi
 }
 
@@ -165,15 +165,14 @@ function install_php_tooling(){
     "programming/php/cs_wp_coding-standards" \
     && checkout_last_release "programming/php/cs_wp_coding-standards"
 
-    phpcs --config-set installed_paths "${NWD}/programming/php/cs_wp_coding-standards,${NWD}/programming/php/cs_php_compatibility" 1>/dev/null 2>/dev/null
-
+    phpcs --config-set installed_paths "${NWD}/programming/php/cs_wp_coding-standards,${NWD}/programming/php/cs_php_compatibility" > /dev/null 2>&1
 }
 
 # installs some tools using pip
 function install_python_tooling(){
     message 2 "installing python packages using pip"
 
-    python3.6 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" 1>/dev/null 2>/dev/null
+    python3.6 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" > /dev/null 2>&1
 }
 
 # Convert version to number in order to sort it.
@@ -199,9 +198,9 @@ function checkout_last_release(){
         awk -F':' '{print $2}'
     )
 
-    git checkout "tags/${VERSION}" 2>1 /dev/null
+    git checkout "tags/${VERSION}" > /dev/null 2>&1
 
-    cd "${PWD}"
+    cd "${NWD}"
 }
 
 # prints local header
