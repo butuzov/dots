@@ -64,4 +64,6 @@ install_brew kubectl
 
 # additional software
 header "# Additional Software"
-install_brew ffmpeg
+install_brew ffmpeg			# Video converting
+install_brew pv				# Piping Progress bar
+install_brew htop			# Piping Progress bar
