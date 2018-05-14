@@ -18,8 +18,9 @@ export LANG=en_US.UTF-8
 
 
 # Bash usage
-source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
+source "${DOTS_PATH}/bash/helpers.sh"              # Functions (Helpers)
 source "${DOTS_PATH}/bash/funcs.sh"              # Functions
+source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
 source "${DOTS_PATH}/bash/locals.sh"             # Local Commands
 
 # Development
