@@ -29,7 +29,7 @@ install_dot .gitmessage
 
 # PHP && Tooling
 header "# PHP"
-install_brew php@7.1
+install_brew php
 message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
 install_php_tooling
 

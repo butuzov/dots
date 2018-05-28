@@ -185,6 +185,12 @@
 	</rule>
 
 
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false" />
+		</properties>
+	</rule>
+
 	<!--
 		Rule: Call a function, like so: my_function( $param1, func_param( $param2 ) );
 	//-->
