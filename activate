@@ -59,7 +59,8 @@ install_brew nomad
 install_brew consul
 install_brew vault
 install_brew packer
-install_brew kubectl
+
+install_kube
 # python3 -m pip install ansible
 
 # additional software
@@ -67,4 +68,4 @@ header "# Additional Software"
 install_brew ffmpeg			# Video converting
 install_brew pv				# Piping Progress bar
 install_brew htop			# nice top
-install_brew jq			# JSON processor
+install_brew jq				# JSON processor
