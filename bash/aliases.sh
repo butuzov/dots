@@ -21,10 +21,7 @@ function vl(){
 # Download and convert video to mp3 and put it to mp3 folder.
 function mp3dl(){
     local URL=$1
-    cd /tmp
     youtube-dl -o '%(title)s.%(ext)s' --extract-audio --audio-format mp3 $1
-    find /tmp/ -name "*.mp3" | xargs -I {} sh -c 'mv -f "{}" ~/Music/'
-    cd -
 }
 
 
