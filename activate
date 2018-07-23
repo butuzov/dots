@@ -44,6 +44,9 @@ install_brew python
 message 2 "$( printf "installed: %s " "$(python3 -V)" )"
 install_python_tooling
 
+# Groovy && Tooling
+header "# Groovy"
+install_brew groovy
 
 # vim settings & initial Vundle.vim
 header "# vim"
@@ -61,11 +64,14 @@ install_brew vault
 install_brew packer
 
 install_kube
-# python3 -m pip install ansible
+brew install kubeless
+# brew install minikube
+python3 -m pip install ansible
 
 # additional software
 header "# Additional Software"
-install_brew ffmpeg			# Video converting
-install_brew pv				# Piping Progress bar
-install_brew htop			# nice top
-install_brew jq				# JSON processor
+install_brew ffmpeg			 # Video converting
+install_brew pv				 # Piping Progress bar
+install_brew htop			 # nice top
+install_brew jq				 # JSON processor
+install_brew bash-completion # Bach completion
