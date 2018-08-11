@@ -6,6 +6,10 @@ WHITE="\[\e[107;30m\]"
 YELLO="\[\e[1;33m\]"
 RESET="\[\e[0m\]"
 
+echo -e "\033]6;1;bg;red;brightness;40\a"
+echo -e "\033]6;1;bg;green;brightness;40\a"
+echo -e "\033]6;1;bg;blue;brightness;40\a"
+
 export PS1="${RESET}${WHITE} $ \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
 export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
 
