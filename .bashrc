@@ -26,6 +26,7 @@ source "${DOTS_PATH}/bash/helpers.sh"            # Functions (Helpers)
 source "${DOTS_PATH}/bash/funcs.sh"              # Functions
 source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
 source "${DOTS_PATH}/bash/locals.sh"             # Local Commands
+source "${DOTS_PATH}/bash/coreutils.sh"          # Local Commands
 
 # Tools
 source "${DOTS_PATH}/bash/docker.sh"             # Docker Commands
