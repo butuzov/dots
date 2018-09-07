@@ -1,5 +1,5 @@
 # Video compressing
-alias video='cd /Volumes/Developer/Video-Library/Videos'
+alias video='cd /Volumes/Developer/Tutorials'
 alias vc='video && go run converter.go -directory=__converting'
 
 # Start/Stop LEMP in Docker Compose
