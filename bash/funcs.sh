@@ -172,6 +172,18 @@ function install_php_tooling(){
 
     phpcs --config-set installed_paths "${NWD}/programming/php/cs_wp_coding-standards,${NWD}/programming/php/cs_php_compatibility" > /dev/null 2>&1
 }
+
+# installs npm packages
+function install_nodejs_tooling(){
+
+    local padding=$(padding)
+    local message
+
+    message $padding "$(echo "node.js: Installing node.js tools ")"
+    npm install serverless -g
+    npm install gulp -g
+}
+
 # quick pip shortcut for install/upgrade
 function py3pip(){
     python3 -m pip install --upgrade "${1}"

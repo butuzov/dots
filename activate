@@ -44,6 +44,11 @@ install_brew python
 message 2 "$( printf "installed: %s " "$(python3 -V)" )"
 install_python_tooling
 
+# nodejs
+install_brew nodejs
+message 2 "$( printf "installed: %s " "$(node -v)" )"
+install_nodejs_tooling
+
 # Groovy && Tooling
 header "# Groovy"
 install_brew groovy
