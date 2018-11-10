@@ -3,7 +3,7 @@ alias video='cd /Volumes/Developer/Tutorials'
 alias vc='video && go run converter.go -directory=__converting'
 
 # Start/Stop LEMP in Docker Compose
-web_lemp() {
+lemp() {
     case "$1" in
         # Start Environment
         "start") docker-compose -f $DOCKER_COMPOSE_FILE up -d;;
