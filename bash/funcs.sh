@@ -28,26 +28,6 @@ function install_brew(){
     fi
 }
 
-# monitor installations
-function monitor_installation(){
-
-    if [[ $(whoami) != "root" ]]; then
-        echo "You need to be root"
-        exit 1
-    fi
-
-    cd /
-    echo "Indexation of Pre_Install State"
-    find . \( -path ./Volumes -o -path ./dev -o -path ./.fseventsd -o -path ./.Spotlight-V100 -o -name '*.app' \)  -prune -o -print > ~/Desktop/.before.txt
-    read  -n 1 -p "Install App and Press RETURN to Continue" mainmenuinput
-
-    find . \( -path ./Volumes -o -path ./dev -o -path ./.fseventsd -o -path ./.Spotlight-V100 -o -name '*.app' \)  -prune -o -print > ~/Desktop/.after.txt
-
-    echo "Indexation of Post_Install State"
-    diff ~/Desktop/.after.txt ~/Desktop/.before.txt  > ~/Desktop/.diff.txt
-    cat ~/Desktop/.diff.txt | less
-    unlink ~/Desktop/.diff.txt
-}
 
 function install_kube(){
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
