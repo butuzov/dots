@@ -2,4 +2,5 @@ pip
 youtube-dl
 icecream
 pandas
+matplotlib
 jupyter
