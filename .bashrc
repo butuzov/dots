@@ -37,7 +37,6 @@ source "${DOTS_PATH}/programming/php.sh"         # PHP 7.2.5
 source "${DOTS_PATH}/programming/python.sh"      # Python 3.7
 source "${DOTS_PATH}/programming/go.sh"          # Go
 source "${DOTS_PATH}/programming/go.sh"          # Groovy
-source "${DOTS_PATH}/programming/cuda.sh"        # Cuda
 
 
 
