@@ -172,17 +172,17 @@ function install_php_tooling(){
 
     phpcs --config-set installed_paths "${NWD}/programming/php/cs_wp_coding-standards,${NWD}/programming/php/cs_php_compatibility" > /dev/null 2>&1
 }
+# quick pip shortcut for install/upgrade
+function py3pip(){
+    python3 -m pip install --upgrade "${1}"
+}
 
 # installs some tools using pip
 function install_python_tooling(){
     message 2 "installing python packages using pip"
 
-    python3.6 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" > /dev/null 2>&1
-}
-
-# quick pip shortcut for install/upgrade
-function py3pip(){
-    python3 -m pip install --upgrade "${1}"
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" > /dev/null 2>&1
 }
 
 
