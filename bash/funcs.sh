@@ -28,6 +28,26 @@ function install_brew(){
     fi
 }
 
+# monitor installations
+function monitor_installation(){
+
+    if [[ $(whoami) != "root" ]]; then
+        echo "You need to be root"
+        exit 1
+    fi
+
+    cd /
+    echo "Indexation of Pre_Install State"
+    find . \( -path ./Volumes -o -path ./dev -o -path ./.fseventsd -o -path ./.Spotlight-V100 -o -name '*.app' \)  -prune -o -print > ~/Desktop/.before.txt
+    read  -n 1 -p "Install App and Press RETURN to Continue" mainmenuinput
+
+    find . \( -path ./Volumes -o -path ./dev -o -path ./.fseventsd -o -path ./.Spotlight-V100 -o -name '*.app' \)  -prune -o -print > ~/Desktop/.after.txt
+
+    echo "Indexation of Post_Install State"
+    diff ~/Desktop/.after.txt ~/Desktop/.before.txt  > ~/Desktop/.diff.txt
+    cat ~/Desktop/.diff.txt | less
+    unlink ~/Desktop/.diff.txt
+}
 
 function install_kube(){
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
@@ -179,6 +199,12 @@ function install_python_tooling(){
 
     python3.6 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" > /dev/null 2>&1
 }
+
+# quick pip shortcut for install/upgrade
+function py3pip(){
+    python3 -m pip install --upgrade "${1}"
+}
+
 
 # Convert version to number in order to sort it.
 # Becouse there are no -V in mac sort
