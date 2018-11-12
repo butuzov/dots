@@ -23,5 +23,6 @@ find . \( -path ./Volumes -o -path ./dev -o -path ./.fseventsd -o -path ./.Spotl
 echo "Indexation of Post_Install State"
 diff ~/Desktop/.after.txt ~/Desktop/.before.txt  > ~/Desktop/$logfile.txt
 cat ~/Desktop/$logfile.txt | less
-# unlink ~/Desktop/.before.txt
-# unlink ~/Desktop/.after.txt
+unlink ~/Desktop/.before.txt
+unlink ~/Desktop/.after.txt
+chown "butuzov:staff" ~/Desktop/$logfile.txt
