@@ -4,3 +4,6 @@ icecream
 pandas
 matplotlib
 jupyter
+ansible
+pep8
+pylint

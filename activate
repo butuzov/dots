@@ -70,8 +70,6 @@ install_brew packer
 
 install_kube
 brew install kubeless
-# brew install minikube
-python3 -m pip install ansible
 
 # additional software
 header "# Additional Software"
