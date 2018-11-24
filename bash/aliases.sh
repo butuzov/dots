@@ -9,9 +9,10 @@ alias .....="cd ../../../.."
 alias home="cd ~"
 alias desktop="cd ~/Desktop"
 
-# Download something from youtube
-alias pldl="youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s' $1" # playlist
-alias pldlh="youtube-dl -f 22 -o '%(playlist_index)s %(title)s.%(ext)s' $1" # playlist
+# Download playlist something from youtube
+alias pldl="youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s' $1"
+alias pldlh="youtube-dl -f 22 -o '%(playlist_index)s %(title)s.%(ext)s' $1"
+
 # calculate video langht of the video course
 function vl(){
     SEC=$(find . -name "*mp4" | xargs -I {} sh -c 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{}"' | awk '{ sum += $1; } END { print sum; }' "$@" );
