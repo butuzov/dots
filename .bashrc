@@ -20,6 +20,13 @@ export LC_CTYPE="UTF-8"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Custom Functionality
+# Added to remove personal (sub projects to be hardcoded)
+if [[ -d "${DOTS_PATH}/custom" ]]; then
+    for script in $(find "${DOTS_PATH}/custom" -type f -name "*.sh")
+    do source $script
+    done
+fi
 
 # Bash usage
 source "${DOTS_PATH}/bash/helpers.sh"            # Functions (Helpers)
