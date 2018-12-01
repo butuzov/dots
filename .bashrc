@@ -40,11 +40,17 @@ source "${DOTS_PATH}/bash/docker.sh"             # Docker Commands
 
 # Local bin directory
 export PATH="${DOTS_PATH}/bin:${PATH}"
-# Development
 
+# Home
+export PATH="${HOME}/bin:${PATH}"
+
+# Development
 source "${DOTS_PATH}/programming/php.sh"         # PHP 7.2.5
 source "${DOTS_PATH}/programming/go.sh"          # Go
+source "${DOTS_PATH}/programming/python.sh"      # Python
 source "${DOTS_PATH}/programming/go.sh"          # Groovy
+source "${DOTS_PATH}/programming/cuda.sh"        # CUDA
+
 
 
 
