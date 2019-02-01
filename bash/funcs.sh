@@ -28,14 +28,6 @@ function install_brew(){
     fi
 }
 
-
-function install_kube(){
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
-    chmod +x ./kubectl
-    sudo mv ./kubectl /usr/local/bin/kubectl
-}
-
-
 # General Setup for .bashrc (which is .bash_profile on mac)
 # Adding pathinfo to point back to this repo directory
 # And sourcing out .bashrc (as .bash_profile)
@@ -181,20 +173,23 @@ function install_nodejs_tooling(){
 
     message $padding "$(echo "node.js: Installing node.js tools ")"
     npm install serverless -g
-    npm install gulp -g
 }
 
 # quick pip shortcut for install/upgrade
-function py3pip(){
-    python3 -m pip install --upgrade "${1}"
+function py36pip(){
+    python3.6 -m pip install --upgrade "${1}"
+}
+
+function py37pip(){
+    python3.7 -m pip install --upgrade "${1}"
 }
 
 # installs some tools using pip
 function install_python_tooling(){
     message 2 "installing python packages using pip"
 
-    python3 -m pip install --upgrade pip
-    python3 -m pip install --upgrade -r "${NWD}/programming/python-pip-requirments.txt" > /dev/null 2>&1
+    python3.7 -m pip install --upgrade pip
+    python3.7 -m pip install --upgrade -r "${NWD}/programming/python-requirments.txt" > /dev/null 2>&1
 }
 
 

@@ -33,12 +33,12 @@ install_brew php
 message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
 install_php_tooling
 
-# Python && Tooling
+# Go & Tooling
 header "# Go"
 install_brew go
 message 2 "$( printf "installed: %s " "$(go version)" )"
 
-# Python && Tooling
+# Python & Tooling
 header "# Python"
 install_brew python
 message 2 "$( printf "installed: %s " "$(python3 -V)" )"
@@ -49,32 +49,34 @@ install_brew nodejs
 message 2 "$( printf "installed: %s " "$(node -v)" )"
 install_nodejs_tooling
 
-# Groovy && Tooling
-header "# Groovy"
-install_brew groovy
-
 # vim settings & initial Vundle.vim
 header "# vim"
-install_brew "vim --with-override-system-vi"
+install_brew vim
 install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" \
 						"vim/bundle/Vundle.vim"
 
 header "# DevOps tooling"
-
 install_brew terraform
 install_brew nomad
 install_brew consul
 install_brew vault
 install_brew packer
+brew cask install vagrant
 
-install_kube
-brew install kubeless
+# Kubernetes
 
-# additional software
+# Additional Tools
+brew cask install vmware-fusion virtualbox sourcetree iina
+
+# install_kube
+install_brew kubectl
+install_brew kubeless
+install_brew jq
+install_brew htop
+
+# # additional software
 header "# Additional Software"
 install_brew ffmpeg			 # Video converting
-install_brew pv				 # Piping Progress bar
 install_brew htop			 # nice top
-install_brew jq				 # JSON processor
 install_brew bash-completion # Bach completion

@@ -1,8 +1,8 @@
 youtube-dl
 icecream
-pandas
-matplotlib
-jupyter
 ansible
 pep8
 pylint
+pandas
+jupyter
+matplotlib

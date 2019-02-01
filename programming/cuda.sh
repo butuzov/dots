@@ -1,6 +1,6 @@
-CUDA_PATH="/Developer/NVIDIA/CUDA-9.1"
-if [[ -d $CUDA_PATH ]]; then
+if [[ -d "/usr/local/cuda" ]]; then
     export CUDA_PATH="/usr/local/cuda"
+    export CUDA_HOME="${CUDA_PATH}"
     export DYLD_LIBRARY_PATH="${CUDA_PATH}/lib:${CUDA_PATH}/extras/CUPTI/lib:${DYLD_LIBRARY_PATH}"
     export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
     export PATH="${DYLD_LIBRARY_PATH}:${CUDA_PATH}/bin:${PATH}"

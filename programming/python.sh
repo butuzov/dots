@@ -5,3 +5,6 @@ _pip_completion() {
 }
 complete -o default -F _pip_completion pip3
 
+# Setting PATH for Python 3.6 - 3.6 used for tensorflow on "bigmac"
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH

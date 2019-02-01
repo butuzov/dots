@@ -45,11 +45,10 @@ export PATH="${DOTS_PATH}/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 
 # Development
-source "${DOTS_PATH}/programming/php.sh"         # PHP 7.2.5
-source "${DOTS_PATH}/programming/go.sh"          # Go
-source "${DOTS_PATH}/programming/python.sh"      # Python
-source "${DOTS_PATH}/programming/go.sh"          # Groovy
-source "${DOTS_PATH}/programming/cuda.sh"        # CUDA
+source "${DOTS_PATH}/programming/php.sh"         # PHP    7.3.1
+source "${DOTS_PATH}/programming/go.sh"          # Go     1.11.5
+source "${DOTS_PATH}/programming/python.sh"      # Python 3.7
+source "${DOTS_PATH}/programming/cuda.sh"        # CUDA   10.1
 
 
 
