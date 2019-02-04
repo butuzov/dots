@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Mass Renamer - use: massr "Long Chapter Name" "Language"
+
+massr(){
+	for i in ./*.mp4;
+		do mv "${i}" "${i/$1/$2}";
+	done
+}
+
+massr "${1}" "${2}"
