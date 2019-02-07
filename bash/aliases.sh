@@ -14,14 +14,13 @@ alias pldl="youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s' $1"
 alias pldlh="youtube-dl -f 22 -o '%(playlist_index)s %(title)s.%(ext)s' $1"
 
 # calculate video langht of the video course
-function vl(){
+vl(){
     SEC=$(find . -name "*mp4" -print0 | xargs -0 -I {} sh -c 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{}"' | awk '{ sum += $1; } END { print sum; }' "$@" );
     printf "Total Time of course is : %s\n" $(convertsecs $SEC)
 }
 
 # Download and convert video to mp3 and put it to mp3 folder.
-function mp3dl(){
-    local URL=$1
+mp3dl(){
     youtube-dl -o '%(title)s.%(ext)s' --extract-audio --audio-format mp3 $1
 }
 
