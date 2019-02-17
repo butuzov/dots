@@ -1,5 +1,8 @@
 # Realod Config
 alias reload='source ~/.bash_profile'
+alias edit='code ~/.dotfiles'
+alias notes='code ~/Users/butuzov/Desktop/today.md'
+alias today='code ~/Dropbox/Dev-Projects/todayilearned'
 
 # Navigation
 alias ..="cd .."
@@ -40,3 +43,10 @@ alias grep='grep --color=auto '
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+# Creates RAM disk of 8gb (default value) with a name ram (default value)
+# usage ramdisk 8
+# usage ramdisk 10 ramka_na_stinky
+ram(){
+    diskutil erasevolume HFS+ "${2:-ram}" $(hdiutil attach -nomount ram://$((2*1000*1000*${1:-8})))
+    open "/Volumes/${2:-ram}"
+}
