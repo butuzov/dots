@@ -25,7 +25,7 @@ let os=GetRunningOS()                     " Operating System Name
 
 " -- Editor -------------------------------------------------------------------|
 syntax      enable                        " Enables Syntax Highlight
-colorscheme onedark
+"colorscheme onedark
 
 set         number                        " Shows Line Numbers
 set         ruler

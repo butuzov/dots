@@ -1,4 +1,4 @@
-filetype off                                 " requiredn 
+filetype off                                 " requiredn
 
 
 " let Vundle manage Vundle, required
@@ -7,7 +7,7 @@ call vundle#rc( substitute(directory, '_F_', 'bundle/', 'g') )
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'                " Plugin Manager
- 
+
 " -- Plugin : NERD Tree : Files Navigation ------------------------------------|
 Plugin 'scrooloose/nerdtree'
 nmap <C-\> :NERDTreeToggle<cr>
@@ -22,21 +22,21 @@ Plugin 'mhinz/vim-startify'
 let g:startify_custom_header = readfile(expand(substitute(directory, '_F_', 'header.txt', 'g')))
 
 "let g:startify_custom_header =
-"\ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+"	\ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
 let g:startify_lists = [
     \ { 'type': 'files',     'header': [   'MRU']            },
-    \ { 'type': 'dir',       'header': [   'MRU '. getcwd()] }, 
+    \ { 'type': 'dir',       'header': [   'MRU '. getcwd()] },
     \ { 'type': 'bookmarks', 'header': [   'Bookmarks']      },
     \ { 'type': 'commands',  'header': [   'Commands']       },
 \ ]
 
-"set statusline=%=%P\ %f\ %m
-"set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+set statusline=%=%P\ %f\ %m
+"set fillchars=vert:\ ,stl:\ ,stlnc:\
 "set laststatus=2
 
-Plugin 'editorconfig/editorconfig-vim'       " .editorcofig 
-Plugin 'tpope/vim-fugitive'                  " 
+Plugin 'editorconfig/editorconfig-vim'       " .editorcofig
+Plugin 'tpope/vim-fugitive'                  "
 Plugin 'ervandew/supertab'
 
 
@@ -73,7 +73,7 @@ Plugin 'bash-support.vim'
 Plugin 'stanangeloff/php.vim'
 
 " -- Go -----------------------------------------------------------------------|
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
 " -- Tools / DevOps  ----------------------------------------------------------|
 Plugin 'docker/docker'

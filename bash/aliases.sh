@@ -2,7 +2,17 @@
 alias reload='source ~/.bash_profile'
 alias edit='code ~/.dotfiles'
 alias notes='code ~/Users/butuzov/Desktop/today.md'
-alias today='code ~/Dropbox/Dev-Projects/todayilearned'
+alias today="cd ~/Dropbox/Dev-Projects/todayilearned && code ~/Dropbox/Dev-Projects/todayilearned"
+
+
+# chrome
+alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
+
+# Jupyter with Go kernel
+alias nbgo="docker rmsc && chrome http://localhost:8889 && docker run -it --name jupyter-go -p 8889:8888 -v $(pwd):/notebooks gopherdata/gophernotes sh -c \"jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.notebook_dir='/notebooks'\" "
+
+# Regular Jupyter started with
+alias nbpy=". ~/Desktop/Py3.7/bin/activate && jupyter notebook"
 
 # Navigation
 alias ..="cd .."
@@ -15,6 +25,8 @@ alias desktop="cd ~/Desktop"
 # Download playlist something from youtube
 alias pldl="youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s' $1"
 alias pldlh="youtube-dl -f 22 -o '%(playlist_index)s %(title)s.%(ext)s' $1"
+
+alias dl="curl -LO ${1}"
 
 # calculate video langht of the video course
 vl(){
