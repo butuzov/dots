@@ -10,7 +10,8 @@ echo -e "\033]6;1;bg;red;brightness;40\a" > /dev/null
 echo -e "\033]6;1;bg;green;brightness;40\a" > /dev/null
 echo -e "\033]6;1;bg;blue;brightness;40\a" > /dev/null
 
-export PS1="${RESET}${WHITE} $ \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
+# export PS1="${RESET}${WHITE} $ \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
+export PS1="${RESET}${WHITE} $ \u ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
 export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
 
 export CLICOLOR=1l
@@ -33,10 +34,11 @@ source "${DOTS_PATH}/bash/helpers.sh"            # Functions (Helpers)
 source "${DOTS_PATH}/bash/funcs.sh"              # Functions
 source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
 source "${DOTS_PATH}/bash/locals.sh"             # Local Commands
-source "${DOTS_PATH}/bash/coreutils.sh"          # Local Commands
+source "${DOTS_PATH}/bash/coreutils.sh"          # Coreutils
 
 # Tools
 source "${DOTS_PATH}/bash/docker.sh"             # Docker Commands
+source "${DOTS_PATH}/bash/download.sh"           # Downloaders
 
 # Local bin directory
 export PATH="${DOTS_PATH}/bin:${PATH}"
