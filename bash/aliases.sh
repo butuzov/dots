@@ -25,6 +25,8 @@ alias .....="cd ../../../.."
 alias home="cd ~"
 alias desktop="cd ~/Desktop"
 
+alias mlv="make_list_videos"
+
 # Go PAth Commander?
 # I am so terrible with pans-naming
 # https://en.wikipedia.org/wiki/Hopak
@@ -125,6 +127,7 @@ alias grep='grep --color=auto '
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
 # Creates RAM disk of 8gb (default value) with a name ram (default value)
 # usage ramdisk 8
 # usage ramdisk 10 ramka_na_stinky

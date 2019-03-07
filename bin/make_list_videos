@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+from glob import glob
+from collections import OrderedDict
+import json, csv
+
+def main():
+
+    data = []
+
+    for file in glob("*.json"):
+
+        with open(file) as f:
+            d = json.load(f)
+            data.append(OrderedDict({
+                'title': d['title'],
+                'views': d['view_count'],
+                'likes': d['like_count'],
+            }))
+
+    data = sorted(data, key=lambda x: x['views'], reverse=True)
+
+    with open('list.csv', "w", newline='') as f:
+        w = csv.writer(f, delimiter=';')
+        w.writerow(data[0].keys())
+        for row in data:
+            w.writerow(row.values())
+
+if __name__ == "__main__":
+    main()

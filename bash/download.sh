@@ -99,7 +99,7 @@ youtube() {
     IDX=1
     # you can additionaly add
     # --playlist-reverse
-    for video in $( youtube-dl --flat-playlist -j $URL | \
+    for video in $( youtube-dl --playlist-reverse --flat-playlist -j $URL | \
                     jq -r '.id' | \
                     sed 's_^_https://youtube.com/v/_'); do
 
@@ -114,8 +114,8 @@ youtube() {
             IDX=$(($IDX+1))
         fi
 
-        # just in case if we want to kill it.
         sleep 2
+        # just in case if we want to kill it.
     done
 }
 
