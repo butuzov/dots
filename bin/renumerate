@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+from glob import glob
+from re import split
+from os import rename
+import sys
+
+def natural_sort(l, reverse=False):
+    convert = lambda text: int(text) if text.isdigit() else text.lower()
+    alphanum_key = lambda key: [ convert(c) for c in split('([0-9]+)', key) ]
+    return sorted(l, key = alphanum_key, reverse=reverse)
+
+def main():
+	files = glob("*.mp4")
+	pad = len(f"{len(files)}")
+
+	revsrt=False
+	do_rename=False
+
+	if len(sys.argv) > 1 :
+		if "-r" in sys.argv[1:]:
+			revsrt = True
+
+		if "-y" in sys.argv[1:]:
+			do_rename = True
+
+	files = natural_sort(files, reverse=revsrt)
+
+
+	for key, file in enumerate(files):
+		_f = split('^([0-9]+).? ', file)[-1]
+		_f = split('(.mp4)', _f)
+		name = "{0:0{1}d} {2}.mp4".format(key+1, pad, _f[0].strip())
+
+		print(name)
+		print(">", file)
+		if do_rename:
+			rename(file, name)
+
+
+
+if __name__ == "__main__":
+	main()

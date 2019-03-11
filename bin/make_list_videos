@@ -26,5 +26,7 @@ def main():
         for row in data:
             w.writerow(row.values())
 
+    print("list.csv")
+
 if __name__ == "__main__":
     main()

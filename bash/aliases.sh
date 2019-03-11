@@ -1,21 +1,18 @@
 # Realod Config
 alias reload='source ~/.bash_profile'
 alias edit='code ~/.dotfiles'
-alias notes='code ~/Users/butuzov/Desktop/today.md'
-alias facts='code ~/Users/butuzov/Desktop/facts.md'
-alias today="cd ~/Dropbox/Dev-Projects/todayilearned && code ~/Dropbox/Dev-Projects/todayilearned"
+alias notes='code ~/Dropbox/today.md'
+alias facts='code ~/Dropbox/facts.md'
+alias today="cd ~/Dropbox/Coding/todayilearned && code ~/Dropbox/Coding/todayilearned"
 
 
 # chrome
 alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
 alias linux="cd ~/Desktop/centos && vagrant up && vagrant ssh"
 
-
-# Jupyter with Go kernel
-alias nbgo="docker rmsc && chrome http://localhost:8889 && docker run -it --name jupyter-go -p 8889:8888 -v $(pwd):/notebooks gopherdata/gophernotes:latest-ds sh -c \"jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.notebook_dir=/notebooks\" "
-
-# Regular Jupyter started with
-alias nbpy=". ~/Desktop/Py3.7/bin/activate && jupyter notebook"
+# Pyenv3 .7
+alias py37=". ~/Py_3.7/bin/activate"
+export JUPYTER_CONFIG_DIR="~/Py_3.7/share/jupyter"
 
 # Navigation
 alias ..="cd .."

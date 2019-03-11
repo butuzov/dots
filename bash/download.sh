@@ -99,7 +99,7 @@ youtube() {
     IDX=1
     # you can additionaly add
     # --playlist-reverse
-    for video in $( youtube-dl --playlist-reverse --flat-playlist -j $URL | \
+    for video in $( youtube-dl --flat-playlist -j $URL | \
                     jq -r '.id' | \
                     sed 's_^_https://youtube.com/v/_'); do
 
@@ -109,6 +109,7 @@ youtube() {
         # -r 700K // speed limit
         youtube-dl -f 22 \
                    --write-info-json \
+                   -r 700K \
                    -o "${IDX} %(title)s.%(ext)s" $video
         if [[ $? == 0 ]]; then
             IDX=$(($IDX+1))
