@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source "bash/funcs.sh"
+source "bash/installation.sh"
+
 
 header "# Activation Procedure Triggered"
 install_brew
@@ -27,11 +28,15 @@ install_dot .gitattributes
 install_dot .gitmessage
 
 
-# PHP && Tooling
+# PHP & Tooling
 header "# PHP"
 install_brew php
 message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
 install_php_tooling
+
+# nodejs
+install_brew nodejs
+message 2 "$( printf "installed: %s " "$(node -v)" )"
 
 # Go & Tooling
 header "# Go"
@@ -42,41 +47,54 @@ message 2 "$( printf "installed: %s " "$(go version)" )"
 header "# Python"
 install_brew python
 message 2 "$( printf "installed: %s " "$(python3 -V)" )"
-install_python_tooling
 
-# nodejs
-install_brew nodejs
-message 2 "$( printf "installed: %s " "$(node -v)" )"
-install_nodejs_tooling
+## Python Tooling
+npm install pyright  -g
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pep8 pylint ansible youtube-dl icecream > /dev/null 2>&1
 
-# vim settings & initial Vundle.vim
+
+# # vim settings & initial Vundle.vim
 header "# vim"
 install_brew vim
 install_dot .vimrc
-install_git_repository "https://github.com/VundleVim/Vundle.vim" \
-						"vim/bundle/Vundle.vim"
+install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
 
-header "# DevOps tooling"
-install_brew terraform
-install_brew nomad
-install_brew consul
-install_brew vault
-install_brew packer
-brew cask install vagrant
+# DataScience 
+python3 -m pip install jupyter jupyter_contrib_nbextensions numpy  matplotlib scipy statsmodels pandas
+
+# go kernel
+brew install zeromq pkg-config
+go get -u github.com/gopherdata/gophernotes
+
+# DevOps
+# serverless 
+install_brew serverless            #
+
+## aws cli
+install_brew awscli                #
+
+# hashitools
+install_brew consul                #
+install_brew vault                 #
+install_brew packer                #
+install_brew terraform             #
 
 # Kubernetes
+install_brew kubectl               #
+
+# Virtualization
+brew cask install virtualbox       #
+brew cask install vagrant          #
+brew cask install vmware-fusion    #
 
 # Additional Tools
-brew cask install vmware-fusion virtualbox sourcetree iina
-
-# install_kube
-install_brew kubectl
-install_brew kubeless
-install_brew jq
-install_brew htop
-
-# # additional software
+brew cask install sourcetree       #
+brew cask install iina             #
+ 
+# Additional software
 header "# Additional Software"
-install_brew ffmpeg			 # Video converting
-install_brew htop			 # nice top
-install_brew bash-completion # Bach completion
+install_brew ffmpeg			       # Video converting 
+install_brew bash-completion       # Bach completion
+install_brew jq                    #
+install_brew htop                  # htop

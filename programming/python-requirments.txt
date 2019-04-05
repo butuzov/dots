@@ -1,8 +1,0 @@
-youtube-dl
-icecream
-ansible
-pep8
-pylint
-pandas
-jupyter
-matplotlib

@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/butuzov/.gitignore_global
 	attributesfile = ~/.gitattributes
 
 [user]

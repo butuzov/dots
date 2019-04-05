@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Simple Search/Replace - use: sr <pattern> <replace> <phraze>
-
-sr() {
-	echo $(echo $3 | sed s/$1/$2/g)
-}
-
-sr "${1}" "${2}" "${3}"

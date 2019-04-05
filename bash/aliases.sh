@@ -1,25 +1,27 @@
 # Realod Config
 alias reload='source ~/.bash_profile'
-alias edit='code ~/.dotfiles'
-alias notes='code ~/Dropbox/today.md'
-alias facts='code ~/Dropbox/facts.md'
-alias today="cd ~/Dropbox/Coding/todayilearned && code ~/Dropbox/Coding/todayilearned"
-
+alias dots='code ~/.dotfiles'
+alias today='code ~/Dropbox/today.md' 
+alias notes='cd ~/Dropbox/Coding/todayilearned && code ~/Dropbox/Coding/todayilearned'
 
 # chrome
 alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
-alias linux="cd ~/Desktop/centos && vagrant up && vagrant ssh"
 
-# Pyenv3 .7
-alias py37=". ~/Py_3.7/bin/activate"
-export JUPYTER_CONFIG_DIR="~/Py_3.7/share/jupyter"
+# Kill all the tabs in Chrome to free up memory
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+alias linux="cd ~/Desktop/CentOS_7 && vagrant up && vagrant ssh"
+
+# alias update='sudo softwareupdate -i -a;  sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update='brew update; brew upgrade; brew cleanup;npm install npm -g; npm update -g;'
+
 
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias home="cd ~"
 alias desktop="cd ~/Desktop"
 
 alias mlv="make_list_videos"
@@ -101,12 +103,7 @@ gopac(){
     fi
 }
 
-# calculate video langht of the video course
-vl(){
-    echo ${1}
-    SEC=$(find . -name "*mp4" -print0 | xargs -0 -I {} sh -c 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{}"' | awk '{ sum += $1; } END { print sum; }' "$@" );
-    printf "Total Time of course is : %s\n" $(convertsecs $SEC)
-}
+
 
 
 # Time and Date

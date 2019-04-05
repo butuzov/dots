@@ -7,24 +7,25 @@ function install_brew(){
     local padding=$(padding $2)
 
     if [ -z $brew_exists ]; then
-        message="$(printf "# Please install Brew (%s) first\n" "https://brew.sh/")"
-
-        message $padding $message
-        exit 1;
-
-    else
-        if [ -z "${pkg}"  ]; then
-            message $padding "$(echo "brew installed")"
-            brew upgrade > /dev/null 2>&1
-            message $padding "$(echo "brew updating packages")"
-            brew update > /dev/null 2>&1
-
-        fi
+        message="$(printf "# Installing Brew (%s) first\n" "https://brew.sh/")"
+        BREW_URL=https://raw.githubusercontent.com/Homebrew/install/master/install
+        
+        ruby -e "$(curl -fsSL ${BREW_URL})"
+        message $padding $message 
     fi
 
+    if [ -z "${pkg}"  ]; then
+        message $padding "$(echo "brew installed")"
+        message $padding "$(echo "brew upgrading...")"
+        brew upgrade > /dev/null 2>&1
+        message $padding "$(echo "brew updating packages...")"
+        brew update > /dev/null 2>&1
+    fi
+     
+
     if [ ! -z "${pkg}" ]; then
-        message $padding "$(printf "brew reinstalling %s" "${pkg}")"
-        brew install $pkg > /dev/null 2>&1
+        message $padding "$(printf "brew (re)installing %s" "${pkg}")"
+        brew install $pkg
     fi
 }
 
@@ -115,33 +116,10 @@ function install_php_tooling(){
 
     message $padding "$(echo "PHP: Installing PHP Tools ")"
 
-    local DEV_TOOLS=(
-        "phpmd|http://static.phpmd.org/php/latest/phpmd.phar"
-    )
-
-    for tool in "${DEV_TOOLS[@]}" ; do
-        local TOOL="${tool%%|*}"
-        local URL="${tool##*|}"
-        local exists="$(which $TOOL)"
-
-        message="$(printf "phar-dl : installing %s \n" "${TOOL}")"
-        message $(( $padding + 2 )) "${message}"
-
-        if [[ -z $exists ]]; then
-
-            curl -Ls -o $TOOL $URL
-            chmod +x $TOOL
-            mv $TOOL /usr/local/bin/
-        fi
-
-        message="$(printf "* %s : installed at %s \n" "${TOOL}" "$(which $TOOL)" )"
-        message $(( $padding + 2 )) "${message}"
-
-    done
-
-    # rest of packages by brew
-    install_brew phpunit 2
     install_brew php-code-sniffer 2
+    install_brew php-cs-fixer 2
+    install_brew phplint 2
+    install_brew phpunit 2
     install_brew composer 2
 
     # PHP Compatibility Standards
@@ -149,9 +127,8 @@ function install_php_tooling(){
     message $(($padding+4)) "${message}"
 
     install_git_repository  "https://github.com/wimg/PHPCompatibility" \
-                            "programming/php/cs_php_compatibility" \
-    && checkout_last_release "programming/php/cs_php_compatibility"
-
+                            "programming/php/php_cs_compatibility" \
+    && checkout_last_release "programming/php/php_cs_compatibility"
 
     # WordPress Code Standards
     message="$(printf "code standards: %s"  "WordPress_Code_Standards" )"
@@ -159,39 +136,13 @@ function install_php_tooling(){
 
     install_git_repository  \
     "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards" \
-    "programming/php/cs_wp_coding-standards" \
-    && checkout_last_release "programming/php/cs_wp_coding-standards"
+    "programming/php/php_wp_coding_standards" \
+    && checkout_last_release "programming/php/php_wp_coding_standards"
 
-    phpcs --config-set installed_paths "${NWD}/programming/php/cs_wp_coding-standards,${NWD}/programming/php/cs_php_compatibility" > /dev/null 2>&1
+    phpcs --config-set installed_paths "${NWD}/programming/php/php_wp_coding_standards,${NWD}/programming/php/php_cs_compatibility" > /dev/null 2>&1
 }
 
-# installs npm packages
-function install_nodejs_tooling(){
-
-    local padding=$(padding)
-    local message
-
-    message $padding "$(echo "node.js: Installing node.js tools ")"
-    npm install serverless -g
-}
-
-# quick pip shortcut for install/upgrade
-function py36pip(){
-    python3.6 -m pip install --upgrade "${1}"
-}
-
-function py37pip(){
-    python3.7 -m pip install --upgrade "${1}"
-}
-
-# installs some tools using pip
-function install_python_tooling(){
-    message 2 "installing python packages using pip"
-
-    python3.7 -m pip install --upgrade pip
-    python3.7 -m pip install --upgrade -r "${NWD}/programming/python-requirments.txt" > /dev/null 2>&1
-}
-
+ 
 
 # Convert version to number in order to sort it.
 # Becouse there are no -V in mac sort

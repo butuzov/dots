@@ -31,26 +31,27 @@ fi
 
 # Bash usage
 source "${DOTS_PATH}/bash/helpers.sh"            # Functions (Helpers)
-source "${DOTS_PATH}/bash/funcs.sh"              # Functions
+source "${DOTS_PATH}/bash/installation.sh"       # InstallFunctions
 source "${DOTS_PATH}/bash/aliases.sh"            # General Aliases File
-source "${DOTS_PATH}/bash/locals.sh"             # Local Commands
-source "${DOTS_PATH}/bash/coreutils.sh"          # Coreutils
+# source "${DOTS_PATH}/bash/locals.sh"             # Local Commands
+
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" # Coreutils
 
 # Tools
 source "${DOTS_PATH}/bash/docker.sh"             # Docker Commands
 source "${DOTS_PATH}/bash/download.sh"           # Downloaders
 
 # Local bin directory
-export PATH="${DOTS_PATH}/bin:${PATH}"
+PATH="${DOTS_PATH}/bin:${PATH}"
 
 # Home
-export PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/bin:${PATH}"
 
 # Development
-source "${DOTS_PATH}/programming/php.sh"         # PHP    7.3.1
-source "${DOTS_PATH}/programming/go.sh"          # Go     1.11.5
-source "${DOTS_PATH}/programming/python.sh"      # Python 3.7
-source "${DOTS_PATH}/programming/cuda.sh"        # CUDA   10.1
+source "${DOTS_PATH}/programming/php.sh"         # PHP    
+source "${DOTS_PATH}/programming/go.sh"          # Go     
+source "${DOTS_PATH}/programming/python.sh"      # Python 
+source "${DOTS_PATH}/programming/cuda.sh"        # CUDA (libs)  
 
 
 
