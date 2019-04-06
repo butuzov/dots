@@ -5,8 +5,6 @@ _pip_completion() {
 }
 complete -o default -F _pip_completion pip3
 
-
 pip_cleanup(){
-    python -m pip list | awk 'NR>2 {print $1}' | grep -Ev "pip|setuptools|wheel" | xargs -I {} sh -c "python3 -m pip uninstall {} -y"
+    python3 -m pip list | awk 'NR>2 {print $1}' | grep -Ev "pip|setuptools|wheel" | xargs -I {} sh -c "python3 -m pip uninstall {} -y"
 }
- 

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Creates RAM disk of 8gb (default value) with a name ram (default value)
+# usage ramdisk 8
+# usage ramdisk 10 ramka_na_stinky
+ram(){
+    diskutil erasevolume HFS+ "${2:-ram}" $(hdiutil attach -nomount ram://$((2*1000*1000*${1:-8})))
+    open "/Volumes/${2:-ram}"
+}

@@ -1,8 +1,7 @@
 
 # Start/Stop LEMP in Docker Compose
 # used while webdev
-
-lemp() {
+web() {
 
     # DOCKER_COMPOSE_FILE can be exported later.
 
@@ -19,4 +18,3 @@ lemp() {
     esac
 
 }
-alias web="lemp"

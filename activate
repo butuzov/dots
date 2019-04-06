@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "bash/installation.sh"
+source "scripts/installation.sh"
 
 
 header "# Activation Procedure Triggered"
@@ -60,15 +60,12 @@ install_brew vim
 install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
 
-# DataScience 
-python3 -m pip install jupyter jupyter_contrib_nbextensions numpy  matplotlib scipy statsmodels pandas
-
 # go kernel
 brew install zeromq pkg-config
 go get -u github.com/gopherdata/gophernotes
 
 # DevOps
-# serverless 
+# serverless
 install_brew serverless            #
 
 ## aws cli
@@ -81,20 +78,47 @@ install_brew packer                #
 install_brew terraform             #
 
 # Kubernetes
-install_brew kubectl               #
+install_brew kubectl
+install_brew kubernetes-helm
 
 # Virtualization
-brew cask install virtualbox       #
-brew cask install vagrant          #
-brew cask install vmware-fusion    #
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install vmware-fusion
 
-# Additional Tools
-brew cask install sourcetree       #
-brew cask install iina             #
- 
+# Additional Tools - Dev
+brew cask install sourcetree
+brew cask install cronnix
+brew cask install iterm2
+brew cask install visual-studio-code
+
+# Additional Tools - Productivity
+brew cask install fantastical
+brew cask install agenda
+
+# Additional Tools - Media
+brew cask install iina
+brew cask install audiobook-builder
+brew cask install handbrake
+brew cask install imageoptim
+
+# nessages
+brew cask install slack
+brew cask install skype
+brew cask install skype-for-business
+brew cask install telegram-desktop
+
+# utils
+brew cask install appcleaner
+brew cask install ankiapp-anki
+brew cask install istat-menus
+brew cask install dd-utility
+brew cask install the-unarchiver
+
+
 # Additional software
 header "# Additional Software"
-install_brew ffmpeg			       # Video converting 
-install_brew bash-completion       # Bach completion
-install_brew jq                    #
-install_brew htop                  # htop
+install_brew ffmpeg
+install_brew bash-completion
+install_brew jq
+install_brew htop

@@ -120,9 +120,8 @@ youtube() {
     done
 }
 
-## pl check
-## .view_count
-
+# create a csv list with top videos
+alias mlv="make_list_videos"
 
 
 # converts seconds to time
@@ -140,3 +139,7 @@ vl(){
     SEC=$(find . -name "*mp4" -print0 | xargs -0 -I {} sh -c 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{}"' | awk '{ sum += $1; } END { print sum; }' "$@" );
     printf "Total Time of course is : %s\n" $(convertsecs $SEC)
 }
+
+
+# Video compressing
+alias vc='cd $(dirname $VIDEO_DIRECTORY) && go run converter.go -directory=$(basename $VIDEO_DIRECTORY) -e=mp4'
