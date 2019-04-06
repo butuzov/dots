@@ -95,6 +95,7 @@ brew cask install visual-studio-code
 # Additional Tools - Productivity
 brew cask install fantastical
 brew cask install agenda
+brew cask install cheatsheet
 
 # Additional Tools - Media
 brew cask install iina
