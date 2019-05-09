@@ -2,71 +2,47 @@
 root = true
 
 [*]
+end_of_line = lf                   # Unix-style newlines
+insert_final_newline = true
 charset = utf-8
-insert_final_newline = true
-trim_trailing_whitespace = true
-indent_size = 4
-indent_style = space
-max_line_length = 80
-tab_width = 4
 
-# Go
-[*.go]
-tab_width = 4
-indent_style = tab
-max_line_length = 120
-trim_trailing_whitespace = true
+indent_style = space               # default identation - spaces
+indent_size = 4                    # default identation - size
 
-# PHP
-[*.{php,inc}]
-tab_width = 4
-indent_style = tab
-max_line_length = 120
-insert_final_newline = true
-trim_trailing_whitespace = true
+insert_final_newline = true        # new line at the end of file
+trim_trailing_whitespace = true    # no extra sapces at the end of lines
 
-# Python
+max_line_length = 100              # wouldn't work in vsc, only in atom and vim
+
 [*.py]
-indent_size = 4
-indent_style = space
-max_line_length = 79
+max_line_length = 79               # pep8
 
-# Bash files
+[*.{php,inc}]
+indent_style = tab
+
+[*.go]
+indent_style = tab
+
 [*.sh]
-indent_size = 4
-indent_style = space
-max_line_length = 100
+indent_size = 2
 
-# C/C++/Cuda/Java
 [*.{c,cpp,cu,java}]
 indent_size = 4
-indent_style = space
-max_line_length = 100
 
-# LaTeX
 [*.tex]
 indent_size = 2
-indent_style = space
 max_line_length = 120
 
 # Make
 [Makefile]
 indent_style = tab
-max_line_length = 100
 
-# Vagrantfile
 [Vagrantfile]
 indent_size = 2
-indent_style = space
-max_line_length = 100
 
-# Yaml and Makrdown
 [*.{yml,yaml,md,markdown}]
 indent_size = 2
-indent_style = space
 
-# json and nginx conf
-[*.{json,conf}]
+[*.json]
 indent_size = 4
-indent_style = tab
-max_line_length = 120
+indent_style = space
