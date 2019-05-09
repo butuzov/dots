@@ -60,36 +60,37 @@ audiobook() {
 
 # CourseHunters
 coursehunters() {
-    # https://coursehunters.net/archive
-    URL=$1
+  # https://coursehunters.net/archive
+  _URL=$1
 
-	OUT="$(basename $URL).html"
-	if [[ ! -f $OUT ]]; then
-		curl -L $URL -o $OUT
+	_OUT="$(basename $URL).html"
+  _DIR=$(basename $URL)
+
+
+  if [[ ! -d "${_DIR}" ]]; then
+    mkdir "${_DIR}"
+  fi
+
+  if [[ ! -f $_OUT ]]; then
+		curl -L $_URL -o "${_DIR}/${_OUT}"
 	fi
 
+	for file in $(cat "${_DIR}/${_OUT}" | \
+                grep mp4 | \
+                grep link | \
+                grep "url" | \
+                awk '{print $2}' | \
+                sed -e 's/href="//'| \
+                sed -e 's/"//' ); do
 
-	for file in $(cat $OUT | \
-                    grep lesson | \
-                    grep mp4 | \
-                    grep '"file"' | \
-                    awk '{print $2}' | \
-                    sed -e 's/",//' | \
-                    sed -e 's/"//'); do
+      echo $file;
 
-	    __DIR__=$(basename $(dirname $file ))
-
-        if [[ ! -d "${__DIR__}" ]]; then
-            mkdir "${__DIR__}"
-        fi
-
-        if [[ ! -f "${__DIR__}/$(basename $file)" ]]; then
-            echo "Downloading: ${__DIR__}/$(basename $file)"
-            curl -L  $file -o "${__DIR__}/$(basename $file)"
-        fi
+      if [[ ! -f "${_DIR}/$(basename $file)" ]]; then
+          echo "Downloading: ${_DIR}/$(basename $file)"
+          curl -L  $file -o "${_DIR}/$(basename $file)"
+      fi
     done
 
-    mv $OUT "${__DIR__}/$OUT"
 }
 
 
