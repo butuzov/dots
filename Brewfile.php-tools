@@ -1,0 +1,6 @@
+brew "php-code-sniffer" 
+brew "php-cs-fixer" 
+brew "phplint" 
+brew "phpunit" 
+brew "composer" 
+brew "phpstan"  

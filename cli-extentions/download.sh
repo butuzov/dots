@@ -1,10 +1,9 @@
 
-# Prints Download Options
-
+# Handles some downloads
 dlhelp() {
 
     printf "\n"
-    printf "\t File Download (save)\n"
+    printf "\t File Download\n"
     printf "\t - dl <url>\n"
 
 
@@ -14,8 +13,12 @@ dlhelp() {
     printf "\t - coursehunters <coursehunters-url>\n"
     printf "\t - mp3 <youtube-url>\n"
 
+    printf "\t Converters\n"
+    printf "\t - vc -n 1 -e mp4\n"
+
     printf "\n"
 }
+alias helpdl=dlhelp
 
 # curl - doenload as
 alias dl="curl -LO ${1}"
@@ -63,8 +66,8 @@ coursehunters() {
   # https://coursehunters.net/archive
   _URL=$1
 
-	_OUT="$(basename $URL).html"
-  _DIR=$(basename $URL)
+  _OUT="$(basename $_URL).html"
+  _DIR=$(basename $_URL)
 
 
   if [[ ! -d "${_DIR}" ]]; then
@@ -76,7 +79,7 @@ coursehunters() {
 	fi
 
 	for file in $(cat "${_DIR}/${_OUT}" | \
-                grep mp4 | \
+                grep -i mp4 | \
                 grep link | \
                 grep "url" | \
                 awk '{print $2}' | \
@@ -140,7 +143,6 @@ vl(){
     SEC=$(find . -name "*mp4" -print0 | xargs -0 -I {} sh -c 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{}"' | awk '{ sum += $1; } END { print sum; }' "$@" );
     printf "Total Time of course is : %s\n" $(convertsecs $SEC)
 }
-
 
 # Video compressing
 alias vc='cd $(dirname $VIDEO_DIRECTORY) && go run converter.go -directory=$(basename $VIDEO_DIRECTORY) -e=mp4'

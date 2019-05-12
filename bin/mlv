@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# mlv - make list videos
+#   reads info file for each youtube clip downloaded 
+#   in directory and make a chart (list sorted by view count)
+
 from glob import glob
 from collections import OrderedDict
 import json, csv

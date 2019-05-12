@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Dig All - use: digga <domain>
-
-digga() {
-	dig +nocmd "$1" any +multiline +noall +answer
-}
-
-digga "${1}"

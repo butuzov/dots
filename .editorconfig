@@ -18,31 +18,30 @@ max_line_length = 100              # wouldn't work in vsc, only in atom and vim
 max_line_length = 79               # pep8
 
 [*.{php,inc}]
-indent_style = tab
+indent_style = tab                 # PHP
 
 [*.go]
-indent_style = tab
+indent_style = tab                 # Go
 
 [*.sh]
-indent_size = 2
+indent_size = 2                    # Shell Scripts
 
-[*.{c,cpp,cu,java}]
+[*.{c,cpp,cu,java}]                # Shell 
 indent_size = 4
 
-[*.tex]
+[*.tex]                            # LaTeX
 indent_size = 2
 max_line_length = 120
 
-# Make
-[Makefile]
+[Makefile]                         # Make
 indent_style = tab
 
 [Vagrantfile]
 indent_size = 2
 
-[*.{yml,yaml,md,markdown}]
+[*.{yml,yaml,md,markdown}]         # Markup
 indent_size = 2
 
-[*.json]
+[*.json]                           # JSON
 indent_size = 4
 indent_style = space
