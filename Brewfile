@@ -22,6 +22,7 @@ cask "dd-utility"                     # UI For DD
 # Programming - Tooling
 brew "graphviz"                       # GraphVizard
 brew "ctags"
+cask "postman"
 
 cask "font-fira-code"                 # FiraCode
 
@@ -45,6 +46,7 @@ brew "ansible"                        # Configuration Management
 # Kubernetes
 brew "kubernetes-cli"
 brew "kubernetes-helm"
+cask "minikube"                       # minikube
 
 # Hashicorp Tools
 brew "consul"                         #
