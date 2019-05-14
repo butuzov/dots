@@ -77,8 +77,10 @@ install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
 vim -e -c ":PluginInstall" -c ":q" -c ":q"
 
-header "# clouds & tools configuration"
+header "# AWS Cloud"
 aws configure
+
+header "# Docker"
 docker login
 
 printf "The End!\n"
