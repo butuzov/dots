@@ -1,10 +1,12 @@
 # Realod Config
-
-DROPBOX="$(cat .dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
+DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
 
 alias .dots='code ~/.dotfiles'
 alias today='code ${DROPBOX}/today.md'
 alias notes='code ${DROPBOX}/Coding/todayilearned'
+
+alias dropbox="cd $DROPBOX"
+alias dp=dropbox
 
 # chrome
 alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
