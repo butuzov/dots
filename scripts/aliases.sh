@@ -2,7 +2,7 @@
 
 DROPBOX="$(cat .dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
 
-alias confs='code ~/.dotfiles'
+alias .dots='code ~/.dotfiles'
 alias today='code ${DROPBOX}/today.md'
 alias notes='code ${DROPBOX}/Coding/todayilearned'
 
@@ -14,8 +14,8 @@ alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 update() {
-    brew update; brew upgrade; brew cleanup; 
-    python3 -m pip install --upgrade pip 
+    brew update; brew upgrade; brew cleanup;
+    python3 -m pip install --upgrade pip
     python3 -m pip install --upgrade pip -q -r ~/.dotfiles/requirments.txt
     npm install npm -g; npm update -g;
 }
