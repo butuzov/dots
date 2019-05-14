@@ -35,7 +35,7 @@ PATH="${HOME}/bin:${PATH}"                             # ~/bin/
 
 # Custom Functionality
 # Added to remove personal (sub projects to be hardcoded)
-if [[ -d "${DOTS_PATH}/cli-extentions" ]]; then
+if [[ -d "${DOTS_PATH}/bin-extentions" ]]; then
     for script in $(find "${DOTS_PATH}/bin-extentions" -type f -name "*.sh")
     do source $script
     done
