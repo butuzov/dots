@@ -36,7 +36,7 @@ PATH="${HOME}/bin:${PATH}"                             # ~/bin/
 # Custom Functionality
 # Added to remove personal (sub projects to be hardcoded)
 if [[ -d "${DOTS_PATH}/cli-extentions" ]]; then
-    for script in $(find "${DOTS_PATH}/cli-extentions" -type f -name "*.sh")
+    for script in $(find "${DOTS_PATH}/bin-extentions" -type f -name "*.sh")
     do source $script
     done
 fi
@@ -48,20 +48,20 @@ source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 # ----------------------- Development ----------------------------
 # Python
 pip_completion() {
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \ 
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
         COMP_CWORD=$COMP_CWORD PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F pip_completion pip3
 
 pip_cleanup() {
     # Performas pup Cleanup
-    python3 -m pip list | awk 'NR>2 {print $1}' | \ 
-        grep -Ev "pip|setuptools|wheel" | \ 
+    python3 -m pip list | awk 'NR>2 {print $1}' | \
+        grep -Ev "pip|setuptools|wheel" | \
         xargs -I {} sh -c "python3 -m pip uninstall {} -y"
 }
 
 
-# Go 
+# Go
 export GOPATH="${HOME}/go"
 export GOROOT="/usr/local/opt/go/libexec"
 export PATH="${GOPATH}/bin:${GOROOT}/bin:${PATH}"
