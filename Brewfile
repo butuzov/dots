@@ -62,6 +62,7 @@ cask "fantastical"                    # Fantastical
 cask "iina"                           # Video Player
 cask "handbrake"                      # Image Converting
 cask "imageoptim"                     # Image Optim
+brew "youtube-dl"                     # yt-dl, but not as pip.
 
 # utils
 cask "dropbox"

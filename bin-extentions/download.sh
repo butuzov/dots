@@ -124,9 +124,6 @@ youtube() {
     done
 }
 
-# create a csv list with top videos
-alias mlv="make_list_videos"
-
 
 # converts seconds to time
 # https://stackoverflow.com/questions/12199631

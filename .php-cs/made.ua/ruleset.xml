@@ -60,14 +60,6 @@
 
 
 	<!--
-		Rule: Note the comma after the last array item: this is recommended.
-	//-->
-	<rule ref="WordPress.Arrays.ArrayDeclaration">
-		<exclude name="WordPress.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
-	</rule>
-
-
-	<!--
 		Rule: Use single and double quotes when appropriate.
 		If you're not evaluating anything in the string, use single quotes.
 	-->
@@ -238,8 +230,6 @@
 		Rule: Escaping should be done as close to the time of the query as possible,
 		 preferably by using $wpdb->prepare()
 	// -->
-	<rule ref="WordPress.WP.PreparedSQL"/>
-
 
 	<!--
 		Handbook: PHP - Database Queries.
@@ -267,12 +257,6 @@
 	//-->
 	<rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
 	<rule ref="Generic.Formatting.DisallowMultipleStatements"/>
-
-	<!--
-		Handbook: PHP - Don't extract().
-		Ref: https://make.wordpress.org/core/handbook/coding-standards/php/#dont-extract
-	//-->
-	<rule ref="WordPress.Functions.DontExtract"/>
 
 	<!--
 		Important to prevent issues with content being sent before headers.
@@ -322,23 +306,6 @@
 		Check for correct usage of the WP i18n functions.
 	//-->
 	<rule ref="WordPress.WP.I18n"/>
-
-	<!--
-		Rule: Escaping
-		Ref: https://vip.wordpress.com/documentation/code-review-what-we-look-for/#validation-sanitization-and-escaping
-		Ref: https://vip.wordpress.com/documentation/best-practices/security/validating-sanitizing-escaping/
-	//-->
-	<rule ref="WordPress.XSS.EscapeOutput">
-		<properties>
-			<!-- e.g. esc_attr, esc_html, esc_url-->
-			<property name="customEscapingFunctions" type="array" value="0=>allowed_esc_func"/>
-			<!-- e.g. body_class, the_content, the_excerpt -->
-			<property name="customAutoEscapedFunctions" type="array" value="0=>fobar_esc_echo"/>
-			<!-- e.g. _deprecated_argument, printf, _e-->
-			<property name="customPrintingFunctions" type="array" value=""/>
-		</properties>
-	</rule>
-	<rule ref="WordPress.CSRF.NonceVerification" />
 
 	<!--
 		eval() and create_function()
