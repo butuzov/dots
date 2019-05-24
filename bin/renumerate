@@ -28,7 +28,7 @@ def main():
 
 
 	for key, file in enumerate(files):
-		_f = split('^([0-9]+).? ', file)[-1]
+		_f = split('^([0-9]+).?\s+', file)[-1]
 		_f = split('(.mp4)', _f)
 		name = "{0:0{1}d} {2}.mp4".format(key+1, pad, _f[0].strip())
 
