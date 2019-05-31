@@ -60,6 +60,7 @@ pip_cleanup() {
         xargs -I {} sh -c "python3 -m pip uninstall {} -y"
 }
 
+alias pyc_cleanup='find . -type f -name "*.pyc" -exec rm -r {} \;'
 
 # Go
 export GOPATH="${HOME}/go"
