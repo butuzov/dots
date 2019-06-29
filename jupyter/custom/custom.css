@@ -56,8 +56,8 @@ div.text_cell_render code{
 
 
 div.text_cell_render h1 { font-size:170%; }
-div.text_cell_render h2 { font-size:150%; }
-div.text_cell_render h3 { font-size:120%; }
+div.text_cell_render h2 { font-size:145%; }
+div.text_cell_render h3 { font-size:125%; }
 div.text_cell_render h4 { font-size:110%; }
 div.text_cell_render h5 { font-size:100%; }
 div.text_cell_render h6 { font-size:90%; }
@@ -175,7 +175,7 @@ div#notebook {
 	background-color: #f6f8fa;
     border-radius: 3px;
     font-size: 90%;
-    line-height: 1.45; 
+    line-height: 1.45;
     overflow: auto;
 	padding: 8px 8px;
 }
@@ -188,3 +188,7 @@ div#notebook {
 	background-color: #f6f8fa;
 }
 
+span.alert {
+    padding:3px 5px;
+    font-size:100%;
+}

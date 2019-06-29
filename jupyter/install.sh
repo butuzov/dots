@@ -8,7 +8,7 @@ mkdir -p ~/venvs/jupyter
 python3 -m venv  ~/venvs/jupyter
 . ~/venvs/jupyter/bin/activate
 pip install --upgrade pip
-pip install jupyter numpy scipy tensorflow keras sympy pandas statsmodels matplotlib jupyter_contrib_nbextensions
+pip install jupyter numpy scipy tensorflow keras sympy pandas matplotlib jupyter_contrib_nbextensions
 jupyter contrib nbextension install --sys-prefix
 cp -R custom/ ~/venvs/jupyter/share/jupyter/
 cp -R nbconfig/ ~/venvs/jupyter/share/jupyter/
