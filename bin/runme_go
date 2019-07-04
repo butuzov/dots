@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# vsc code runner for go files and running them with cmd+r
+
+runme_go(){
+    FILE="${1}"
+    if [[ "${FILE}" =~ "_test.go" ]]; then
+        go test -timeout 600s -run $(cat "${FILE}" | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g') -v
+        exit $?
+    fi
+    go run "${FILE}"
+    exit $?
+}
+
+runme_go $1
