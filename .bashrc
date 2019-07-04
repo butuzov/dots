@@ -24,6 +24,9 @@ export LANG=en_US.UTF-8
 
 # Realod Config
 
+alias shrug='echo "¯\_(ツ)_/¯"'
+alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-sections\n" $1'
+
 # alias reload='source ~/.bash_profile'
 alias reload="exec ${SHELL} -l"
 
