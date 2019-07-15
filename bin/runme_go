@@ -5,9 +5,18 @@
 runme_go(){
     FILE="${1}"
     if [[ "${FILE}" =~ "_test.go" ]]; then
-        go test -timeout 600s -run $(cat "${FILE}" | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g') -v
+        cd "$(dirname "${FILE}")"
+        go test -timeout 30s -run $(cat "${FILE}" | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g') -v
         exit $?
     fi
+
+    if [[ $(basename "${FILE}") == "main.go" ]]; then
+
+        cd "$(dirname "${FILE}")"
+        go run .
+        exit $?
+    fi
+
     go run "${FILE}"
     exit $?
 }
