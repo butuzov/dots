@@ -30,6 +30,9 @@ alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-
 # alias reload='source ~/.bash_profile'
 alias reload="exec ${SHELL} -l"
 
+# completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 # Local bin directory
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" # coreutils
 PATH="${DOTS_PATH}/bin:${PATH}"                        # .dots/bin

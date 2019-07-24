@@ -82,5 +82,14 @@ mas "Apple Remote Desktop",        id: 409907375      # ARD
 mas "Audiobook Builder",           id: 406226796      # Older Version
 mas "Helium",                      id: 1054607607     # Helium
 mas "Divvy - Window Manager",      id: 413857545      # Divvy
-mas "Encrypto: Secure Your Files", id: 413857545      # 935235287
-mas "Evolve Tracking Freelancer",  id: 1286846351
+mas "Horo - Timer for Menu Bar",   id: 1437226581     # Horo Timer
+mas "KubeContext",                 id: 1438838068     # KubeContext
+
+# temporary disabled unused applications
+# mas "Encrypto: Secure Your Files", id: 413857545      # 935235287
+# mas "Evolve Tracking Freelancer",  id: 1286846351
+
+
+# Fonts
+cask 'font-fira-code'
+cask 'font-fira-sans'
