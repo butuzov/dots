@@ -54,6 +54,11 @@ brew "vault"                          #
 brew "packer"                         #
 brew "terraform"                      #
 
+# Missing Unix tools
+brew "pstree"                         # pstree
+brew "psgrep"                         # psgrep
+brew "pkill"                          # pkill
+cask "sampler"                        # https://github.com/sqshq/sampler
 
 # Mac Applications
 cask "google-chrome"                  # Browser
@@ -69,8 +74,8 @@ cask "dropbox"
 cask "appcleaner"
 cask "ankiapp-anki"
 cask "istat-menus"
-cask "the-unarchiver"
 cask "little-snitch"
+cask "keka"
 
 # messages
 cask "slack"

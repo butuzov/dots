@@ -22,12 +22,7 @@ update() {
     npm install npm -g; npm update -g;
 }
 
-
 # Navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 alias desktop="cd ~/Desktop"
 
 # Time and Date
