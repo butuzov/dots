@@ -50,6 +50,8 @@ GCLOUD_SDK="/usr/local/Caskroom/google-cloud-sdk"
 source "${GCLOUD_SDK}/latest/google-cloud-sdk/path.bash.inc"
 source "${GCLOUD_SDK}/latest/google-cloud-sdk/completion.bash.inc"
 
+alias gcp="open https://console.cloud.google.com/"
+
 # ----- Python Development ---------------------------------------
 pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
