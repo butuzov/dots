@@ -38,6 +38,7 @@ cask "visual-studio-code"             # Visual Studio Code
 # Clouds
 brew "awscli"                         # AWS Cli
 brew "azure-cli"                      # Azure
+cask "google-cloud-sdk"               # google cloud
 
 # DevOps Tools
 brew "serverless"                     # Serverless Framework

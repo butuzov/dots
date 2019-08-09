@@ -23,11 +23,6 @@ export LANG=en_US.UTF-8
 
 
 # Realod Config
-
-alias shrug='echo "¯\_(ツ)_/¯"'
-alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-sections\n" $1'
-
-# alias reload='source ~/.bash_profile'
 alias reload="exec ${SHELL} -l"
 
 # completion
@@ -47,12 +42,15 @@ if [[ -d "${DOTS_PATH}/bin-extentions" ]]; then
     done
 fi
 
-# # Bash usage
-# source "${DOTS_PATH}/scripts/installation.sh"          # InstallFunctions
+# used aliases
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 
-# ----------------------- Development ----------------------------
-# Python
+# ---- Google Cloud ----------------------------------------------
+GCLOUD_SDK="/usr/local/Caskroom/google-cloud-sdk"
+source "${GCLOUD_SDK}/latest/google-cloud-sdk/path.bash.inc"
+source "${GCLOUD_SDK}/latest/google-cloud-sdk/completion.bash.inc"
+
+# ----- Python Development ---------------------------------------
 pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
         COMP_CWORD=$COMP_CWORD PIP_AUTO_COMPLETE=1 $1 ) )
@@ -60,13 +58,14 @@ pip_completion() {
 complete -o default -F pip_completion pip3
 
 pip_cleanup() {
-    # Performas pup Cleanup
+    # Performas pip cleanup (w/o or w/i venv)
     python3 -m pip list | awk 'NR>2 {print $1}' | \
         grep -Ev "pip|setuptools|wheel" | \
         xargs -I {} sh -c "python3 -m pip uninstall {} -y"
 }
 
-alias pyc_cleanup='find . -type f -name "*.pyc" -exec rm -r {} \;'
+# removes found pyc files.
+alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 
 # Go
 export GOPATH="${HOME}/go"
