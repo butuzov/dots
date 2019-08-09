@@ -22,6 +22,13 @@ update() {
     npm install npm -g; npm update -g;
 }
 
+
+syncbooks(){
+  rsync -avu --delete "/Volumes/archive/books/Programming - Go" "$DROPBOX/Books/"
+  rsync -avu --delete "/Volumes/archive/books/Software Engineering" "$DROPBOX/Books/"
+  rsync -avu --delete "/Volumes/archive/books/Algorithmes & Data Structures" "$DROPBOX/Books/"
+}
+
 # Navigation
 alias desktop="cd ~/Desktop"
 

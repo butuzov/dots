@@ -99,3 +99,4 @@ mas "KubeContext",                 id: 1438838068     # KubeContext
 # Fonts
 cask 'font-fira-code'
 cask 'font-fira-sans'
+cask 'font-fira-mono'
