@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker run -it -v "$(pwd):/src" docker.io/codacy/codacy-remark-lint:latest $@
+docker rm `docker ps -q --filter status=exited --filter ancestor=codacy/codacy-remark-lint:latest` 1> /dev/null
