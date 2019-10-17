@@ -69,3 +69,6 @@ if [[ -d "/usr/local/cuda" ]]; then
     export CPATH="${CUDA_PATH}/include/"
     export CGO_LDFLAGS="/usr/local/cuda/lib/libcuda.dylib ${CUDA_PATH}/lib/libcudart.dylib ${CUDA_PATH}/lib/libcublas.dylib ${CUDA_PATH}/lib/libcurand.dylib"
 fi
+
+# GNU Sed
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"

@@ -10,6 +10,7 @@ brew "bash-completion"                # Bash Completion
 brew "jq"                             # JSON Query
 brew "tree"
 brew "coreutils"                      # Core Utils
+brew "gnu-sed"                        # GNU Sed
 brew "htop"                           # Improved top (interactive process viewer)
 brew "ffmpeg"                         # FFMpeg
 brew "fortune"
