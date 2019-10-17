@@ -44,6 +44,7 @@ fi
 
 # used aliases
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
+source "${DOTS_PATH}/scripts/python.sh"                # Python
 
 # ---- Google Cloud ----------------------------------------------
 GCLOUD_SDK="/usr/local/Caskroom/google-cloud-sdk"
@@ -52,22 +53,6 @@ source "${GCLOUD_SDK}/latest/google-cloud-sdk/completion.bash.inc"
 
 alias gcp="open https://console.cloud.google.com/"
 
-# ----- Python Development ---------------------------------------
-pip_completion() {
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-        COMP_CWORD=$COMP_CWORD PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F pip_completion pip3
-
-pip_cleanup() {
-    # Performas pip cleanup (w/o or w/i venv)
-    python3 -m pip list | awk 'NR>2 {print $1}' | \
-        grep -Ev "pip|setuptools|wheel" | \
-        xargs -I {} sh -c "python3 -m pip uninstall {} -y"
-}
-
-# removes found pyc files.
-alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 
 # Go
 export GOPATH="${HOME}/go"
