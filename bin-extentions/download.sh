@@ -113,7 +113,6 @@ youtube() {
         # -r 700K // speed limit
         youtube-dl -f 22 \
                    --write-info-json \
-                   -r 700K \
                    -o "${IDX} %(title)s.%(ext)s" $video
         if [[ $? == 0 ]]; then
             IDX=$(($IDX+1))
