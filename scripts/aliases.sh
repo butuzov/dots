@@ -59,3 +59,4 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # misc
 alias shrug='echo "¯\_(ツ)_/¯"'
 alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-sections\n" $1'
+alias vmp='cd "/Library/Preferences/VMware Fusion/"'
