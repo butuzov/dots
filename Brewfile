@@ -48,7 +48,11 @@ brew "ansible"                        # Configuration Management
 # Kubernetes
 brew "kubernetes-cli"
 brew "kubernetes-helm"
-cask "minikube"                       # minikube
+cask "minikube"
+brew "kustomize"
+brew "istioctl"
+brew "skaffold"
+brew "pre-commit"
 
 # Hashicorp Tools
 brew "consul"                         #
@@ -61,6 +65,7 @@ brew "pstree"                         # pstree
 brew "psgrep"                         # psgrep
 brew "pkill"                          # pkill
 cask "sampler"                        # https://github.com/sqshq/sampler
+brew "shellcheck"                     # bash linter
 
 # Mac Applications
 cask "google-chrome"                  # Browser
