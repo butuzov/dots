@@ -16,17 +16,6 @@
 	<exclude-pattern>tests/*</exclude-pattern>
 	<exclude-pattern>vendor/*</exclude-pattern>
 
-	<!--
-		Rule: For associative arrays, values should start on a new line.
-			Also covers various single-line array whitespace issues.
-	-->
-	<rule ref="WordPress.Arrays.ArrayDeclarationSpacing">
-		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.NotLowerCase" />
-		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.SpaceAfterKeyword" />
-		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray" />
-	</rule>
-
-
 	<!-- https://github.com/Automattic/vip-scanner/blob/master/vip-scanner/checks/ForbiddenPHPFunctionsCheck.php -->
 	<rule ref="WordPress.PHP.DiscouragedPHPFunctions">
 		<properties>
