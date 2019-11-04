@@ -1,27 +1,3 @@
-export TERM="xterm-color"
-
-# How it looks
-GREEN="\[\e[102;30m\]"
-WHITE="\[\e[107;30m\]"
-YELLO="\[\e[1;33m\]"
-RESET="\[\e[0m\]"
-
-echo -e "\033]6;1;bg;red;brightness;40\a" > /dev/null
-echo -e "\033]6;1;bg;green;brightness;40\a" > /dev/null
-echo -e "\033]6;1;bg;blue;brightness;40\a" > /dev/null
-
-# export PS1="${RESET}${WHITE} $ \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
-export PS1="${RESET}${WHITE} $ \u ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
-export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
-
-export CLICOLOR=1l
-export LSCOLORS=ExFxBxDxCxegedabagacad
-
-export LC_CTYPE="UTF-8"
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-
 # Realod Config
 alias reload="exec ${SHELL} -l"
 
@@ -57,7 +33,12 @@ alias gcp="open https://console.cloud.google.com/"
 # Go
 export GOPATH="${HOME}/go"
 export GOROOT="/usr/local/opt/go/libexec"
-export PATH="${GOPATH}/bin:${GOROOT}/bin:${PATH}"
+if [[ $PATH != *$GOPATH* ]]; then
+    export PATH="${GOPATH}/bin:${PATH}"
+fi
+if [[ $PATH != *$GOROOT* ]]; then
+    export PATH="${GOROOT}/bin:${PATH}"
+fi
 
 # CUDA
 if [[ -d "/usr/local/cuda" ]]; then
@@ -71,4 +52,10 @@ if [[ -d "/usr/local/cuda" ]]; then
 fi
 
 # GNU Sed
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+GNU_SED="/usr/local/opt/gnu-sed/libexec/gnubin"
+if [[ $PATH != *$GNU_SED* ]]; then
+    export PATH="$GNU_SED:$PATH"
+fi
+
+# promp moved to bottom so we can actuially use installed tools.
+source "${DOTS_PATH}/.bashrc_prompt"
