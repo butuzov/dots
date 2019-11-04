@@ -48,7 +48,8 @@ brew "ansible"                        # Configuration Management
 # Kubernetes
 brew "kubernetes-cli"
 brew "kubernetes-helm"
-cask "minikube"
+brew "minikube"
+brew "derailed/k9s/k9s"
 brew "kustomize"
 brew "istioctl"
 brew "skaffold"
@@ -95,7 +96,6 @@ mas "Audiobook Builder",           id: 406226796      # Older Version
 mas "Helium",                      id: 1054607607     # Helium
 mas "Divvy - Window Manager",      id: 413857545      # Divvy
 mas "Horo - Timer for Menu Bar",   id: 1437226581     # Horo Timer
-mas "KubeContext",                 id: 1438838068     # KubeContext
 
 # temporary disabled unused applications
 # mas "Encrypto: Secure Your Files", id: 413857545      # 935235287
