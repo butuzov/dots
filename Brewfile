@@ -49,7 +49,6 @@ brew "ansible"                        # Configuration Management
 brew "kubernetes-cli"
 brew "kubernetes-helm"
 brew "minikube"
-brew "derailed/k9s/k9s"
 brew "kustomize"
 brew "istioctl"
 brew "skaffold"
