@@ -17,6 +17,8 @@
 	log-nice = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commi
 	# show all records in simple graph view
 	lall = log --color --graph --oneline --decorate --all --
+	# one more oneline search
+	search = log --pretty=oneline --graph --
 
 	# Show sorted contributors
 	who = shortlog -s -n --no-merges
@@ -46,9 +48,7 @@
 	jedypush = push --force-with-lease
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/butuzov/.stCommitMsg
