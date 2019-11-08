@@ -5,10 +5,21 @@ alias reload="exec ${SHELL} -l"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Local bin directory
-PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" # coreutils
-PATH="${DOTS_PATH}/bin:${PATH}"                        # .dots/bin
-PATH="${HOME}/bin:${PATH}"                             # ~/bin/
+GNUTILS=( "gnu-tar" "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
+for CMD in "${GNUTILS[@]}"  ; do
+  BIN_DIR=$(printf /usr/local/opt/%s/libexec/gnubin $CMD )
+  if [[ $PATH != *$BIN_DIR* ]]; then
+    export PATH="$BIN_DIR:$PATH"
+  fi
+done
 
+if [[ $PATH != *$DOTS_PATH/bin* ]]; then
+    export PATH="$DOTS_PATH/bin:$PATH"
+fi
+
+if [[ $PATH != *$HOME/bin* ]]; then
+    export PATH="$HOME/bin:$PATH"
+fi
 
 # Custom Functionality
 # Added to remove personal (sub projects to be hardcoded)
@@ -49,12 +60,6 @@ if [[ -d "/usr/local/cuda" ]]; then
     export PATH="${DYLD_LIBRARY_PATH}:${CUDA_PATH}/bin:${PATH}"
     export CPATH="${CUDA_PATH}/include/"
     export CGO_LDFLAGS="/usr/local/cuda/lib/libcuda.dylib ${CUDA_PATH}/lib/libcudart.dylib ${CUDA_PATH}/lib/libcublas.dylib ${CUDA_PATH}/lib/libcurand.dylib"
-fi
-
-# GNU Sed
-GNU_SED="/usr/local/opt/gnu-sed/libexec/gnubin"
-if [[ $PATH != *$GNU_SED* ]]; then
-    export PATH="$GNU_SED:$PATH"
 fi
 
 # promp moved to bottom so we can actuially use installed tools.

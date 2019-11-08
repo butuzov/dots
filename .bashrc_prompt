@@ -26,6 +26,7 @@ kubeprompt_ctx_check(){
     printf " %s " $(kubeprompt -fm)
 }
 
+
 PS1="${RESET}"
 PS1+="${WHITE} $ \u ${RESET}"
 PS1+="${BLUE}\$(kubeprompt_ctx_check)${RESET}"

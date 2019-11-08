@@ -9,9 +9,17 @@ brew "bash"                           # newer Bash
 brew "bash-completion"                # Bash Completion
 brew "jq"                             # JSON Query
 brew "tree"
-brew "coreutils"                      # Core Utils
-brew "gnu-sed"                        # GNU Sed
+
+# GNU
+brew "coreutils"
+brew "gnu-sed"
+brew "gnu-tar"
+brew "grep"
+brew "gnu-indent"
+brew "findutils"
 brew "htop"                           # Improved top (interactive process viewer)
+
+
 brew "ffmpeg"                         # FFMpeg
 brew "fortune"
 brew "cowsay"
