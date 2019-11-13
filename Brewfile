@@ -39,6 +39,7 @@ cask "vmware-fusion"                  # VMWARE Tools
 cask "virtualbox"                     # VirtualBox VM from Oracle
 cask "vagrant"                        # Hashicorp Vagrant
 cask "docker"                         # Docker
+brew "dive"                           # Docker
 
 cask "sourcetree"                     # SourceTree
 cask "cronnix"                        # Cron UI
@@ -61,6 +62,7 @@ brew "kustomize"
 brew "istioctl"
 brew "skaffold"
 brew "pre-commit"
+brew "todo-txt"                       # terminal productivity
 
 # Hashicorp Tools
 brew "consul"                         #
