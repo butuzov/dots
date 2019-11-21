@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker run --rm -it -v "$(pwd):/src" docker.io/codacy/codacy-remark-lint:latest $@
