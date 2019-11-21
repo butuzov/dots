@@ -5,12 +5,10 @@
 export JUPYTER_CONFIG_DIR=/Users/butuzov/venvs/jupyter/share/jupyter/
 
 mkdir -p ~/venvs/jupyter
-python3.7 -m venv  ~/venvs/jupyter
+python3.6 -m venv  ~/venvs/jupyter
 . ~/venvs/jupyter/bin/activate
 pip install --upgrade pip
 pip install jupyter jupyter_contrib_nbextensions
-
-
 
 
 jupyter contrib nbextension install --sys-prefix

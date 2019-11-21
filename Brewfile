@@ -56,7 +56,8 @@ brew "ansible"                        # Configuration Management
 
 # Kubernetes
 brew "kubernetes-cli"
-brew "kubernetes-helm"
+brew "helm"
+cask "podman"
 brew "minikube"
 brew "kustomize"
 brew "istioctl"
