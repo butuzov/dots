@@ -9,7 +9,7 @@ alias dropbox="cd $DROPBOX"
 alias dp=dropbox
 
 # chrome
-alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
+# alias chrome="open -a'/Applications/Google Chrome.app' ${1}"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
