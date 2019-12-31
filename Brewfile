@@ -25,10 +25,16 @@ tap "homebrew/cask-fonts"
     "jq",
     "bash-completion",
     "git",
+    "bat",
+    "fd",
+    "jmeter",
+    "mtr",
+    "di", # research
 
     # CLi other
     "youtube-dl",
     "ffmpeg",
+    "media-info",
 
     # LOL
     "lolcat",
@@ -37,6 +43,7 @@ tap "homebrew/cask-fonts"
 
     # DevOps - Kubernetes
     "kubernetes-cli",
+    "krew",
     "helm",
     "minikube",
     "kustomize",
@@ -45,8 +52,10 @@ tap "homebrew/cask-fonts"
 
     # DevOps - rest
     "ansible",
+    "ansible-lint",
     "serverless",
     "dive",
+    "mitmproxy",
 
     # Development
     "pre-commit",
@@ -55,7 +64,10 @@ tap "homebrew/cask-fonts"
 
     # Clouds
     "awscli",
+    "cfn-lint",
+    "aws-shell",
     "azure-cli",
+    "yamllint",
 
     # Terraform
     "terraform",
