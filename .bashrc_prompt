@@ -23,7 +23,7 @@ kubeprompt_ctx_check(){
         exit 0
     fi
 
-    printf " %s " $(kubeprompt -fm)
+    printf " %s " $(kubeprompt -f '(⎈ {{.Ctx}}@{{.Ns}})')
 }
 
 

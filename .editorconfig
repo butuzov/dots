@@ -26,6 +26,9 @@ indent_style = tab                 # Go
 [*.sh]
 indent_size = 2                    # Shell Scripts
 
+[*.lr]
+indent_style = tab
+
 [*.{c,cpp,cu,java}]                # Shell
 indent_size = 4
 
