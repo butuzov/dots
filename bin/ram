@@ -7,3 +7,5 @@ ram(){
     diskutil erasevolume HFS+ "${2:-ram}" $(hdiutil attach -nomount ram://$((2*1000*1000*${1:-8})))
     open "/Volumes/${2:-ram}"
 }
+
+ram $@
