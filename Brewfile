@@ -1,104 +1,140 @@
-# REQUIRED
 cask_args appdir: "/Applications"
+
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
-# System
-brew "git"                            # newer Git
-brew "bash"                           # newer Bash
-brew "bash-completion"                # Bash Completion
-brew "jq"                             # JSON Query
-brew "tree"
+################################################################################
+#  Brew's Formulas
+################################################################################
+[
+    # BASH & GNU Compatible tooling
+    "bash",
+    "pstree",
+    "psgrep",
+    "pkill",
+    "shellcheck",
+    "htop",
+    "coreutils",
+    "gnu-sed",
+    "gnu-tar",
+    "grep",
+    "gnu-indent",
+    "findutils",
+    "gawk",
+    "tree",
+    "jq",
+    "bash-completion",
+    "git",
+    "bat",
+    "fd",
+    "jmeter",
+    "mtr",
+    "di", # research
 
-# GNU
-brew "coreutils"
-brew "gnu-sed"
-brew "gnu-tar"
-brew "grep"
-brew "gnu-indent"
-brew "findutils"
-brew "htop"                           # Improved top (interactive process viewer)
+    # CLi other
+    "youtube-dl",
+    "ffmpeg",
+    "media-info",
+
+    # LOL
+    "lolcat",
+    "cowsay",
+    "fortune",
+
+    # DevOps - Kubernetes
+    "kubernetes-cli",
+    "krew",
+    "helm",
+    "minikube",
+    "kustomize",
+    "istioctl",
+    "skaffold",
+
+    # DevOps - rest
+    "ansible",
+    "ansible-lint",
+    "serverless",
+    "dive",
+    "mitmproxy",
+
+    # Development
+    "pre-commit",
+    "ctags",
+    "graphviz",
+
+    # Clouds
+    "awscli",
+    "cfn-lint",
+    "aws-shell",
+    "azure-cli",
+    "yamllint",
+
+    # Terraform
+    "terraform",
+    "tflint",
+    "terragrunt",
+
+    # Other hasicorp tooling
+    "consul",
+    "vault",
+    "packer",
 
 
-brew "ffmpeg"                         # FFMpeg
-brew "fortune"
-brew "cowsay"
-brew "lolcat"
+].each do |pkg|
+    brew pkg
+end
 
-cask "iterm2"                         # iTerm2 terminal
-cask "dd-utility"                     # UI For DD
+################################################################################
+#  CASK's
+################################################################################
+[
+    # TODO - RESEARCH
+    "sampler",              # https://github.com/sqshq/sampler
 
-# Programming - Tooling
-brew "graphviz"                       # GraphVizard
-brew "ctags"
-cask "postman"
+    # DevOps - Tooling
+    "podman",
+    "google-cloud-sdk",
+    "docker",
+    "vagrant",
+    "virtualbox",
+    "vmware-fusion",
 
-cask "font-fira-code"                 # FiraCode
+    # Programming - Tooling
+    "postman",
+    "visual-studio-code",
+    "cronnix",
+    "sourcetree",
 
-cask "vmware-fusion"                  # VMWARE Tools
-cask "virtualbox"                     # VirtualBox VM from Oracle
-cask "vagrant"                        # Hashicorp Vagrant
-cask "docker"                         # Docker
-brew "dive"                           # Docker
+    # Fonts
+    "font-fira-code",
+    "font-fira-sans",
+    "font-fira-mono",
 
-cask "sourcetree"                     # SourceTree
-cask "cronnix"                        # Cron UI
-cask "visual-studio-code"             # Visual Studio Code
+    # Messangers
+    "slack",
+    "skype",
+    "telegram-desktop",
 
-# Clouds
-brew "awscli"                         # AWS Cli
-brew "azure-cli"                      # Azure
-cask "google-cloud-sdk"               # google cloud
+    # Mac App Tools
+    "dropbox",
+    "appcleaner",
+    "ankiapp-anki",
+    "istat-menus",
+    "little-snitch",
+    "keka",
+    "iina",
+    "handbrake",
+    "imageoptim",
+    "fantastical",
+    "google-chrome",
 
-# DevOps Tools
-brew "serverless"                     # Serverless Framework
-brew "ansible"                        # Configuration Management
+    # Dev
+    "iterm2",
 
-# Kubernetes
-brew "kubernetes-cli"
-brew "helm"
-cask "podman"
-brew "minikube"
-brew "kustomize"
-brew "istioctl"
-brew "skaffold"
-brew "pre-commit"
-brew "todo-txt"                       # terminal productivity
+].each do |pkg|
+    cask pkg
+end
 
-# Hashicorp Tools
-brew "consul"                         #
-brew "vault"                          #
-brew "packer"                         #
-brew "terraform"                      #
-
-# Missing Unix tools
-brew "pstree"                         # pstree
-brew "psgrep"                         # psgrep
-brew "pkill"                          # pkill
-cask "sampler"                        # https://github.com/sqshq/sampler
-brew "shellcheck"                     # bash linter
-
-# Mac Applications
-cask "google-chrome"                  # Browser
-cask "fantastical"                    # Fantastical
-
-cask "iina"                           # Video Player
-cask "handbrake"                      # Image Converting
-cask "imageoptim"                     # Image Optim
-brew "youtube-dl"                     # yt-dl, but not as pip.
-
-# utils
-cask "dropbox"
-cask "appcleaner"
-cask "ankiapp-anki"
-cask "istat-menus"
-cask "little-snitch"
-cask "keka"
-
-# messages
-cask "slack"
-cask "skype"
-cask "telegram-desktop"
 
 # Mac Applications - AppStore
 mas "Apple Remote Desktop",        id: 409907375      # ARD
@@ -110,9 +146,3 @@ mas "Horo - Timer for Menu Bar",   id: 1437226581     # Horo Timer
 # temporary disabled unused applications
 # mas "Encrypto: Secure Your Files", id: 413857545      # 935235287
 # mas "Evolve Tracking Freelancer",  id: 1286846351
-
-
-# Fonts
-cask 'font-fira-code'
-cask 'font-fira-sans'
-cask 'font-fira-mono'
