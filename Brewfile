@@ -25,6 +25,7 @@ tap "homebrew/cask-fonts"
     "jq",
     "bash-completion",
     "git",
+    "git-lfs",
     "bat",
     "fd",
     "jmeter",
