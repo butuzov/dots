@@ -33,7 +33,6 @@ tap "homebrew/cask-fonts"
     "di", # research
 
     # CLi other
-    "youtube-dl",
     "ffmpeg",
     "media-info",
 
@@ -46,17 +45,18 @@ tap "homebrew/cask-fonts"
     "kubernetes-cli",
     "krew",
     "helm",
+    "grpcurl",
     "minikube",
     "kustomize",
     "istioctl",
     "skaffold",
 
     # DevOps - rest
-    "ansible",
     "ansible-lint",
     "serverless",
     "dive",
     "mitmproxy",
+    "upx",
 
     # Development
     "pre-commit",

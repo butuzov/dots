@@ -21,6 +21,9 @@ if [[ $PATH != *$HOME/bin* ]]; then
     export PATH="$HOME/bin:$PATH"
 fi
 
+
+alias brew_update_all="brew bundle --file=Brewfile"
+
 # Custom Functionality
 # Added to remove personal (sub projects to be hardcoded)
 if [[ -d "${DOTS_PATH}/bin-extentions" ]]; then
