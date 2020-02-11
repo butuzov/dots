@@ -2,62 +2,59 @@
 root = true
 
 [*]
-end_of_line = lf                   # Unix-style newlines
-insert_final_newline = true
+end_of_line = lf                           # Unix-style newlines
 charset = utf-8
 
-indent_style = space               # default identation - spaces
-indent_size = 4                    # default identation - size
+indent_style = space                       # default identation - spaces
+indent_size = 4                            # default identation - size
 
-insert_final_newline = true        # new line at the end of file
-trim_trailing_whitespace = true    # no extra sapces at the end of lines
+insert_final_newline = true                # new line at the end of file
+trim_trailing_whitespace = true            # no extra sapces at the end of lines
 
-max_line_length = 100              # wouldn't work in vsc, only in atom and vim
+max_line_length = 100                      # wouldn't work in vsc, only in atom and vim
 
 [*.py]
-max_line_length = 79               # pep8
+max_line_length = 79                       # pep8
 
 [*.{php,inc}]
-indent_style = tab                 # PHP
+indent_style = tab                         # PHP
 
 [*.go]
-indent_style = tab                 # Go
+indent_style = tab                         # Go
 
 [*.sh]
-indent_size = 2                    # Shell Scripts
+indent_size = 2                            # Shell Scripts
 
 [*.lr]
 indent_style = tab
 
-[*.{c,cpp,cu,java}]                # Shell
+[*.{c,h,hpp,cpp,cu,java}]                  # C/C++/CU/Java
 indent_size = 4
 
-[*.{htm,html}]                # Shell
+[*.{htm,html}]                             # Shell
 indent_style = tab
 
-[*.tex]                            # LaTeX
+[*.tex]                                    # LaTeX
 indent_size = 2
 max_line_length = 120
 
-[*.{tf,tfvars,tf.sample,tfvars.sample}]
-indent_style = space
-indent_size = 2
-
-
-[Makefile]                         # Make
+[Makefile]                                 # CMake
 indent_style = tab
 
-[*.md]                             # md
-insert_final_newline = false
+[*.md]                                     # md
 trim_trailing_whitespace = true
 max_line_length = 100
 
-[Vagrantfile]
+[*.{tf,tfvars,tf.sample,tfvars.sample}]   # Terraform
+indent_style = space
 indent_size = 2
 
-[*.{yml,yaml,md,markdown}]         # Markup
+[Vagrantfile]                             # Vagrant
 indent_size = 2
 
-[*.json]                           # JSON
+[*.{yml,yaml,md,markdown}]                # Markup
+indent_size = 2
+
+[*.json]                                  # JSON
 indent_size = 4
 indent_style = space
