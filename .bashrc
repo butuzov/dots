@@ -1,4 +1,4 @@
-# Realod Config
+# Reload Config
 alias reload="exec ${SHELL} -l"
 
 # completion

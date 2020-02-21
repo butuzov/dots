@@ -19,11 +19,19 @@ max_line_length = 79                       # pep8
 [*.{php,inc}]
 indent_style = tab                         # PHP
 
-[*.go]
+[*.js]
+indent_style = tab                         # JS/Node.js
+
+[*.less]
+indent_style = tab                         # JS/Node.js
+
+
+[*.{go,gohtml,gotpl}]
 indent_style = tab                         # Go
 
 [*.sh]
 indent_size = 2                            # Shell Scripts
+insert_final_newline = true
 
 [*.lr]
 indent_style = tab
@@ -44,6 +52,7 @@ indent_style = tab
 [*.md]                                     # md
 trim_trailing_whitespace = true
 max_line_length = 100
+insert_final_newline = true
 
 [*.{tf,tfvars,tf.sample,tfvars.sample}]   # Terraform
 indent_style = space
