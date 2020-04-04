@@ -61,42 +61,6 @@ audiobook() {
     # Sometimes I like to hear separate stories.
 }
 
-# CourseHunters
-coursehunters() {
-  # https://coursehunters.net/archive
-  _URL=$1
-
-  _OUT="$(basename $_URL).html"
-  _DIR=$(basename $_URL)
-
-
-  if [[ ! -d "${_DIR}" ]]; then
-    mkdir "${_DIR}"
-  fi
-
-  if [[ ! -f $_OUT ]]; then
-		curl -L $_URL -o "${_DIR}/${_OUT}"
-	fi
-
-	for file in $(cat "${_DIR}/${_OUT}" | \
-                grep -i mp4 | \
-                grep link | \
-                grep "url" | \
-                awk '{print $2}' | \
-                sed -e 's/href="//'| \
-                sed -e 's/"//' ); do
-
-      echo $file;
-
-      if [[ ! -f "${_DIR}/$(basename $file)" ]]; then
-          echo "Downloading: ${_DIR}/$(basename $file)"
-          curl -L  $file -o "${_DIR}/$(basename $file)"
-      fi
-    done
-
-}
-
-
 # Download YouTube videos in HQ
 youtube() {
     URL=$1

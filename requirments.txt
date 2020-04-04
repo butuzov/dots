@@ -2,6 +2,3 @@ yapf
 pylint
 mypy
 pytest
-icecream
-ansible
-youtube-dl

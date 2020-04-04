@@ -27,7 +27,7 @@ tap "homebrew/cask-fonts"
     "git",
     "git-lfs",
     "bat",
-    "fd",
+    "fd", # research
     "jmeter",
     "mtr",
     "di", # research
@@ -47,15 +47,16 @@ tap "homebrew/cask-fonts"
     "helm",
     "grpcurl",
     "minikube",
-    "kustomize",
-    "istioctl",
-    "skaffold",
+#   "kustomize",
+#   "istioctl",
+#   "skaffold",
 
     # DevOps - rest
+    "ansible",
     "ansible-lint",
-    "serverless",
-    "dive",
-    "mitmproxy",
+#   "serverless",
+#   "dive",
+#   "mitmproxy",
     "upx",
 
     # Development
