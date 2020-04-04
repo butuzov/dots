@@ -20,8 +20,6 @@ cp -R nbconfig/ ~/venvs/jupyter/share/jupyter/
 
 # GO kernel
 if [[ ! -d ~/venvs/jupyter/share/jupyter/kernels/gophernotes ]]; then
-    brew install zeromq
-    brew install pkg-config
     go get -u github.com/gopherdata/gophernotes
     mkdir -p ~/venvs/jupyter/share/jupyter/kernels/gophernotes
     cp $GOPATH/src/github.com/gopherdata/gophernotes/kernel/* ~/venvs/jupyter/share/jupyter/kernels/gophernotes
