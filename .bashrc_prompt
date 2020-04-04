@@ -16,14 +16,19 @@ BLUE="\[\e[104;30m\]"
 
 kubeprompt_ctx_check(){
 
-    CURRENT_CONTEXT_NOT_SET=$(kubectl config current-context 2>&1 \
-        | grep "current-context is not set")
-
-    if [[ ! -z $CURRENT_CONTEXT_NOT_SET ]]; then
-        exit 0
+    CURRENT_CTX=$(kubectl config current-context)
+    if [[ ! -z $CURRENT_CTX ]]; then
+        CURRENT_NS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+    else
+        return 0;
     fi
 
-    printf " %s " $(kubeprompt -f '(⎈ {{.Ctx}}@{{.Ns}})')
+    if [[ ! -z $CURRENT_NS ]]; then
+        printf " (⎈  %s@%s) " "$CURRENT_CTX" "$CURRENT_NS"
+    else
+        printf " (⎈  %s) " "$CURRENT_CTX"
+    fi
+
 }
 
 
