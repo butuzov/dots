@@ -54,7 +54,7 @@ PHPCSC_GIT="https://github.com/wimg/PHPCompatibility"
 PHPCSC_PATH=".php-cs/php_compatibility"
 install_git_repository "${PHPCSC_GIT}" "${PHPCSC_PATH}" && checkout_last_release "${PHPCSC_PATH}"
 # WordPress Code Standards
-WPCS_GIT="https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards"
+WPCS_GIT="https://github.com/WordPress/WordPress-Coding-Standards"
 WPCS_PATH=".php-cs/php_wp_cs"
 install_git_repository "${WPCS_GIT}" "${WPCS_PATH}" && checkout_last_release "${WPCS_PATH}"
 # custom wp dev rules
