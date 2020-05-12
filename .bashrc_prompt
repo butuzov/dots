@@ -16,7 +16,7 @@ BLUE="\[\e[104;30m\]"
 
 kubeprompt_ctx_check(){
 
-    CURRENT_CTX=$(kubectl config current-context)
+    CURRENT_CTX=$(kubectl config view | grep [c]urrent-context | awk '{print $2}' | sed 's/\"//g')
     if [[ ! -z $CURRENT_CTX ]]; then
         CURRENT_NS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
     else
