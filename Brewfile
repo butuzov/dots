@@ -11,7 +11,6 @@ tap "homebrew/cask-fonts"
     "bash",
     "pstree",
     "psgrep",
-    "pkill",
     "shellcheck",
     "htop",
     "coreutils",
