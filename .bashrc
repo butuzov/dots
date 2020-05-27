@@ -54,6 +54,9 @@ if [[ $PATH != *$GOROOT* ]]; then
     export PATH="${GOROOT}/bin:${PATH}"
 fi
 
+# Node
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+
 # CUDA
 if [[ -d "/usr/local/cuda" ]]; then
     export CUDA_PATH="/usr/local/cuda"
@@ -64,6 +67,10 @@ if [[ -d "/usr/local/cuda" ]]; then
     export CPATH="${CUDA_PATH}/include/"
     export CGO_LDFLAGS="/usr/local/cuda/lib/libcuda.dylib ${CUDA_PATH}/lib/libcudart.dylib ${CUDA_PATH}/lib/libcublas.dylib ${CUDA_PATH}/lib/libcurand.dylib"
 fi
+
+# homebrew required vars
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 # promp moved to bottom so we can actuially use installed tools.
 source "${DOTS_PATH}/.bashrc_prompt"

@@ -65,7 +65,7 @@ phpcs --config-set installed_paths "${NWD}/${WPCS_PATH},${NWD}/${PHPCSC_PATH},${
 
 # node.js & Tooling
 header "# node.js"
-bew install > /dev/null 2>&1
+brew install node@12 > /dev/null 2>&1
 message 2 "$( printf "installed: %s " "$(node -v)" )"
 
 
@@ -82,6 +82,9 @@ aws configure
 
 header "# Docker"
 docker login
+
+# trmux config
+install_dot .tmux.conf
 
 header "# mac options"
 # Finder: show hidden files by default

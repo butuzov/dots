@@ -23,6 +23,7 @@ tap "homebrew/cask-fonts"
     "gawk",
     "tree",
     "jq",
+    "yq",
     "bash-completion",
     "git",
     "git-lfs",
@@ -47,9 +48,8 @@ tap "homebrew/cask-fonts"
     "helm",
     "grpcurl",
     "minikube",
-#   "kustomize",
-#   "istioctl",
-#   "skaffold",
+    "istioctl",
+    "skaffold",
 
     # DevOps - rest
     "ansible",
@@ -62,6 +62,7 @@ tap "homebrew/cask-fonts"
     # Development
     "pre-commit",
     "ctags",
+    "tmux",
     "graphviz",
 
     # Clouds
@@ -91,7 +92,7 @@ end
 ################################################################################
 [
     # TODO - RESEARCH
-    "sampler",              # https://github.com/sqshq/sampler
+    # "sampler",              # https://github.com/sqshq/sampler
 
     # DevOps - Tooling
     "podman",
@@ -116,6 +117,9 @@ end
     "slack",
     "skype",
     "telegram-desktop",
+
+    # DevOps
+    "aws-vault",
 
     # Mac App Tools
     "dropbox",
