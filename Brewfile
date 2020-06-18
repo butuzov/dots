@@ -50,6 +50,9 @@ tap "homebrew/cask-fonts"
     "istioctl",
     "skaffold",
 
+    # typescript/node,js
+    "deno",
+
     # DevOps - rest
     "ansible",
     "ansible-lint",

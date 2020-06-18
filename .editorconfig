@@ -67,3 +67,7 @@ indent_size = 2
 [*.json]                                  # JSON
 indent_size = 4
 indent_style = space
+
+
+[*.ts]                                     # typescript
+indent_style = tab
