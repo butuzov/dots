@@ -46,6 +46,7 @@ tap "homebrew/cask-fonts"
     "krew",
     "helm",
     "grpcurl",
+    "clang-format"
     "minikube",
     "istioctl",
     "skaffold",
