@@ -1,0 +1,107 @@
+# This file contains all available configuration options
+# with their default values.
+# options for analysis running
+# run:
+#   timeout: 15s
+#   issues-exit-code: 1
+
+# Output configuration options
+output:
+  format: line-number
+  print-issued-lines: false
+  print-linter-name: true
+  uniq-by-line: false
+  sort-results: true
+
+
+linters:
+  disable:
+    - depguard         # Dependency Guard
+    - dogsled          # no need
+    - exhaustive       # TMP (covered by dead code, almost)
+    - exportloopref    # no
+    - gochecknoglobals # no
+    - godot            # no
+    - gofmt            # why?
+    - goimports        # no
+    - golint           # stylecheck implelements
+    - gomnd            # TMP: no
+    - gomodguard       # no
+    - goprintffuncname # no
+    - misspell         # TMP: Covered by cSpell
+    - nakedret         # Doesn't looks useful
+    - nolintlint       # no need
+    - structcheck      # ( covered by dead code)
+    - varcheck         # ( covered by dead code)
+    - unused
+    - whitespace       # TMP: duplicate
+
+  enable:
+    - asciicheck
+    - bodyclose
+    - deadcode
+    - dupl
+    - errcheck
+    - funlen
+    - gochecknoinits
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godox
+    - goerr113
+    - gofumpt
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    - lll
+    - maligned
+    - nestif
+    - noctx
+    - prealloc
+    - scopelint
+    - sqlclosecheck
+    - staticcheck
+    - stylecheck
+    - testpackage
+    - rowserrcheck
+    - unconvert
+    - unparam
+    - wsl
+
+
+linters-settings:
+  maligned:
+    suggest-new: true
+  lll:
+    line-length: 100
+    tabwidth: 1
+  dupl:
+    threshold: 50
+  gocyclo:
+    min-complexity: 10
+  nestif:
+    min-complexity: 3
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  funlen:
+    lines: 20
+    statements: 12
+  gocognit:
+    min-complexity: 10
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - dupImport
+      # - ifElseChain
+      # - octalLiteral
+      - whyNoLint
+      # - wrapperFunc
