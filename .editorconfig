@@ -36,6 +36,10 @@ insert_final_newline = true
 [*.lr]
 indent_style = tab
 
+[*.rb]
+indent_style = space
+indent_size = 2
+
 [*.{c,h,hpp,cpp,cu,java}]                  # C/C++/CU/Java
 indent_size = 4
 
