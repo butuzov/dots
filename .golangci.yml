@@ -17,7 +17,11 @@ output:
 linters:
   disable:
     - depguard         # Dependency Guard
+    - testpackage
     - dogsled          # no need
+    - gofumpt
+
+  enable:
     - exhaustive       # TMP (covered by dead code, almost)
     - exportloopref    # no
     - gochecknoglobals # no
@@ -35,8 +39,6 @@ linters:
     - varcheck         # ( covered by dead code)
     - unused
     - whitespace       # TMP: duplicate
-
-  enable:
     - asciicheck
     - bodyclose
     - deadcode
@@ -50,7 +52,6 @@ linters:
     - gocyclo
     - godox
     - goerr113
-    - gofumpt
     - gosec
     - gosimple
     - govet
@@ -65,7 +66,6 @@ linters:
     - sqlclosecheck
     - staticcheck
     - stylecheck
-    - testpackage
     - rowserrcheck
     - unconvert
     - unparam
