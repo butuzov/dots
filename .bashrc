@@ -1,8 +1,11 @@
 # Reload Config
 alias reload="exec ${SHELL} -l"
 
+
 # completion
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] &&  . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+
+[[ -f "$(brew --prefix)/etc/bash_completion" ]] && . "$(brew --prefix)/etc/bash_completion"
 
 # Local bin directory
 GNUTILS=( "gnu-tar" "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
@@ -73,4 +76,4 @@ export LDFLAGS="-L/usr/local/opt/libffi/lib"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 # promp moved to bottom so we can actuially use installed tools.
-source "${DOTS_PATH}/.bashrc_prompt"
+source "${DOTS_PATH}/.prompt"
