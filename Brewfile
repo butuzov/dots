@@ -46,7 +46,7 @@ tap "homebrew/cask-fonts"
     "krew",
     "helm",
     "grpcurl",
-    "clang-format"
+    "clang-format",
     "minikube",
     "istioctl",
     "skaffold",
@@ -57,9 +57,9 @@ tap "homebrew/cask-fonts"
     # DevOps - rest
     "ansible",
     "ansible-lint",
-#   "serverless",
-#   "dive",
-#   "mitmproxy",
+    "serverless",
+    "dive",
+    "mitmproxy",
     "upx",
 
     # Development
@@ -85,6 +85,11 @@ tap "homebrew/cask-fonts"
     "vault",
     "packer",
 
+     # Golang
+    "golangci-lint",
+    "hugo",
+    "gotop",
+    "goose",
 
 ].each do |pkg|
     brew pkg
@@ -140,6 +145,8 @@ end
     # Dev
     "iterm2",
 
+
+
 ].each do |pkg|
     cask pkg
 end
@@ -152,6 +159,4 @@ mas "Helium",                      id: 1054607607     # Helium
 mas "Divvy - Window Manager",      id: 413857545      # Divvy
 mas "Horo - Timer for Menu Bar",   id: 1437226581     # Horo Timer
 
-# temporary disabled unused applications
-# mas "Encrypto: Secure Your Files", id: 413857545      # 935235287
-# mas "Evolve Tracking Freelancer",  id: 1286846351
+
