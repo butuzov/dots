@@ -20,6 +20,7 @@ linters:
     - testpackage
     - dogsled          # no need
     - gofumpt
+    - whitespace       # TMP: duplicate
 
   enable:
     - exhaustive       # TMP (covered by dead code, almost)
@@ -38,7 +39,6 @@ linters:
     - structcheck      # ( covered by dead code)
     - varcheck         # ( covered by dead code)
     - unused
-    - whitespace       # TMP: duplicate
     - asciicheck
     - bodyclose
     - deadcode
