@@ -1,5 +1,7 @@
 # Realod Config
-DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
+if [[ -f ~/.dropbox/info.json ]]; then 
+    DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
+fi 
 
 alias .dots='code ~/.dotfiles'
 alias today='code ${DROPBOX}/today.md'
