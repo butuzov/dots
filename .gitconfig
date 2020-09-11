@@ -54,3 +54,5 @@
 	trustExitCode = true
 [commit]
 	template = /Users/butuzov/.stCommitMsg
+[url "git@github.com:"]
+	insteadOf = https://github.com/
