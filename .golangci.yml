@@ -21,19 +21,20 @@ linters:
     - dogsled          # no need
     - gofumpt
     - whitespace       # TMP: duplicate
+    - godox            # pretty useless, considering FIXME/TODO/REFACTOR are OK
+    - gochecknoglobals # no
+    - exhaustive       # TMP (covered by dead code, almost)
+    - goimports        # no
+    - misspell         # TMP: Covered by cSpell
 
   enable:
-    - exhaustive       # TMP (covered by dead code, almost)
     - exportloopref    # no
-    - gochecknoglobals # no
     - godot            # no
     - gofmt            # why?
-    - goimports        # no
     - golint           # stylecheck implelements
     - gomnd            # TMP: no
     - gomodguard       # no
     - goprintffuncname # no
-    - misspell         # TMP: Covered by cSpell
     - nakedret         # Doesn't looks useful
     - nolintlint       # no need
     - structcheck      # ( covered by dead code)
@@ -50,7 +51,6 @@ linters:
     - goconst
     - gocritic
     - gocyclo
-    - godox
     - goerr113
     - gosec
     - gosimple

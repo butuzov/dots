@@ -63,7 +63,7 @@ git_ctx_check(){
         return 0;
     fi
 
-    BRANCH=$(git branch --no-color 2>/dev/null | cut -d' ' -f 2)
+    BRANCH=$(git branch --no-color 2>/dev/null | cut -d' ' -f 2 | xargs )
 
     if [[ -z $BRANCH ]]; then
         return 0;
