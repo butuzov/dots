@@ -103,18 +103,17 @@ end
     # "sampler",              # https://github.com/sqshq/sampler
 
     # DevOps - Tooling
-    "podman",
     "google-cloud-sdk",
     "docker",
     "vagrant",
     "virtualbox",
-    "vmware-fusion",
 
     # Programming - Tooling
-    "postman",
     "visual-studio-code",
     "cronnix",
     "sourcetree",
+    "gh",
+
 
     # Fonts
     "font-fira-code",
@@ -132,14 +131,12 @@ end
     # Mac App Tools
     "dropbox",
     "appcleaner",
-    "ankiapp-anki",
     "istat-menus",
     "little-snitch",
     "keka",
     "iina",
     "handbrake",
     "imageoptim",
-    "fantastical",
     "google-chrome",
 
     # Dev
@@ -157,6 +154,5 @@ mas "Apple Remote Desktop",        id: 409907375      # ARD
 mas "Audiobook Builder",           id: 406226796      # Older Version
 mas "Helium",                      id: 1054607607     # Helium
 mas "Divvy - Window Manager",      id: 413857545      # Divvy
-mas "Horo - Timer for Menu Bar",   id: 1437226581     # Horo Timer
 
 

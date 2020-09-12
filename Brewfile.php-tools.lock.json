@@ -1,0 +1,42 @@
+{
+  "entries": {
+    "brew": {
+      "php-code-sniffer": {
+        "version": "3.5.6",
+        "bottle": false
+      },
+      "php-cs-fixer": {
+        "version": "2.16.4",
+        "bottle": false
+      },
+      "phplint": {
+        "version": "4.2.0-20200308",
+        "bottle": false
+      },
+      "phpunit": {
+        "version": "9.3.8",
+        "bottle": false
+      },
+      "composer": {
+        "version": "1.10.10",
+        "bottle": false
+      },
+      "phpstan": {
+        "version": "0.12.42",
+        "bottle": false
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "mojave": {
+        "HOMEBREW_VERSION": "2.5.0",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "61398c9cb11982bbb334244d67c2c907b1462c36",
+        "CLT": "10.3.0.0.1.1562985497",
+        "Xcode": "10.3",
+        "macOS": "10.14.6"
+      }
+    }
+  }
+}
