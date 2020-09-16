@@ -67,6 +67,7 @@ tap "homebrew/cask-fonts"
     "ctags",
     "tmux",
     "graphviz",
+    "gh",
 
     # Clouds
     "awscli",
@@ -112,7 +113,6 @@ end
     "visual-studio-code",
     "cronnix",
     "sourcetree",
-    "gh",
 
 
     # Fonts

@@ -1,68 +1,61 @@
+export TERM="xterm-color"
+export CLICOLOR=1l
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# How it looks
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+WHITE="\[\e[107;30m\]"
+BG_GREEN="\[\e[102;30m\]"
+BG_BLUE="\[\e[104;30m\]"
+BG_YELLOW="\[\e[103;30m\]"
+YELLO="\[\e[1;33m\]"
+RESET="\[\e[0m\]"
+
+export LC_CTYPE="UTF-8"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+
+# iterm related
+echo -e "\033]6;1;bg;red;brightness;40\a" > /dev/null
+echo -e "\033]6;1;bg;green;brightness;40\a" > /dev/null
+echo -e "\033]6;1;bg;blue;brightness;40\a" > /dev/null
+
 # Reload Config
 alias reload="exec ${SHELL} -l"
 
-
-# completion
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] &&  . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-
-[[ -f "$(brew --prefix)/etc/bash_completion" ]] && . "$(brew --prefix)/etc/bash_completion"
-
-# Local bin directory
-GNUTILS=( "gnu-tar" "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
-for CMD in "${GNUTILS[@]}"  ; do
-  BIN_DIR=$(printf /usr/local/opt/%s/libexec/gnubin $CMD )
-  if [[ $PATH != *$BIN_DIR* ]]; then
-    export PATH="$BIN_DIR:$PATH"
-  fi
-done
-
-if [[ $PATH != *$DOTS_PATH/bin* ]]; then
-    export PATH="$DOTS_PATH/bin:$PATH"
-fi
-
-if [[ $PATH != *$HOME/bin* ]]; then
-    export PATH="$HOME/bin:$PATH"
-fi
-
-
+# All Bew Updates
 alias brew_update_all="brew bundle --file=Brewfile"
 
-# Custom Functionality
-# Added to remove personal (sub projects to be hardcoded)
-if [[ -d "${DOTS_PATH}/bin-extentions" ]]; then
-    for script in $(find "${DOTS_PATH}/bin-extentions" -type f -name "*.sh")
-    do source $script
-    done
-fi
+source "${DOTS_PATH}/scripts/pathes.sh"                # Pathes
+source "${DOTS_PATH}/scripts/prompt.sh"                # Propt customization
 
-# used aliases
+
+
+PS1="${RESET}"
+PS1+="${WHITE} $ \u ${RESET}"
+PS1+="${BG_BLUE}\$(kube_ctx_check)${RESET}"
+PS1+="${BG_GREEN} \w ${RESET}"
+PS1+="${BG_YELLOW}\$(git_ctx_check)${RESET}"
+PS1+="\n${YELLO} > ${RESET}"
+export PS1=$PS1
+export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
+
+
+# the rest of sources
+# TODO: Make it faster
+# source "${DOTS_PATH}/scripts/complete.sh"             # auto complete/bash complete
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 source "${DOTS_PATH}/scripts/python.sh"                # Python
-
-# ---- Google Cloud ----------------------------------------------
-GCLOUD_SDK="/usr/local/Caskroom/google-cloud-sdk"
-source "${GCLOUD_SDK}/latest/google-cloud-sdk/path.bash.inc"
-source "${GCLOUD_SDK}/latest/google-cloud-sdk/completion.bash.inc"
-
-alias gcp="open https://console.cloud.google.com/"
+source "${DOTS_PATH}/scripts/go.sh"                    # Go
+source "${DOTS_PATH}/scripts/node.sh"                  # Node
 
 
-# Go
-export GOPATH="${HOME}/go"
-export GOROOT="/usr/local/opt/go/libexec"
-if [[ $PATH != *$GOPATH* ]]; then
-    export PATH="${GOPATH}/bin:${PATH}"
-fi
-if [[ $PATH != *$GOROOT* ]]; then
-    export PATH="${GOROOT}/bin:${PATH}"
-fi
 
-# Node
-export PATH="/usr/local/opt/node@12/bin:$PATH"
 
-# homebrew required vars
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
-# promp moved to bottom so we can actuially use installed tools.
-source "${DOTS_PATH}/.prompt"
+
+
+
+
+

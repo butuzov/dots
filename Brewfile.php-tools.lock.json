@@ -30,9 +30,9 @@
   "system": {
     "macos": {
       "mojave": {
-        "HOMEBREW_VERSION": ">=2.2.0 (shallow or no git repository)",
+        "HOMEBREW_VERSION": "2.5.0",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": null,
+        "Homebrew/homebrew-core": "694ce2dd59e83bc8a0fd826e051bf806827b906e",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"
