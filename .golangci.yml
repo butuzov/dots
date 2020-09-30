@@ -71,6 +71,13 @@ linters:
     - unparam
     - wsl
 
+issues:
+  exclude-rules:
+    - path: ".*_test.go"
+      linters:
+        - funlen
+        - dupl
+        - gomnd
 
 linters-settings:
   maligned:
