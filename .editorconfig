@@ -26,52 +26,65 @@ indent_style = tab                         # JS/Node.js
 indent_style = tab                         # JS/Node.js
 
 
-[*.{go,gohtml,gotpl}]
-indent_style = tab                         # Go
+[*.{go,gohtml,gotpl}]                      # Go
+indent_style = tab
+indent_size = 2
 
-[*.sh]
-indent_size = 2                            # Shell Scripts
+[*.sh]                                     # Shell Scripts
+indent_size = 2
 insert_final_newline = true
+
 
 [*.lr]
 indent_style = tab
 
-[*.rb]
+
+[*.rb]                                     # Ruby
 indent_style = space
 indent_size = 2
+
 
 [*.{c,h,hpp,cpp,cu,java}]                  # C/C++/CU/Java
 indent_size = 4
 
-[*.{htm,html}]                             # Shell
+
+[*.{htm,html}]                             # HTML
 indent_style = tab
+
 
 [*.tex]                                    # LaTeX
 indent_size = 2
 max_line_length = 120
 
+
 [Makefile]                                 # CMake
 indent_style = tab
 
-[*.md]                                     # md
+
+[*.md]                                     # Markdown
 trim_trailing_whitespace = true
 max_line_length = 100
 insert_final_newline = true
+indent_size = 2
+
 
 [*.{tf,tfvars,tf.sample,tfvars.sample}]   # Terraform
 indent_style = space
 indent_size = 2
 
+
 [Vagrantfile]                             # Vagrant
 indent_size = 2
 
-[*.{yml,yaml,md,markdown}]                # Markup
+
+[*.{yml,yaml}]                            # YAML
 indent_size = 2
+
 
 [*.json]                                  # JSON
 indent_size = 4
 indent_style = space
 
 
-[*.ts]                                     # typescript
+[*.ts]                                     # TypeScript
 indent_style = tab
