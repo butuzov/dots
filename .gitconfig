@@ -48,15 +48,34 @@
 	jedypush = push --force-with-lease
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 [commit]
 	template = /Users/butuzov/.stCommitMsg
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+	insteadOf = "https://github.com/"
+	insteadOf = "http://github.com/"
+	insteadOf = "gh:"
+	insteadOf = "github:"
+	insteadOf = "git://github.com"
+ 	insteadOf = "git://github.com/"
+
+[url "git@gitlab.com:"]
+    insteadOf = "https://gitlab.com/"
+    insteadOf = "http://gitlab.com/"
+    insteadOf = "gl:"
+    insteadOf = "gitlab:"
+    insteadOf = "git://gitlab.com"
+    insteadOf = "git://gitlab.com/"
 
 [url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
+	insteadOf = "https://bitbucket.org/"
+	insteadOf = "http://bitbucket.org/"
+    insteadOf = "bb:"
+    insteadOf = "bitbucket:"
+    insteadOf = "git://bitbucket.org"
+    insteadOf = "git://bitbucket.org/"
