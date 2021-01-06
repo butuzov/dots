@@ -12,6 +12,6 @@ fi
 
 
 export GOPROXY="https://proxy.golang.org,direct" #this should already be the default
-export GONOSUMDB="bitbucket.org/sixtgoorange,github.com/sixt"
-export GONOPROXY="bitbucket.org/sixtgoorange,github.com/sixt"
-export GOPRIVATE="bitbucket.org/sixtgoorange,github.com/sixt"
+export GONOSUMDB=""
+export GONOPROXY=""
+export GOPRIVATE=""
