@@ -6,7 +6,7 @@ runme_go(){
     FILE="${1}"
     if [[ "${FILE}" =~ "_test.go" ]]; then
         cd "$(dirname "${FILE}")"
-        go test -race -timeout 30s -run $(cat "${FILE}" | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g') -v
+        go test -race -timeout 30s -run $(cat "${FILE}" | sed -n 's/func.*\( Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g') -v
         exit $?
     fi
 
