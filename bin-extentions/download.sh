@@ -32,6 +32,19 @@ mp3(){
         $1
 }
 
+# Download and convert video to mp3 and put it to mp3 folder.
+linkedin(){
+     youtube-dl -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" \
+      --username $LINKEDIN_USER \
+      --password $LINKEDIN_PASS \
+      --retries 10 \
+      --verbose \
+      --limit-rate 250K \
+      --sleep-interval 30 \
+      $1
+}
+
+
 # Simple audiobook creation.
 audiobook_make() {
     # generating random name
