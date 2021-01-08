@@ -57,7 +57,7 @@ indent_size = 2
 max_line_length = 120
 
 
-[Makefile]                                 # CMake
+[{Makefile,makefile}]                                 # CMake
 indent_style = tab
 
 
