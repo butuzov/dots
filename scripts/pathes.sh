@@ -1,7 +1,7 @@
 
 
 # Local bin directory
-GNUTILS=( "gnu-tar" "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
+GNUTILS=( "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
 for CMD in "${GNUTILS[@]}"  ; do
   BIN_DIR=$(printf /usr/local/opt/%s/libexec/gnubin $CMD )
   if [[ $PATH != *$BIN_DIR* ]]; then

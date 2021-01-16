@@ -15,7 +15,6 @@ tap "homebrew/cask-fonts"
     "htop",
     "coreutils",
     "gnu-sed",
-    "gnu-tar",
     "grep",
     "gnu-indent",
     "findutils",
@@ -45,7 +44,6 @@ tap "homebrew/cask-fonts"
     "kubernetes-cli",
     "krew",
     "helm",
-    "grpcurl",
     "clang-format",
     "minikube",
     "istioctl",
@@ -73,7 +71,6 @@ tap "homebrew/cask-fonts"
     "awscli",
     "cfn-lint",
     "aws-shell",
-    "azure-cli",
     "yamllint",
 
     # Terraform
