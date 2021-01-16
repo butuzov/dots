@@ -24,8 +24,7 @@ echo -e "\033]6;1;bg;blue;brightness;40\a" > /dev/null
 # Reload Config
 alias reload="exec ${SHELL} -l"
 
-# All Bew Updates
-alias brew_update_all="brew bundle --file=Brewfile"
+
 
 source "${DOTS_PATH}/scripts/pathes.sh"                # Pathes
 source "${DOTS_PATH}/scripts/prompt.sh"                # Propt customization
@@ -45,6 +44,7 @@ export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RE
 # the rest of sources
 # TODO: Make it faster
 # source "${DOTS_PATH}/scripts/complete.sh"             # auto complete/bash complete
+source "${DOTS_PATH}/bash/aliases.sh"                  # Main Alaises File
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 source "${DOTS_PATH}/scripts/python.sh"                # Python
 source "${DOTS_PATH}/scripts/go.sh"                    # Go

@@ -1,7 +1,7 @@
 # Realod Config
-if [[ -f ~/.dropbox/info.json ]]; then 
+if [[ -f ~/.dropbox/info.json ]]; then
     DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
-fi 
+fi
 
 alias .dots='code ~/.dotfiles'
 alias today='code ${DROPBOX}/today.md'
@@ -51,37 +51,13 @@ syncbooks(){
   rsync -avu --delete "/Volumes/archive/books/Algorithmes & Data Structures" "$DROPBOX/Books/"
 }
 
-# Navigation
-alias desktop="cd ~/Desktop"
 
-# Time and Date
-#   Get week number
-alias week='date +%V'
-
-# Stopwatch
-alias timer='echo "Timer started. <crtl+d> to breack." && date && time cat && date'
-
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
 
 # Lookup
 alias diga="dig +nocmd "$1" any +multiline +noall +answer"
 
-# Always enable colored `grep` output
-alias grep='grep --color=auto '
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# misc
-alias shrug='echo "¯\_(ツ)_/¯"'
-alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-sections\n" $1'
-alias vmp='cd "/Library/Preferences/VMware Fusion/"'
-
-# scrape
-alias isgziped="curl -sH 'Accept-encoding: gzip' $1"
