@@ -1,0 +1,14 @@
+
+tar_subcmd() {
+
+    if [ -z "$1" ]; then
+        $(which tar) help
+    else
+        case "$1" in
+            "list")       $(which tar) -ztvf ${@: -1} ;;
+            *)            $(which tar) "$@"
+        esac
+    fi
+}
+
+alias tar="tar_subcmd"
