@@ -6,11 +6,14 @@ docker_subcmd() {
         docker help
     else
         case "$1" in
+            # removes all containers
+            "rma")      docker images -qa  | xargs -L1 docker rmi;;
+
             # removes stoped containers
-            "rmsc")       docker ps -q -f "status=exited" | xargs -L1 docker rm;;
+            "rmsc")     docker ps -q -f "status=exited" | xargs -L1 docker rm;;
 
             # removes failed builds
-            "rmif")       docker images -q -f "dangling=true" | xargs -L1 docker rmi ;;
+            "rmif")     docker images -q -f "dangling=true" | xargs -L1 docker rmi ;;
 
             # mac issue require us to run it as .
             *)   $(which docker) "$@"
