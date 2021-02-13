@@ -1,0 +1,35 @@
+{
+    "load_extensions": {
+        "nbextensions_configurator/config_menu/main": true,
+        "contrib_nbextensions_help_item/main": true,
+        "move_selected_cells/main": true,
+        "hide_input_all/main": true,
+        "toggle_all_line_numbers/main": true,
+        "hide_input/main": true,
+        "table_beautifier/main": false,
+        "livemdpreview/livemdpreview": true,
+        "toc2/main": true,
+        "collapsible_headings/main": true,
+        "autosavetime/main": true,
+        "execute_time/ExecuteTime": true
+    },
+    "autosavetime_set_starting_interval": false,
+    "autosavetime_starting_interval": "1",
+    "autosavetime_show_selector": false,
+    "toc2": {
+        "number_sections": false,
+        "skip_h1_title": true
+    },
+    "keys": {
+        "command": {
+            "unbind": ["i,i"],
+            "bind": {
+                "cmd+r,r": "jupyter-notebook:restart-kernel-and-run-all-cells",
+                "r,r": "jupyter-notebook:confirm-restart-kernel-and-run-all-cells",
+                "ctrl-a": "jupyter-notebook:restart-kernel-and-run-all-cells",
+                "cmd-up": "jupyter-notebook:move-cell-up",
+                "cmd-down": "jupyter-notebook:move-cell-down"
+            }
+        }
+    }
+}
