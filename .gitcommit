@@ -1,16 +1,16 @@
 # ----------------------------------------------------------
 # Header - (type): Brief description
 # ----------------------------------------------------------
-#   * feat         A new feature
-#   * fix          A bug fix
-#   * docs         Changes to documentation only
-#   * style        Style/format changes (whitespace, etc.)
-#   * refactor     Changes not related to a bug or feature
-#   * perf         Changes that affects performance
-#   * test         Changes that add/modify/correct tests
-#   * build        Changes to build system (configs, etc.)
-#   * ci           Changes to CI pipeline/workflow
-# ----------------------------------------------------------
+#   * feature      # code changes: features
+#   * feat         # code changes: features
+#   * dev          # code changes: regular dev
+#   * test         # code changes: tests related
+#   * refactor     # code changes: refactoring realted
+#   * perf         # code changes: performance related
+#   * fix          # code changes: bugfixes
+#   * docs         # docs realted.
+#   * build        # anything buidl automation related: ci, makefiles, linters, etc.
+#   * chores       # github account related (anything inside .github, but not build related)
 
 
 # ----------------------------------------------------------
