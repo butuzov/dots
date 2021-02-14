@@ -97,7 +97,7 @@ install: install_tools
 
 # --- air --------------------------------------------------------------------------------
 air: bin/air-$(AIR_VERSION)
-	@ ln -sf ./bin/air-$(AIR_VERSION) ./bin/$@
+	@ ln -sf air-$(AIR_VERSION) ./bin/$@
 
 bin/air-$(AIR_VERSION):
 	@ $(MAKE) bin/air
@@ -112,7 +112,7 @@ bin/air:
 
 # --- evans ------------------------------------------------------------------------------
 evans: bin/evans-$(EVANS_VERSION)
-	@ ln -sf ./bin/evans-$(EVANS_VERSION) ./bin/$@
+	@ ln -sf evans-$(EVANS_VERSION) ./bin/$@
 
 bin/evans-$(EVANS_VERSION):
 	@ $(MAKE) bin/evans
@@ -128,7 +128,7 @@ bin/evans:
 
 # --- docker squash ----------------------------------------------------------------------
 docker-squash: bin/docker-squash-$(DOCKER_SQUASH_VERSION)
-	@ ln -sf ./bin/docker-squash-$(DOCKER_SQUASH_VERSION) ./bin/$@
+	@ ln -sf docker-squash-$(DOCKER_SQUASH_VERSION) ./bin/$@
 
 bin/docker-squash-$(DOCKER_SQUASH_VERSION):
 	@ $(MAKE) bin/docker-squash
@@ -143,7 +143,7 @@ bin/docker-squash:
 
 # --- golangci-lint ----------------------------------------------------------------------
 golangci-lint: bin/golangci-lint-$(GOLANGCI-LINT_VERSION)
-	@ ln -sf ./bin/golangci-lint-$(GOLANGCI-LINT_VERSION) ./bin/$@
+	@ ln -sf golangci-lint-$(GOLANGCI-LINT_VERSION) ./bin/$@
 
 bin/golangci-lint-$(GOLANGCI-LINT_VERSION):
 	@ $(MAKE) bin/golangci-lint
@@ -161,7 +161,7 @@ bin/golangci-lint:
 
 # --- gotestsum --------------------------------------------------------------------------
 gotestsum: bin/gotestsum-$(GOTESTSUM_VERSION)
-	@ ln -sf ./bin/gotestsum-$(GOTESTSUM_VERSION) ./bin/$@
+	@ ln -sf gotestsum-$(GOTESTSUM_VERSION) ./bin/$@
 
 bin/gotestsum-$(GOTESTSUM_VERSION):
 	@ $(MAKE) bin/gotestsum
@@ -176,7 +176,7 @@ bin/gotestsum:
 
 # --- grpcurl ----------------------------------------------------------------------------
 grpcurl: bin/grpcurl-$(GRPCURL_VERSION)
-	@ ln -sf ./bin/grpcurl-$(GRPCURL_VERSION) ./bin/$@
+	@ ln -sf grpcurl-$(GRPCURL_VERSION) ./bin/$@
 
 bin/grpcurl-$(GRPCURL_VERSION):
 	@ $(MAKE) bin/grpcurl
@@ -191,7 +191,7 @@ bin/grpcurl:
 
 # --- mockery ----------------------------------------------------------------------------
 mockery: bin/mockery-$(MOCKERY_VERSION)
-	@ ln -sf ./bin/mockery-$(MOCKERY_VERSION) ./bin/$@
+	@ ln -sf mockery-$(MOCKERY_VERSION) ./bin/$@
 
 bin/mockery-$(MOCKERY_VERSION):
 	@ $(MAKE) bin/mockery
@@ -207,7 +207,7 @@ bin/mockery:
 
 # --- protoc -----------------------------------------------------------------------------
 protoc: bin/protoc-$(PROTOC_VERSION)
-	@ ln -sf ./bin/protoc-$(PROTOC_VERSION) ./bin/$@
+	@ ln -sf protoc-$(PROTOC_VERSION) ./bin/$@
 
 bin/protoc-$(PROTOC_VERSION):
 	@ $(MAKE) bin/protoc
@@ -228,7 +228,7 @@ bin/protoc:
 
 # --- protoc-gen-go ----------------------------------------------------------------------
 protoc-gen-go: bin/protoc-gen-go-$(PROTOC_GEN_GO_VERSION)
-	@ ln -sf ./bin/protoc-gen-go-$(PROTOC_GEN_GO_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-go-$(PROTOC_GEN_GO_VERSION) ./bin/$@
 
 bin/protoc-gen-go-$(PROTOC_GEN_GO_VERSION):
 	@ $(MAKE) bin/protoc-gen-go
@@ -244,7 +244,7 @@ bin/protoc-gen-go:
 
 # --- protoc-gen-go-grpc -----------------------------------------------------------------
 protoc-gen-go-grpc: bin/protoc-gen-go-grpc-$(PROTOC_GET_GO_GRPC_VERSION)
-	@ ln -sf ./bin/protoc-gen-go-grpc-$(PROTOC_GET_GO_GRPC_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-go-grpc-$(PROTOC_GET_GO_GRPC_VERSION) ./bin/$@
 
 bin/protoc-gen-go-grpc-$(PROTOC_GET_GO_GRPC_VERSION):
 	@ $(MAKE) bin/protoc-gen-go-grpc
@@ -260,7 +260,7 @@ bin/protoc-gen-go-grpc:
 
 # --- protoc-gen-jsonschema --------------------------------------------------------------
 protoc-gen-jsonschema: bin/protoc-gen-jsonschema-$(PROTOCS_GEN_JSONSCHEMA_VERSION)
-	@ ln -sf ./bin/protoc-gen-jsonschema-$(PROTOCS_GEN_JSONSCHEMA_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-jsonschema-$(PROTOCS_GEN_JSONSCHEMA_VERSION) ./bin/$@
 
 bin/protoc-gen-jsonschema-$(PROTOCS_GEN_JSONSCHEMA_VERSION):
 	@ $(MAKE) bin/protoc-gen-jsonschema
@@ -276,7 +276,7 @@ bin/protoc-gen-jsonschema:
 
 # --- protoc-gen-bq-schema ---------------------------------------------------------------
 protoc-gen-bq-schema: bin/protoc-gen-bq-schema-$(PROTOC-GEN-BQ-SCHEMA_VERSION)
-	@ ln -sf ./bin/protoc-gen-bq-schema-$(PROTOC-GEN-BQ-SCHEMA_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-bq-schema-$(PROTOC-GEN-BQ-SCHEMA_VERSION) ./bin/$@
 
 bin/protoc-gen-bq-schema-$(PROTOC-GEN-BQ-SCHEMA_VERSION):
 	@ $(MAKE) bin/protoc-gen-bq-schema
@@ -291,7 +291,7 @@ bin/protoc-gen-bq-schema:
 
 # --- protoc-gen-micro -------------------------------------------------------------------
 protoc-gen-micro: bin/protoc-gen-micro-$(PROTOC_GEN_MICRO_VERSION)
-	@ ln -sf ./bin/protoc-gen-micro-$(PROTOC_GEN_MICRO_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-micro-$(PROTOC_GEN_MICRO_VERSION) ./bin/$@
 
 bin/protoc-gen-micro-$(PROTOC_GEN_MICRO_VERSION):
 	@ $(MAKE) bin/protoc-gen-micro
@@ -308,7 +308,7 @@ bin/protoc-gen-micro:
 
 # --- protoc-gen-openapi -----------------------------------------------------------------
 protoc-gen-openapi: bin/protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION)
-	@ ln -sf ./bin/protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION) ./bin/$@
 
 bin/protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION):
 	@ $(MAKE) bin/protoc-gen-openapi
@@ -325,7 +325,7 @@ bin/protoc-gen-openapi:
 
 # --- bin/protoc-gen-validate ------------------------------------------------------------
 protoc-gen-validate: bin/protoc-gen-validate-$(PROTOC_GEN_VALIDATE_VERSION)
-	@ ln -sf ./bin/protoc-gen-validate-$(PROTOC_GEN_VALIDATE_VERSION) ./bin/$@
+	@ ln -sf protoc-gen-validate-$(PROTOC_GEN_VALIDATE_VERSION) ./bin/$@
 
 bin/protoc-gen-validate-$(PROTOC_GEN_VALIDATE_VERSION):
 	@ $(MAKE) bin/protoc-gen-validate
@@ -348,7 +348,8 @@ bin/protoc-gen-validate:
 
 # --- tparse -----------------------------------------------------------------------------
 tparse: bin/tparse-$(TPARSE_VERSION)
-	@ ln -sf ./bin/tparse-$(TPARSE_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf "tparse-$(TPARSE_VERSION)" ./bin/$@
 
 bin/tparse-$(TPARSE_VERSION):
 	@ $(MAKE) bin/tparse
@@ -364,7 +365,8 @@ bin/tparse:
 
 # --- wire -------------------------------------------------------------------------------
 wire: bin/wire-$(WIRE_VERSION)
-	@ ln -sf ./bin/wire-$(WIRE_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf wire-$(WIRE_VERSION) ./bin/$@
 
 bin/wire-$(WIRE_VERSION):
 	@ $(MAKE) bin/wire
@@ -380,7 +382,8 @@ bin/wire:
 
 # --- migrate ----------------------------------------------------------------------------
 migrate: bin/migrate-$(MIGRATE_VERSION)
-	@ ln -sf ./bin/migrate-$(MIGRATE_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf migrate-$(MIGRATE_VERSION) ./bin/$@
 
 bin/migrate-$(MIGRATE_VERSION):
 	@ $(MAKE) bin/migrate-$(MIGRATE_VERSION)
@@ -396,7 +399,8 @@ bin/migrate:
 
 # --- tern -------------------------------------------------------------------------------
 tern: bin/tern-$(TERN_VERSION)
-	@ ln -sf ./bin/tern-$(TERN_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf tern-$(TERN_VERSION) ./bin/$@
 
 bin/tern-$(TERN_VERSION):
 	@ $(MAKE) bin/tern
@@ -411,7 +415,8 @@ bin/tern:
 
 # --- ali --------------------------------------------------------------------------------
 ali: bin/ali-$(ALI_VERSION)
-	@ ln -sf ./bin/ali-$(ALI_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf "ali-$(ALI_VERSION)" "bin/$@"
 
 bin/ali-$(ALI_VERSION):
 	@ $(MAKE) bin/ali
@@ -425,27 +430,12 @@ bin/ali:
 	$(call install/github/release/tgz,$@)
 
 
-# --- yq --------------------------------------------------------------------------------
-yq: bin/yq-$(YQ_VERSION)
-	@ ln -sf ./bin/yq-$(YQ_VERSION) ./bin/$@
-
-bin/yq-$(YQ_VERSION):
-	$(MAKE) bin/yq
-
-.PHONY: bin/yq
-bin/yq: GITHUB_VERSION=v$(YQ_VERSION)
-bin/yq: GITHUB_BIN=yq_darwin_amd64
-bin/yq:
-	curl -Ls $(shell printf "https://github.com/mikefarah/yq/releases/download/%s/%s" \
-			$(GITHUB_VERSION) \
-			$(shell printf $(GITHUB_BIN)  $(subst v,,$(GITHUB_VERSION))) \
-		) > ./bin/yq-$(YQ_VERSION)
-
 
 
 # --- bin/velero -------------------------------------------------------------------------
 velero: bin/velero-$(VELERO_VERSION)
-	@ ln -sf ./bin/velero-$(VALERO_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf velero-$(VALERO_VERSION) ./bin/$@
 
 bin/velero-$(VELERO_VERSION):
 	@ $(MAKE) bin/velero
@@ -461,12 +451,12 @@ bin/velero:
 
 # --- bin/minikube -----------------------------------------------------------------------
 minikube: bin/minikube-$(MINIKUBE_VERSION)
-	@ ln -sf ./bin/minikube-$(MINIKUBE_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf minikube-$(MINIKUBE_VERSION) ./bin/$@
 
 
 bin/minikube-$(MINIKUBE_VERSION):
 	@ $(MAKE) bin/minikube
-
 
 .PHONY: bin/minikube
 bin/minikube: GITHUB_REPOSITORY=kubernetes/minikube
@@ -479,7 +469,8 @@ bin/minikube:
 
 # --- bin/helm ---------------------------------------------------------------------------
 helm: bin/helm-$(HELM_VERSION)
-	@ ln -sf ./bin/helm-$(HELM_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf helm-$(HELM_VERSION) ./bin/$@
 
 
 bin/helm-$(HELM_VERSION):
@@ -495,7 +486,8 @@ bin/helm:
 
 # --- bin/kubectl ------------------------------------------------------------------------
 kubectl: bin/kubectl-$(KUBECTL_VERSION)
-	@ ln -sf ./bin/kubectl-$(KUBECTL_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf kubectl-$(KUBECTL_VERSION) ./bin/$@
 
 
 bin/kubectl-$(KUBECTL_VERSION):
@@ -511,7 +503,8 @@ bin/kubectl:
 
 # --- bin/octant -------------------------------------------------------------------------
 octant: bin/octant-$(OCTANT_VERSION)
-	@ ln -sf ./bin/octant-$(OCTANT_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf octant-$(OCTANT_VERSION) ./bin/$@
 
 bin/octant-$(OCTANT_VERSION):
 	@ $(MAKE) bin/octant
@@ -526,7 +519,8 @@ bin/octant:
 
 # --- bin/terraform ------------------------------------------------------------
 terraform: bin/terraform-$(TERAFORM_VERSION)
-	@ ln -sf ./bin/terraform-$(TERAFORM_VERSION) ./bin/$@
+	@ cd "bin"
+	@ ln -sf terraform-$(TERAFORM_VERSION) ./bin/$@
 
 bin/terraform-$(TERAFORM_VERSION):
 	@ $(MAKE) bin/terraform
