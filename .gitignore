@@ -1,3 +1,6 @@
 .vim/bundle
 .php-cs/php*
 *.ipynb_checkpoints*
+
+bin/*
+!bin/.keep

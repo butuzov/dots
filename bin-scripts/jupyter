@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+navigate() {
+    sleep 5
+    open "http://localhost:8888"
+}
+
+jupyter_subcmd() {
+
+    local JUPYTER_BIN="docker run --rm -p 8888:8888 -v $(pwd):/usr/share/ butuzov/jupyter:latest"
+
+     navigate &
+        $JUPYTER_BIN
+}
+
+
+jupyter_subcmd $@
