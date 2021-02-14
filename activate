@@ -62,7 +62,6 @@ MADE_PATH=".php-cs/made.ua/"
 phpcs --config-set installed_paths "${NWD}/${WPCS_PATH},${NWD}/${PHPCSC_PATH},${NWD}/${MADE_PATH}" | awk '{print "\t" $0}'
 # > /dev/null 2>&1
 
-
 # node.js & Tooling
 header "# node.js"
 brew install node@12 > /dev/null 2>&1
@@ -77,8 +76,12 @@ install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
 vim -e -c ":PluginInstall" -c ":q" -c ":q"
 
+header "# Tooling"
+make install
+
 header "# AWS Cloud"
 aws configure
+
 
 header "# Docker"
 docker login
@@ -91,7 +94,7 @@ header "# mac options"
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide -bool false
 
 # Save screenshots to the desktop
 # defaults write com.apple.screencapture location -string “$HOME/Desktop”

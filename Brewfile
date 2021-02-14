@@ -21,7 +21,6 @@ tap "homebrew/cask-fonts"
     "gawk",
     "tree",
     "jq",
-    "yq",
     "bash-completion",
     "git",
     "git-lfs",
@@ -41,11 +40,8 @@ tap "homebrew/cask-fonts"
     "fortune",
 
     # DevOps - Kubernetes
-    "kubernetes-cli",
     "krew",
-    "helm",
     "clang-format",
-    "minikube",
     "istioctl",
     "skaffold",
 
@@ -74,7 +70,6 @@ tap "homebrew/cask-fonts"
     "yamllint",
 
     # Terraform
-    "terraform",
     "tflint",
     "terragrunt",
 
@@ -84,10 +79,8 @@ tap "homebrew/cask-fonts"
     "packer",
 
      # Golang
-    "golangci-lint",
     "hugo",
     "gotop",
-    "goose",
 
 ].each do |pkg|
     brew pkg
