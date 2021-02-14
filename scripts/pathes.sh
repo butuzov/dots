@@ -9,14 +9,14 @@ for CMD in "${GNUTILS[@]}"  ; do
   fi
 done
 
-
-if [[ $PATH != *$DOTS_PATH/bin* ]]; then
-    export PATH="$DOTS_PATH/bin-scripts:$PATH"
-fi
-
 if [[ $PATH != *$DOTS_PATH/bin* ]]; then
     export PATH="$DOTS_PATH/bin:$PATH"
 fi
+
+if [[ $PATH != *$DOTS_PATH/bin-scripts* ]]; then
+    export PATH="$DOTS_PATH/bin-scripts:$PATH"
+fi
+
 
 
 if [[ $PATH != *$HOME/bin* ]]; then
