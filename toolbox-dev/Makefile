@@ -19,10 +19,10 @@ endef
 
 define install/remote/release/tgz
 
-	curl -Ls $(ARCHIVE) | tar -zOxf - $(ARCHIVE_PATH) > \
+	@ curl -Ls $(ARCHIVE) | tar -zOxf - $(ARCHIVE_PATH) > \
 			./$(1)-$(call version,$(VERSION))
 
-	chmod +x ./$(1)-$(call version,$(VERSION))
+	@ chmod +x ./$(1)-$(call version,$(VERSION))
 
 endef
 

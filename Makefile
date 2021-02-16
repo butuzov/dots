@@ -69,8 +69,6 @@ install_tools: tern
 ALI_VERSION:=0.5.4
 install_tools: ali
 
-YQ_VERSION:=3.4.1
-install_tools: yq
 
 VELERO_VERSION:=1.5.3
 install_tools: velero
@@ -87,9 +85,8 @@ install_tools: kubectl
 OCTANT_VERSION:=0.16.3
 install_tools: octant
 
-TERAFORM_VERSION:=0.12.9
-install_tools: terraform
-
+TASK_VERSION:=3.2.2
+install_tools: task
 
 install: install_tools
 
@@ -467,6 +464,12 @@ bin/minikube:
 	$(call install/github/release/tgz,$@)
 
 
+# --- bin/yq -----------------------------------------------------------------------------
+
+YQ_VERSION=4.5.1
+yq: install_yq
+	echo "dont install it manually. just brew isntall yq@3"
+
 # --- bin/helm ---------------------------------------------------------------------------
 helm: bin/helm-$(HELM_VERSION)
 	@ cd "bin"
@@ -517,20 +520,19 @@ bin/octant: ARCHIVE_PATH=$(shell printf octant_%s_macOS-64bit/octant $(subst v,,
 bin/octant:
 	$(call install/github/release/tgz,$@)
 
-# --- bin/terraform ------------------------------------------------------------
-terraform: bin/terraform-$(TERAFORM_VERSION)
+
+# --- bin/task -------------------------------------------------------------------------
+task: bin/task-$(TASK_VERSION)
 	@ cd "bin"
-	@ ln -sf terraform-$(TERAFORM_VERSION) ./bin/$@
+	@ ln -sf task-$(TASK_VERSION) ./bin/$@
 
-bin/terraform-$(TERAFORM_VERSION):
-	@ $(MAKE) bin/terraform
+bin/task-$(TASK_VERSION):
+	@ $(MAKE) bin/task
 
-.PHONY: bin/terraform
-bin/terraform: GITHUB_REPOSITORY=hashicorp/terraform
-bin/terraform: GITHUB_PATH=terraform-%s
-bin/terraform: GITHUB_VERSION=v$(TERAFORM_VERSION)
-bin/terraform: GITHUB_ARCHIVE=v%s.tar.gz
-bin/terraform: ARCHIVE_PATH=teraform
-bin/terraform:
-	$(call install/github/release/go/build,$@)
-	@ rm -rf ./$(shell printf $(GITHUB_PATH) $(call version,$(GITHUB_VERSION)))
+.PHONY: bin/task
+bin/task: GITHUB_REPOSITORY=go-task/task
+bin/task: GITHUB_VERSION=v$(TASK_VERSION)
+bin/task: GITHUB_ARCHIVE=task_darwin_amd64.tar.gz
+bin/task: ARCHIVE_PATH=task
+bin/task:
+	$(call install/github/release/tgz,$@)

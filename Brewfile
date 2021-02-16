@@ -21,6 +21,8 @@ tap "homebrew/cask-fonts"
     "gawk",
     "tree",
     "jq",
+    "yq",
+    "tfenv",
     "bash-completion",
     "git",
     "git-lfs",
