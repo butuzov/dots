@@ -11,7 +11,7 @@ kubectl_subcmd() {
   fi
 
   case "$1" in
-    "ls") kubectl get pods ;;
+    "ls") kubectl get pods ${@:2} ;;
 
     *)
       ctx=$(kubectl config view | grep [c]urrent-context | awk '{print $2}' | sed 's/\"//g')
