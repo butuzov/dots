@@ -79,3 +79,6 @@
     insteadOf = "bitbucket:"
     insteadOf = "git://bitbucket.org"
     insteadOf = "git://bitbucket.org/"
+
+[remote "origin"]
+	prune = true
