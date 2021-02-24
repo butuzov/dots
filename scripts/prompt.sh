@@ -30,7 +30,7 @@ kube_ctx_check(){
         return 0;
     fi
 
-    CURRENT_CTX=$(kubectl config view | grep [c]urrent-context | awk '{print $2}' | sed 's/\"//g')
+    CURRENT_CTX="$(kubectl config view | grep [c]urrent-context | awk '{print $2}' | sed 's/\"//g')"
     if [[ ! -z $CURRENT_CTX ]]; then
         CURRENT_NS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
     else
@@ -38,7 +38,7 @@ kube_ctx_check(){
     fi
 
     if [[ ! -z $CURRENT_NS ]]; then
-        printf " ⎈ %s@%s " "$CURRENT_CTX" "$CURRENT_NS"
+        printf " ⎈ %s @ %s " "$CURRENT_CTX" "$CURRENT_NS"
     else
         printf " ⎈ %s " "$CURRENT_CTX"
     fi

@@ -45,6 +45,7 @@ export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RE
 # TODO: Make it faster
 # source "${DOTS_PATH}/scripts/complete.sh"             # auto complete/bash complete
 source "${DOTS_PATH}/bash/aliases.sh"                  # Main Alaises File
+source "${DOTS_PATH}/scripts/kubectl.sh"               # Kubectl
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 source "${DOTS_PATH}/scripts/python.sh"                # Python
 source "${DOTS_PATH}/scripts/go.sh"                    # Go
