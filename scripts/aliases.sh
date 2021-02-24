@@ -4,8 +4,6 @@ if [[ -f ~/.dropbox/info.json ]]; then
 fi
 
 alias .dots='code ~/.dotfiles'
-alias today='code ${DROPBOX}/today.md'
-alias notes='code ${DROPBOX}/Coding/todayilearned'
 
 alias dropbox="cd $DROPBOX"
 alias dp=dropbox

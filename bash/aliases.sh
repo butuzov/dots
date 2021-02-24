@@ -13,10 +13,15 @@ alias brew_update_all="brew bundle --file=Brewfile"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
 
-
+# Realod Config
+if [[ -f ~/.dropbox/info.json ]]; then
+    DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
+fi
 
 # Navigation
 alias desk="cd ~/Desktop"
+alias docs="cd ${DROPBOX}/Docs && jupyter"
+
 
 
 # Time and Date
