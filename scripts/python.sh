@@ -25,14 +25,7 @@ alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 # computers to run same code.
 export PYTHONDONTWRITEBYTECODE=true
 
-# Loading python version.
-for version in  3.{4,5,6,7,8}; do
-  PY_PATH="/Library/Frameworks/Python.framework/Versions/${version}/bin"
-  if [[ -d $PY_PATH ]] && [[ $PATH != "*$PY_PATH*" ]]; then
-    PATH="${PY_PATH}:${PATH}"
-  fi
-done
-export PATH
+
 
 
 # Ansible related.
