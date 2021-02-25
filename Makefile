@@ -27,6 +27,9 @@ install_tools: gotestsum
 GRPCURL_VERSION:=1.8.0
 install_tools: grpcurl
 
+GOSEC_VERSION:=2.6.1
+install_tools: gosec
+
 MOCKERY_VERSION:=2.5.1
 install_tools: mockery
 
@@ -184,6 +187,21 @@ bin/grpcurl: GITHUB_VERSION=v$(GRPCURL_VERSION)
 bin/grpcurl: GITHUB_ARCHIVE=grpcurl_%s_osx_x86_64.tar.gz
 bin/grpcurl: ARCHIVE_PATH=grpcurl
 bin/grpcurl:
+	$(call install/github/release/tgz,$@)
+
+# --- gosec ------------------------------------------------------------------------------
+gosec: bin/gosec-$(GOSEC_VERSION)
+	@ ln -sf gosec-$(GOSEC_VERSION) ./bin/$@
+
+bin/gosec-$(GOSEC_VERSION):
+	@ $(MAKE) bin/gosec
+
+.PHONY: bin/gosec
+bin/gosec: GITHUB_REPOSITORY=securego/gosec
+bin/gosec: GITHUB_VERSION=v$(GOSEC_VERSION)
+bin/gosec: GITHUB_ARCHIVE=gosec_%s_darwin_amd64.tar.gz
+bin/gosec: ARCHIVE_PATH=gosec
+bin/gosec:
 	$(call install/github/release/tgz,$@)
 
 # --- mockery ----------------------------------------------------------------------------
