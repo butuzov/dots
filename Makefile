@@ -9,6 +9,9 @@ version = $(or $(word 2,$(subst v, ,$1)),$(word 1,$(subst v, ,$1)))
 include toolbox-dev/Makefile
 
 # ========= Install Tools ============================================================== #
+ACT_VERSION:=0.2.20
+install_tools: act
+
 AIR_VERSION:=1.15.1
 install_tools: air
 
@@ -18,7 +21,7 @@ install_tools: evans
 DOCKER_SQUASH_VERSION:=0.2.0
 install_tools: docker-squash
 
-GOLANGCI-LINT_VERSION:=1.36.0
+GOLANGCI-LINT_VERSION:=1.38.0
 install_tools: golangci-lint
 
 GOTESTSUM_VERSION:=1.6.1
@@ -72,17 +75,16 @@ install_tools: tern
 ALI_VERSION:=0.5.4
 install_tools: ali
 
-
 VELERO_VERSION:=1.5.3
 install_tools: velero
 
-MINIKUBE_VERSION:=1.14.2
+MINIKUBE_VERSION:=1.17.1
 install_tools: minikube
 
 HELM_VERSION:=3.2.1
 install_tools: helm
 
-KUBECTL_VERSION:=1.14.10
+KUBECTL_VERSION:=1.18.2
 install_tools: kubectl
 
 OCTANT_VERSION:=0.16.3
@@ -94,6 +96,42 @@ install_tools: task
 install: install_tools
 
 # ========= Tools ====================================================================== #
+# --- chamber ----------------------------------------------------------------------------
+CHAMBER_VERSION:=2.9.1
+install_tools: chamber
+
+chamber: bin/chamber-$(CHAMBER_VERSION)
+	@ ln -sf chamber-$(CHAMBER_VERSION) ./bin/$@
+
+bin/chamber-$(CHAMBER_VERSION):
+	@ $(MAKE) bin/chamber
+
+.PHONY: bin/chamber
+bin/chamber: GITHUB=segmentio/chamber
+bin/chamber: VERSION=$(CHAMBER_VERSION)
+bin/chamber: ARCHIVE=chamber-v$(VERSION)-darwin-amd64
+bin/chamber: ARCHIVE_PATH=chamber
+bin/chamber:
+	@ printf "Install chamber... \n"
+	@ curl -Ls $(shell echo $(call github_url) | tr A-Z a-z) > $@ && chmod +x $@
+	@ echo "done."
+
+
+# --- act --------------------------------------------------------------------------------
+act: bin/act-$(ACT_VERSION)
+	@ ln -sf act-$(ACT_VERSION) ./bin/$@
+
+bin/act-$(ACT_VERSION):
+	@ $(MAKE) bin/act
+
+.PHONY: bin/act
+bin/act: GITHUB_REPOSITORY=nektos/act
+bin/act: GITHUB_VERSION=v$(ACT_VERSION)
+bin/act: GITHUB_ARCHIVE=act_Darwin_x86_64.tar.gz
+bin/act: ARCHIVE_PATH=act
+bin/act:
+	$(call install/github/release/tgz,$@)
+
 
 # --- air --------------------------------------------------------------------------------
 air: bin/air-$(AIR_VERSION)
@@ -401,7 +439,7 @@ migrate: bin/migrate-$(MIGRATE_VERSION)
 	@ ln -sf migrate-$(MIGRATE_VERSION) ./bin/$@
 
 bin/migrate-$(MIGRATE_VERSION):
-	@ $(MAKE) bin/migrate-$(MIGRATE_VERSION)
+	@ $(MAKE) bin/migrate
 
 .PHONY: bin/migrate
 bin/migrate: GITHUB_REPOSITORY=golang-migrate/migrate

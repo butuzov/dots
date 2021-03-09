@@ -5,6 +5,10 @@ define testname
 	@echo $(1)
 endef
 
+define github_url
+	https://github.com/$(GITHUB)/releases/download/v$(VERSION)/$(ARCHIVE)
+endef
+
 define install/github/release/tgz
 	curl -Ls \
 		$(shell printf "https://github.com/%s/releases/download/%s/%s" \
