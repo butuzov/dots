@@ -17,9 +17,9 @@ export LANG=en_US.UTF-8
 
 
 # iterm related
-echo -e "\033]6;1;bg;red;brightness;40\a" > /dev/null
+echo -e "\033]6;1;bg;red;brightness;60\a"   > /dev/null
 echo -e "\033]6;1;bg;green;brightness;40\a" > /dev/null
-echo -e "\033]6;1;bg;blue;brightness;40\a" > /dev/null
+echo -e "\033]6;1;bg;blue;brightness;40\a"  > /dev/null
 
 # Reload Config
 alias reload="exec ${SHELL} -l"
