@@ -2,8 +2,9 @@
 
 # vsc code runner for go files and running them with cmd+r
 
-runme_go(){
+run_co_code(){
     FILE="${1}"
+
     if [[ "${FILE}" =~ "_test.go" ]]; then
         cd "$(dirname "${FILE}")"
 
@@ -13,12 +14,12 @@ runme_go(){
 
         go test -v \
                 -timeout=30s \
-                -p=4 \
                 -count=1 \
-                -parallel=1 \
+                -parallel 4  \
+                -race \
                 -run "$TESTS"
 
-                # -race \
+
         exit $?
     fi
 
@@ -33,4 +34,5 @@ runme_go(){
     exit $?
 }
 
-runme_go $1
+run_co_code $1
+
