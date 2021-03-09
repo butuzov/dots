@@ -26,7 +26,7 @@ alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 export PYTHONDONTWRITEBYTECODE=true
 
 
-
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 # Ansible related.
 export ANSIBLE_NOCOWS=1
