@@ -8,10 +8,35 @@ navigate() {
 
 jupyter_subcmd() {
 
-    local JUPYTER_BIN="docker run --rm -p 8888:8888 -v $(pwd):/usr/share/ butuzov/jupyter:latest"
+    lang=$1
+    image=butuzov/jupyter
 
-     navigate &
-        $JUPYTER_BIN
+
+    # navigate &
+    # docker run --rm -p 8888:8888 -v $(pwd):/share $imag
+
+
+    case "$1" in
+        "ls")
+            docker images | grep butuzov/jupyter | awk '{print $1}'
+            return
+        ;;
+
+        *)
+
+            image=butuzov/jupyter
+
+            if [[ ! -z $1 ]]; then
+                image=$(printf "%s-%s" $image $lang)
+            fi
+
+
+            navigate &
+            docker run -it --rm -p 8888:8888 -v $(pwd):/share $image
+        ;;
+    esac
+
+
 }
 
 
