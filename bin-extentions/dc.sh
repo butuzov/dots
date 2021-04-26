@@ -5,7 +5,7 @@ docker_compose_subcmd() {
     else
         case "$1" in
             # mac issue require us to run it as .
-            *)   $(which docker-compose) "$@"
+            *)   $(which docker) compose "$@"
         esac
     fi
 }

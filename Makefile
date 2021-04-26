@@ -1,4 +1,4 @@
-export BIN   := $(PWD)/bin
+export BIN    := $(PWD)/bin
 export PATH   := $(BIN):$(PATH)
 export SHELL  := bash
 export OSTYPE := $(shell uname -s)
@@ -9,7 +9,7 @@ version = $(or $(word 2,$(subst v, ,$1)),$(word 1,$(subst v, ,$1)))
 include toolbox-dev/Makefile
 
 # ========= Install Tools ============================================================== #
-ACT_VERSION:=0.2.20
+ACT_VERSION:=0.2.21
 install_tools: act
 
 AIR_VERSION:=1.15.1
@@ -21,7 +21,7 @@ install_tools: evans
 DOCKER_SQUASH_VERSION:=0.2.0
 install_tools: docker-squash
 
-GOLANGCI-LINT_VERSION:=1.38.0
+GOLANGCI-LINT_VERSION:=1.39.0
 install_tools: golangci-lint
 
 GOTESTSUM_VERSION:=1.6.1
@@ -29,6 +29,9 @@ install_tools: gotestsum
 
 GRPCURL_VERSION:=1.8.0
 install_tools: grpcurl
+
+GOCRITIC_VERSION:=0.5.5
+install_tools: gocritic
 
 GOSEC_VERSION:=2.6.1
 install_tools: gosec
@@ -359,6 +362,21 @@ bin/protoc-gen-micro:
 	$(call install/github/release/go/get/ver,$@)
 
 
+# --- gocritic --------- -----------------------------------------------------------------
+gocritic: bin/gocritic-$(GOCRITIC_VERSION)
+	@ ln -sf gocritic-$(GOCRITIC_VERSION) ./bin/$@
+
+bin/gocritic-$(GOCRITIC_VERSION):
+	@ $(MAKE) bin/gocritic
+
+.PHONY: bin/go-critic
+bin/gocritic: GITHUB_REPOSITORY=go-critic/go-critic
+bin/gocritic: GITHUB_PATH=cmd/gocritic
+bin/gocritic: BINARY_NAME=gocritic
+bin/gocritic: GITHUB_VERSION=$(GOCRITIC_VERSION)
+bin/gocritic:
+	$(call install/github/release/go/get,$@)
+
 # --- protoc-gen-openapi -----------------------------------------------------------------
 protoc-gen-openapi: bin/protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION)
 	@ ln -sf protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION) ./bin/$@
@@ -481,8 +499,6 @@ bin/ali: GITHUB_ARCHIVE=ali_%s_darwin_amd64.tar.gz
 bin/ali: ARCHIVE_PATH=ali
 bin/ali:
 	$(call install/github/release/tgz,$@)
-
-
 
 
 # --- bin/velero -------------------------------------------------------------------------

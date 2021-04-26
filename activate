@@ -42,6 +42,7 @@ python3 -m pip list | awk 'NR>2 {print "\t" $0}'
 header "# Go"
 brew install go  > /dev/null 2>&1
 message 2 "$( printf "Go Installed: %s " "$(go version)" )"
+install_dot .golangci.yaml
 
 
 # PHP & Tooling
@@ -51,15 +52,15 @@ message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
 brew bundle install --file=Brewfile.php-tools | awk '{print "\t" $0}'
 # PHP Compatibility Standards
 PHPCSC_GIT="https://github.com/wimg/PHPCompatibility"
-PHPCSC_PATH=".php-cs/php_compatibility"
+export PHPCSC_PATH="$(pwd)/.php-cs/php_compatibility"
 install_git_repository "${PHPCSC_GIT}" "${PHPCSC_PATH}" && checkout_last_release "${PHPCSC_PATH}"
 # WordPress Code Standards
 WPCS_GIT="https://github.com/WordPress/WordPress-Coding-Standards"
-WPCS_PATH=".php-cs/php_wp_cs"
+export WPCS_PATH="$(pwd)/php-cs/php_wp_cs"
 install_git_repository "${WPCS_GIT}" "${WPCS_PATH}" && checkout_last_release "${WPCS_PATH}"
 # custom wp dev rules
-MADE_PATH=".php-cs/made.ua/"
-phpcs --config-set installed_paths "${NWD}/${WPCS_PATH},${NWD}/${PHPCSC_PATH},${NWD}/${MADE_PATH}" | awk '{print "\t" $0}'
+export MADE_PATH="$(pwd)/php-cs/made.ua/"
+phpcs --config-set installed_paths "${NWD}/${WPCS_PATH},${NWD}/${MADE_PATH}" | awk '{print "\t" $0}'
 # > /dev/null 2>&1
 
 # node.js & Tooling

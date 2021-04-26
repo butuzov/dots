@@ -12,6 +12,8 @@ kubectl_subcmd() {
 
   case "$1" in
     "ls") kubectl get pods ${@:2} ;;
+    "l") kubectl logs -f ${@:2} ;;
+    "clusters") find ~/.kube -maxdepth 1 -type f -ls;;
 
     *)
       ctx=$(kubectl config view | grep [c]urrent-context | awk '{print $2}' | sed 's/\"//g')

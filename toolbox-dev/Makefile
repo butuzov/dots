@@ -58,7 +58,10 @@ endef
 # todo: better way to install bins and symlink them later.
 define install/github/release/go/get/ver
 
-
+	echo $(shell printf "github.com/%s/v%s/%s" \
+			$(GITHUB_REPOSITORY) \
+			$(GO_PACKAGE_VERSION) \
+			$(GITHUB_PATH) ); \
 	@ \
 	GOBIN=$(BIN) \
 	GO111MODULE=on \

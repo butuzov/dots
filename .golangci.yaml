@@ -1,0 +1,74 @@
+# This file contains all available configuration options
+# with their default values.
+# options for analysis running
+run:
+  issues-exit-code: 0
+  # timeout for analysis, e.g. 30s, 5m, default is 1m
+  timeout: 1m
+
+
+# output configuration options
+output:
+  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
+  format: colored-line-number
+
+  # print lines of code with issue, default is true
+  print-issued-lines: true
+
+  # print linter name in the end of issue text, default is true
+  print-linter-name: true
+
+  # make issues output unique by line, default is true
+  uniq-by-line: true
+
+  # add a prefix to the output file references; default is no prefix
+  path-prefix: ""
+
+  # sorts results by: filepath, line and column
+  sort-results: false
+
+
+# Output configuration options
+output:
+  format: line-number
+  print-issued-lines: false
+  print-linter-name: true
+  uniq-by-line: false
+  sort-results: true
+
+issues:
+
+severity:
+  rules:
+  - linters:
+    - exhaustivestruct
+    - gomnd
+    severity: info
+
+linters:
+  enable-all: true
+
+  disable:
+  - gochecknoglobals # i know, but sometimes its required.
+  - deadcode         # covered by `unused` and `varcheck`
+  - testpackage      # opinionated
+  - paralleltest     # covered by scopelint and tparalell
+
+linters-settings:
+
+  gocritic:
+    enabled-tags: [  experimental, opinionated, performance, style ]
+
+  forbidigo:
+    forbid: [ "ginkgo\\.F.* " ]
+    exclude_godoc_examples: true
+
+  lll: { "line-length": 120, "tabwidth": 1 }
+
+  maligned: {"suggest-new": true}
+
+  nolintlint:
+    allow-leading-space: false
+    allow-unused: true
+    require-explanation: false
+    require-specific: false
