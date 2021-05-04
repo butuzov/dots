@@ -11,4 +11,4 @@ tar_subcmd() {
     fi
 }
 
-alias tar="tar_subcmd"
+tar_subcmd $@

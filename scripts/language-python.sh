@@ -20,13 +20,22 @@ pip_cleanup() {
 alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 
 # Python
+for version in  3.{7,8,9}; do
+  PY_PATH="/usr/local/opt/python@${version}/bin"
+  if [[ -d $PY_PATH ]] && [[ $PATH != "*$PY_PATH*" ]]; then
+    PATH="/usr/local/opt/python@${version}/bin:${PATH}"
+  fi
+done
+export PATH
+
+# echo 'export PATH="/usr/local/opt/python@3.8/bin:$PATH"'
 
 # Do not Write pyc files, not optimized but safe for shared
 # computers to run same code.
 export PYTHONDONTWRITEBYTECODE=true
 
 
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 # Ansible related.
 export ANSIBLE_NOCOWS=1

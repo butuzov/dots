@@ -3,4 +3,9 @@
 *.ipynb_checkpoints*
 
 bin/*
-!bin/.keep
+!bin/extensions
+!bin/scripts
+!bin/sources
+
+
+.DS_Store

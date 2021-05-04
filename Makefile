@@ -6,7 +6,7 @@ export OSTYPE := $(shell uname -s)
 # Include functionality
 version = $(or $(word 2,$(subst v, ,$1)),$(word 1,$(subst v, ,$1)))
 
-include toolbox-dev/Makefile
+include scripts/Makefile/Makefile
 
 # ========= Install Tools ============================================================== #
 ACT_VERSION:=0.2.21
@@ -18,25 +18,22 @@ install_tools: air
 EVANS_VERSION:=0.9.2
 install_tools: evans
 
-DOCKER_SQUASH_VERSION:=0.2.0
-install_tools: docker-squash
+# DOCKER_SQUASH_VERSION:=0.2.0
+# install_tools: docker-squash
 
 GOLANGCI-LINT_VERSION:=1.39.0
 install_tools: golangci-lint
 
-GOTESTSUM_VERSION:=1.6.1
+GOTESTSUM_VERSION:=1.6.4
 install_tools: gotestsum
 
 GRPCURL_VERSION:=1.8.0
 install_tools: grpcurl
 
-GOCRITIC_VERSION:=0.5.5
-install_tools: gocritic
+# GOSEC_VERSION:=2.6.1
+# install_tools: gosec
 
-GOSEC_VERSION:=2.6.1
-install_tools: gosec
-
-MOCKERY_VERSION:=2.5.1
+MOCKERY_VERSION:=2.7.4
 install_tools: mockery
 
 PROTOC_VERSION:=3.14.0
@@ -48,26 +45,26 @@ install_tools: protoc-gen-go
 PROTOC_GET_GO_GRPC_VERSION:=1.1.0
 install_tools: protoc-gen-go-grpc
 
-# PROTOC-GEN-BQ-SCHEMA_VERSION:=1.0
-# install_tools: protoc-gen-bq-schema
+# # PROTOC-GEN-BQ-SCHEMA_VERSION:=1.0
+# # install_tools: protoc-gen-bq-schema
 
-PROTOCS_GEN_JSONSCHEMA_VERSION:=0.9.7
-install_tools: protoc-gen-jsonschema
+# PROTOCS_GEN_JSONSCHEMA_VERSION:=0.9.7
+# install_tools: protoc-gen-jsonschema
 
-PROTOC_GEN_MICRO_VERSION:=3.0.4
-install_tools: protoc-gen-micro
+# PROTOC_GEN_MICRO_VERSION:=3.0.4
+# install_tools: protoc-gen-micro
 
-PROTOC_GEN_OPENAPI_VERSION:=3.0.4
-install_tools: protoc-gen-openapi
+# PROTOC_GEN_OPENAPI_VERSION:=3.0.4
+# install_tools: protoc-gen-openapi
 
-PROTOC_GEN_VALIDATE_VERSION:=0.4.1
-install_tools: protoc-gen-validate
+# PROTOC_GEN_VALIDATE_VERSION:=0.4.1
+# install_tools: protoc-gen-validate
 
 TPARSE_VERSION:=0.8.3
 install_tools: tparse
 
-WIRE_VERSION:=0.5.0
-install_tools: wire
+# WIRE_VERSION:=0.5.0
+# install_tools: wire
 
 MIGRATE_VERSION:=4.14.1
 install_tools: migrate
@@ -78,20 +75,20 @@ install_tools: tern
 ALI_VERSION:=0.5.4
 install_tools: ali
 
-VELERO_VERSION:=1.5.3
-install_tools: velero
+# VELERO_VERSION:=1.5.3
+# install_tools: velero
 
-MINIKUBE_VERSION:=1.17.1
-install_tools: minikube
+# MINIKUBE_VERSION:=1.17.1
+# install_tools: minikube
 
-HELM_VERSION:=3.2.1
-install_tools: helm
+# HELM_VERSION:=3.2.1
+# install_tools: helm
 
-KUBECTL_VERSION:=1.18.2
-install_tools: kubectl
+# KUBECTL_VERSION:=1.18.2
+# install_tools: kubectl
 
-OCTANT_VERSION:=0.16.3
-install_tools: octant
+# OCTANT_VERSION:=0.16.3
+# install_tools: octant
 
 TASK_VERSION:=3.2.2
 install_tools: task
@@ -100,8 +97,8 @@ install: install_tools
 
 # ========= Tools ====================================================================== #
 # --- chamber ----------------------------------------------------------------------------
-CHAMBER_VERSION:=2.9.1
-install_tools: chamber
+# CHAMBER_VERSION:=2.9.1
+# install_tools: chamber
 
 chamber: bin/chamber-$(CHAMBER_VERSION)
 	@ ln -sf chamber-$(CHAMBER_VERSION) ./bin/$@
@@ -196,8 +193,6 @@ bin/golangci-lint: GITHUB_ARCHIVE="golangci-lint-%s-darwin-amd64.tar.gz"
 bin/golangci-lint: ARCHIVE_PATH=$(shell printf golangci-lint-%s-darwin-amd64/golangci-lint $(subst v,,$(GITHUB_VERSION)))
 bin/golangci-lint:
 	$(call install/github/release/tgz,$@)
-
-
 
 
 # --- gotestsum --------------------------------------------------------------------------

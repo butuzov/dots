@@ -10,4 +10,4 @@ docker_compose_subcmd() {
     fi
 }
 
-alias dc="docker_compose_subcmd"
+docker_compose_subcmd $@

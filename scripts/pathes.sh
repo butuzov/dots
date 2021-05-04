@@ -13,10 +13,9 @@ if [[ $PATH != *$DOTS_PATH/bin* ]]; then
     export PATH="$DOTS_PATH/bin:$PATH"
 fi
 
-if [[ $PATH != *$DOTS_PATH/bin-scripts* ]]; then
-    export PATH="$DOTS_PATH/bin-scripts:$PATH"
+if [[ $PATH != *$DOTS_PATH/bin/scripts* ]]; then
+    export PATH="$DOTS_PATH/bin/scripts:$PATH"
 fi
-
 
 
 if [[ $PATH != *$HOME/bin* ]]; then
@@ -25,9 +24,15 @@ fi
 
 
 # Added to remove personal (sub projects to be hardcoded)
-if [[ -d "${DOTS_PATH}/bin-extentions" ]]; then
-    for script in $(find "${DOTS_PATH}/bin-extentions" -type f -name "*.sh")
-    do source $script
+if [[ -d "${DOTS_PATH}/bin/sources" ]]; then
+    for script in $(find "${DOTS_PATH}/bin/sources" -type f -name "*.sh")
+      do source $script
+    done
+fi
+
+if [[ -d "${DOTS_PATH}/bin/extensions" ]]; then
+    for script in $(find "${DOTS_PATH}/bin/extensions" -type f -name "*.sh")
+      do source $script
     done
 fi
 

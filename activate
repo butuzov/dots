@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-source "scripts/activate.sh"
-
+source "scripts/activate-funcs.sh"
 
 ISBREW=$(which brew)
 PAD=$(padding 0)
@@ -9,11 +8,11 @@ PAD=$(padding 0)
 # Brew Install Url
 BREW_URL="https://raw.githubusercontent.com/Homebrew/install/master/install"
 
-
 ### Brew & Installation
 header "# Brew"
 install_brew $1
-brew bundle --file=Brewfile
+brew bundle --file=install/Brewfile
+
 
 NWD=$(dirname $(realpath $0))
 DOTS_PATH=$NWD
@@ -27,46 +26,32 @@ install_dot .gitignore_global
 install_dot .gitattributes
 install_dot .editorconfig
 
-# Python & Tooling
-header "# Python"
-brew install python3 > /dev/null 2>&1
-message 2 "$( printf "Python Installed: %s " "$(python3 -V)" )"
-message 2 "Python Packages Installation..."
-python3 -m pip install --upgrade -q pip
-python3 -m pip install --upgrade -q -r requirments.txt
-message 2 "Python Packages Installated:"
-python3 -m pip list | awk 'NR>2 {print "\t" $0}'
-
 
 # Go & Tooling
 header "# Go"
-brew install go  > /dev/null 2>&1
-message 2 "$( printf "Go Installed: %s " "$(go version)" )"
+if [[ ! -d "$HOME/.gvm/" ]]; then
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+fi
+gvm install go1.13 --binary
+gvm install go1.14 --binary
+gvm install go1.15 --binary
+gvm install go1.16 --binary
+gvm use go1.16 --default
+
 install_dot .golangci.yaml
 
+header "# Python"
+brew install python@3.7
+brew install python@3.8
+brew install python@3.9
+
+python3 -m pip install -q pip==21.0.1
+python3 -m pip install --upgrade -q -r install/requirments.txt
 
 # PHP & Tooling
 header "# PHP"
-brew install php  > /dev/null 2>&1
+brew install php@7.4
 message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
-brew bundle install --file=Brewfile.php-tools | awk '{print "\t" $0}'
-# PHP Compatibility Standards
-PHPCSC_GIT="https://github.com/wimg/PHPCompatibility"
-export PHPCSC_PATH="$(pwd)/.php-cs/php_compatibility"
-install_git_repository "${PHPCSC_GIT}" "${PHPCSC_PATH}" && checkout_last_release "${PHPCSC_PATH}"
-# WordPress Code Standards
-WPCS_GIT="https://github.com/WordPress/WordPress-Coding-Standards"
-export WPCS_PATH="$(pwd)/php-cs/php_wp_cs"
-install_git_repository "${WPCS_GIT}" "${WPCS_PATH}" && checkout_last_release "${WPCS_PATH}"
-# custom wp dev rules
-export MADE_PATH="$(pwd)/php-cs/made.ua/"
-phpcs --config-set installed_paths "${NWD}/${WPCS_PATH},${NWD}/${MADE_PATH}" | awk '{print "\t" $0}'
-# > /dev/null 2>&1
-
-# node.js & Tooling
-header "# node.js"
-brew install node@12 > /dev/null 2>&1
-message 2 "$( printf "installed: %s " "$(node -v)" )"
 
 
 # vim settings & initial Vundle.vim
@@ -77,36 +62,5 @@ install_dot .vimrc
 install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
 vim -e -c ":PluginInstall" -c ":q" -c ":q"
 
-header "# Tooling"
-make install
-
-header "# AWS Cloud"
-aws configure
-
-
-header "# Docker"
-docker login
-
-# trmux config
+# tmux
 install_dot .tmux.conf
-
-header "# mac options"
-# Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool false
-
-# Save screenshots to the desktop
-# defaults write com.apple.screencapture location -string “$HOME/Desktop”
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-# defaults write com.apple.screencapture type -string “PNG”
-
-# Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-
-# Disable the sound effects on boot
-# sudo nvram SystemAudioVolume=” “
-
-printf "The End!\n"

@@ -1,4 +1,9 @@
 
+# allows to have git or/and kube refrence in ps
+# on and off
+# ctk git on/off
+# ctk kube on/off
+
 ctx() {
     case "$1" in
         "git")    git_ctx  ;;
