@@ -6,28 +6,6 @@ run:
   # timeout for analysis, e.g. 30s, 5m, default is 1m
   timeout: 1m
 
-
-# output configuration options
-output:
-  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
-  format: colored-line-number
-
-  # print lines of code with issue, default is true
-  print-issued-lines: true
-
-  # print linter name in the end of issue text, default is true
-  print-linter-name: true
-
-  # make issues output unique by line, default is true
-  uniq-by-line: true
-
-  # add a prefix to the output file references; default is no prefix
-  path-prefix: ""
-
-  # sorts results by: filepath, line and column
-  sort-results: false
-
-
 # Output configuration options
 output:
   format: line-number
@@ -39,6 +17,9 @@ output:
 issues:
 
 severity:
+  default-severity: error
+  case-sensitive: false
+
   rules:
   - linters:
     - exhaustivestruct
@@ -46,7 +27,7 @@ severity:
     severity: info
 
 linters:
-  enable-all: true
+  # enable-all: true
 
   disable:
   - gochecknoglobals # i know, but sometimes its required.
