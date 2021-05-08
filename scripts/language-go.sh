@@ -13,5 +13,5 @@ export GOPRIVATE=""
 
 
 # default go
-export GOPATH="$HOME/.gvm/pkgsets/go1.16/global"
-export GOROOT="$HOME/.gvm/gos/go1.16"
+export GOPATH="$HOME/.gvm/pkgsets/go1.16.4/global"
+export GOROOT="$HOME/.gvm/gos/go1.16.4"
