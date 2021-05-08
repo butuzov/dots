@@ -1,6 +1,7 @@
 # adds additional two commands
 # - `docker rmif` # (removes stoped containers)
 # - `docker rmsc` # (removes failed builds)
+
 docker_subcmd() {
 
     cmd=/usr/local/bin/docker
@@ -10,16 +11,16 @@ docker_subcmd() {
     else
         case "$1" in
             # removes all containers
-            "rma")      $cmd images -qa  | xargs -L1 docker rmi;;
+            "rma") $cmd images -qa  | xargs -L1 docker rmi;;
 
             # removes stoped containers
-            "rmsc")     cmd ps -q -f "status=exited" | xargs -L1 docker rm;;
+            "rmsc")  $cmd ps -q -f "status=exited" | xargs -L1 docker rm;;
 
             # removes failed builds
-            "rmif")     cmd images -q -f "dangling=true" | xargs -L1 docker rmi ;;
+            "rmif") $cmd images -q -f "dangling=true" | xargs -L1 docker rmi ;;
 
             # mac issue require us to run it as .
-            *)   $(which docker) "$@"
+            *) $cmd "$@"
         esac
     fi
 }
