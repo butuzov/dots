@@ -21,7 +21,7 @@ install_tools: evans
 # DOCKER_SQUASH_VERSION:=0.2.0
 # install_tools: docker-squash
 
-GOLANGCI-LINT_VERSION:=1.39.0
+GOLANGCI-LINT_VERSION:=1.40.0
 install_tools: golangci-lint
 
 GOTESTSUM_VERSION:=1.6.4
