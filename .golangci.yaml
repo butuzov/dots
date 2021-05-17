@@ -1,39 +1,52 @@
-# This file contains all available configuration options
-# with their default values.
-# options for analysis running
+
+# Note: Run -----------------------------------------------------------------------------------------------------------
+
 run:
   issues-exit-code: 0
-  # timeout for analysis, e.g. 30s, 5m, default is 1m
   timeout: 1m
+  modules-download-mode: mod
 
-# Output configuration options
+  skip-dirs-use-default: false
+  skip-files:
+    - ".*\\.weirdfile\\.go$"
+    - lib/bad.go
+
+  allow-parallel-runners: true
+
+# Note: Output --------------------------------------------------------------------------------------------------------
+
 output:
-  format: line-number
+  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
+  format: colored-line-number
+
+  # print lines of code with issue, default is true
   print-issued-lines: false
   print-linter-name: true
-  uniq-by-line: false
+  uniq-by-line: true
   sort-results: true
 
+# Issues: -------------------------------------------------------------------------------------------------------------
+
 issues:
+  exclude-rules:
+  - path: ".*_test.go"
+    linters:
+    - funlen
 
-severity:
-  default-severity: error
-  case-sensitive: false
+  fix: false
 
-  rules:
-  - linters:
-    - exhaustivestruct
-    - gomnd
-    severity: info
+  # Note: Linters --------------------------------------------------------------------------------------------------------
 
 linters:
-  # enable-all: true
+  enable-all: true
 
   disable:
   - gochecknoglobals # i know, but sometimes its required.
   - deadcode         # covered by `unused` and `varcheck`
   - testpackage      # opinionated
   - paralleltest     # covered by scopelint and tparalell
+
+# Note: Issues ---------------------------------------------------------------------------------------------------------
 
 linters-settings:
 
@@ -53,3 +66,47 @@ linters-settings:
     allow-unused: true
     require-explanation: false
     require-specific: false
+
+
+  errcheck:
+    # report about not checking of errors in type assertions: `a := b.(MyStruct)`;
+    # default is false: such cases aren't reported by default.
+    check-type-assertions: false
+
+    # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
+    # default is false: such cases aren't reported by default.
+    check-blank: false
+
+    # [deprecated] comma-separated list of pairs of the form pkg:regex
+    # the regex is used to ignore names within pkg. (default "fmt:.*").
+    # see https://github.com/kisielk/errcheck#the-deprecated-method for details
+    ignore: fmt:.*,io/ioutil:^Read.*
+
+    # path to a file containing a list of functions to exclude from checking
+    # see https://github.com/kisielk/errcheck#excluding-functions for details
+    # exclude: /path/to/file.txt
+
+# Severity: -----------------------------------------------------------------------------------------------------------
+
+severity:
+  default-severity: error
+  case-sensitive: false
+
+  # Coloring According Severity.
+  colors:
+    error: red
+    warn: yellow
+
+    info: blue
+
+  rules:
+  - linters:
+    - exhaustivestruct
+    - gomnd
+    - godot
+    - lll
+    severity: info
+
+  - linters:
+    - goerr113
+    severity: warn
