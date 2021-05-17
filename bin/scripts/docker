@@ -7,14 +7,14 @@ docker_subcmd() {
     cmd=/usr/local/bin/docker
 
     if [ -z "$1" ]; then
-        docker help
+        $cmd help
     else
         case "$1" in
-            # removes all containers
+            # removes all images
             "rma") $cmd images -qa  | xargs -L1 docker rmi;;
 
             # removes stoped containers
-            "rmsc")  $cmd ps -q -f "status=exited" | xargs -L1 docker rm;;
+            "rmsc") $cmd ps -q -f "status=exited" | xargs -L1 docker rm;;
 
             # removes failed builds
             "rmif") $cmd images -q -f "dangling=true" | xargs -L1 docker rmi ;;
