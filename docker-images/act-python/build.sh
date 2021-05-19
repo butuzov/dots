@@ -55,10 +55,10 @@ for version in $(top 5); do
   URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep 20.04 | grep $version)
 
   echo ""                                                                       >> Dockerfile
-  echo "# Python ($version)"                                                        >> Dockerfile
-  echo "RUN PYTHON_VERSION=$version \ "                                             >> Dockerfile
+  echo "# Python ($version)"                                                    >> Dockerfile
+  echo "RUN PYTHON_VERSION=$version \ "                                         >> Dockerfile
   echo " && URL=$URL \ "                                                        >> Dockerfile
-  echo ' && echo "Install Python ${PYTHON_VERSION}" \'                                  >> Dockerfile
+  echo ' && echo "Install Python ${PYTHON_VERSION}" \'                          >> Dockerfile
   echo ' && curl -L $URL > $(basename $URL) \'                                  >> Dockerfile
   echo ' && mkdir -p install \'                                                 >> Dockerfile
   echo ' && tar -xf $(basename $URL) -C install \'                              >> Dockerfile
