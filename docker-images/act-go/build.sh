@@ -64,3 +64,6 @@ for version in $(top 8); do
 done
 
 
+unlink versions.json
+
+docker build -t butuzov/act-go .
