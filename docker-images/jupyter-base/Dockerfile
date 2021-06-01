@@ -23,7 +23,7 @@ USER root
 # (ARGS are in lower case to distinguish them from ENV)
 # Check https://github.com/conda-forge/miniforge/releases
 # Conda version
-ARG conda_version="4.10.1"
+ARG conda_version="4.10.0"
 # Miniforge installer patch version
 ARG miniforge_patch_number="0"
 # Miniforge installer architecture
@@ -134,9 +134,6 @@ RUN conda install --quiet --yes \
     'notebook=6.3.0' \
     'jupyterhub=1.3.0' \
     'jupyter_contrib_nbextensions' \
-    'psycopg2' \
-    'pandas' \
-    'numpy' \
     'jupyterlab=3.0.12' && \
     conda clean --all -f -y && \
     npm cache clean --force && \
@@ -146,6 +143,7 @@ RUN conda install --quiet --yes \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
 
 EXPOSE 8888
 
@@ -176,4 +174,4 @@ RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
 
-RUN python3 -m pip install icecream
+RUN python3 -m pip install icecream psycopg2-binary pandas numpy
