@@ -7,8 +7,7 @@ fi
 
 alias .dots='code ~/.dotfiles'
 
-alias today='code ~/Desktop/notes/'
-alias daily='code ~/Desktop/notes/'
+alias today='code ~/Desktop/today.md'
 
 alias dropbox="cd $DROPBOX"
 alias dp=dropbox
