@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # adds additional two commands
 # - `docker rmif` # (removes stoped containers)
 # - `docker rmsc` # (removes failed builds)
