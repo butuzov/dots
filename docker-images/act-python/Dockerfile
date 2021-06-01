@@ -5,7 +5,7 @@ ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache
 
 # Python (3.9.5)
 RUN PYTHON_VERSION=3.9.5 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.9.5-106999/python-3.9.5-linux-20.04-x64.tar.gz \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.9.5-109482/python-3.9.5-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -17,7 +17,7 @@ RUN PYTHON_VERSION=3.9.5 \
 
 # Python (3.8.10)
 RUN PYTHON_VERSION=3.8.10 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.8.10-107001/python-3.8.10-linux-20.04-x64.tar.gz \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.8.10-109483/python-3.8.10-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \

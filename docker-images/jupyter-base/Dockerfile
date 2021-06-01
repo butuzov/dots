@@ -23,7 +23,7 @@ USER root
 # (ARGS are in lower case to distinguish them from ENV)
 # Check https://github.com/conda-forge/miniforge/releases
 # Conda version
-ARG conda_version="4.10.0"
+ARG conda_version="4.10.1"
 # Miniforge installer patch version
 ARG miniforge_patch_number="0"
 # Miniforge installer architecture
@@ -93,7 +93,7 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     fix-permissions $CONDA_DIR
 
 USER $NB_UID
-ARG PYTHON_VERSION=3.9
+ARG PYTHON_VERSION=3.8
 
 # Setup work directory for backward-compatibility
 RUN mkdir "/home/$NB_USER/work" && \
@@ -134,6 +134,9 @@ RUN conda install --quiet --yes \
     'notebook=6.3.0' \
     'jupyterhub=1.3.0' \
     'jupyter_contrib_nbextensions' \
+    'psycopg2' \
+    'pandas' \
+    'numpy' \
     'jupyterlab=3.0.12' && \
     conda clean --all -f -y && \
     npm cache clean --force && \
@@ -172,3 +175,5 @@ WORKDIR /share
 RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
+
+RUN python3 -m pip install icecream
