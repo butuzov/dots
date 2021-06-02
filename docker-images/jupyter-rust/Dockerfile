@@ -1,4 +1,5 @@
-FROM rust:1.52-buster as rust
+ARG VERSION=1.52.1
+FROM rust:${VERSION}-buster as rust
 
 FROM butuzov/jupyter as base
 
