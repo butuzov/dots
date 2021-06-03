@@ -1,5 +1,5 @@
 ARG VERSION=1.16.4
-FROM docker.io/golang:$(VERSION)-buster as golang
+FROM docker.io/golang:${VERSION}-buster as golang
 
 RUN GO111MODULE=on go get github.com/gopherdata/gophernotes
 
