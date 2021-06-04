@@ -17,6 +17,9 @@ jupyter_subcmd() {
             return
         ;;
         "ts") jupyter typescript ;;
+        "rs") jupyter rust ;;
+        "jl") jupyter julia ;;
+        "go") jupyter golang ;;
 
         *)
 

@@ -93,7 +93,7 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     fix-permissions $CONDA_DIR
 
 USER $NB_UID
-ARG PYTHON_VERSION=3.9
+ARG PYTHON_VERSION=3.8
 
 # Setup work directory for backward-compatibility
 RUN mkdir "/home/$NB_USER/work" && \
@@ -144,6 +144,7 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+
 EXPOSE 8888
 
 # Configure container startup
@@ -172,3 +173,5 @@ WORKDIR /share
 RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
+
+RUN python3 -m pip install icecream psycopg2-binary pandas numpy

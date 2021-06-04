@@ -1,4 +1,5 @@
-FROM docker.io/julia:1.5.3-buster as julia
+ARG VERSION=1.5.3
+FROM docker.io/julia:${VERSION}-buster as julia
 
 FROM butuzov/jupyter as base
 
