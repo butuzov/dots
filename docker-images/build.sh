@@ -2,7 +2,7 @@
 
 export DOCKER_BUILDKIT=0
 
-# docker build -t butuzov/jupyter -f jupyter-base/Dockerfile jupyter-base
+docker build -t butuzov/jupyter -f jupyter-base/Dockerfile jupyter-base
 
 export JULIA_VERSION=1.5.3
 docker build -t butuzov/jupyter-julia:latest \

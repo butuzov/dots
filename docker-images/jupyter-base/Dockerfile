@@ -116,6 +116,7 @@ RUN wget --quiet "https://github.com/conda-forge/miniforge/releases/download/${m
     conda install --quiet --yes \
     "conda=${CONDA_VERSION}" \
     'pip' \
+    'ipython-sql' \
     'tini=0.18.0' && \
     conda update --all --quiet --yes && \
     conda list tini | grep tini | tr -s ' ' | cut -d ' ' -f 1,2 >> $CONDA_DIR/conda-meta/pinned && \
