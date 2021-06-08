@@ -21,6 +21,16 @@ jupyter_subcmd() {
         "jl") jupyter julia ;;
         "go") jupyter golang ;;
 
+        "convert")
+
+
+            docker run -it --rm -v $(pwd):/share butuzov/jupyter \
+                python3 -m nbconvert --to markdown "*.ipynb"
+
+            echo "convert"
+        ;;
+
+
         *)
 
             image=butuzov/jupyter
