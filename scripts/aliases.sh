@@ -8,8 +8,8 @@ fi
 alias .dots='code ~/.dotfiles'
 
 alias today='code ~/Dropbox/today.md'
-alias til='cd /Users/butuzov/Dropbox/todayilearned && jupyter'
-alias pg='cd /Users/butuzov/Dropbox/todayilearned/sandbox-pg && task up'
+alias til='cd ~/Dropbox/todayilearned && jupyter'
+alias pg='cd ~/Dropbox/todayilearned/sandbox-pg && task up'
 
 alias dropbox="cd $DROPBOX"
 alias dp=dropbox
