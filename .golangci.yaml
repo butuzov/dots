@@ -49,6 +49,9 @@ linters:
   - wsl              # fuckit 1
   - whitespace       # fuckit 2
 
+  # - godot            # practically, unused
+  - godox            # practically, unused
+
 # Note: Issues ---------------------------------------------------------------------------------------------------------
 
 linters-settings:
@@ -57,6 +60,7 @@ linters-settings:
     enabled-tags: [  experimental, opinionated, performance, style ]
     disabled-checks:
       - whyNoLint
+      - emptyStringTest
 
   forbidigo:
     forbid: [ "ginkgo\\.F.* " ]
