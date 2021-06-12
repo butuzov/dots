@@ -1,11 +1,14 @@
 
 docker_compose_subcmd() {
+
+    cmd=/usr/local/bin/docker-compose
+
     if [ -z "$1" ]; then
-        $(which docker-compose) help
+        $cmd help
     else
         case "$1" in
             # mac issue require us to run it as .
-            *)   $(which docker) compose "$@"
+            *) $cmd "$@"
         esac
     fi
 }
