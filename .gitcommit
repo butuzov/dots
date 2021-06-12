@@ -4,10 +4,10 @@
 #   * feature      # code changes: features
 #   * test         # code changes: tests related
 #   * fix          # code changes: bugfixes
-#   * docs         # docs realted.
-#   * build        # anything build automation related: ci, makefiles, linters, etc.
-#   * chores       # github account related (anything inside .github, but not build related)
-#   * refactor     # code changes: refactoring realted
+#   * docs         # docs related.
+#   * build        # build automation related: ci, makefiles, linters, etc.
+#   * chores       # maintining repository or project clear.
+#   * refactor     # code changes: refactoring related
 #   * perf         # code changes: performance related
 
 
