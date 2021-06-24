@@ -36,9 +36,7 @@ tap "homebrew/cask-fonts"
     "media-info",
 
     # LOL
-    # "lolcat",
-    # "cowsay",
-    # "fortune",
+    "cowsay",
 
     # DevOps - Kubernetes
     "krew",
@@ -47,7 +45,7 @@ tap "homebrew/cask-fonts"
     "skaffold",
 
     # typescript/node,js
-    # "deno",
+    "deno",
 
     # DevOps - rest
     # "ansible",

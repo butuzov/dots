@@ -64,3 +64,4 @@ vim -e -c ":PluginInstall" -c ":q" -c ":q"
 
 # tmux
 install_dot .tmux.conf
+install_dot unsoliced.txt
