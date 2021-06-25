@@ -135,11 +135,13 @@ RUN conda install --quiet --yes \
     'notebook=6.3.0' \
     'jupyterhub=1.3.0' \
     'jupyter_contrib_nbextensions' \
+    'jupyter_nbextensions_configurator' \
     'jupyterlab=3.0.12' && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter notebook --generate-config && \
     jupyter contrib nbextension install --user && \
+    jupyter nbextensions_configurator enable --user && \
     jupyter lab clean && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
@@ -175,4 +177,4 @@ RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
 
-RUN python3 -m pip install icecream psycopg2-binary pandas numpy
+RUN python3 -m pip install icecream psycopg2-binary pandas numpy jupyter_nbextensions_configurator
