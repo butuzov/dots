@@ -52,7 +52,7 @@ source "${DOTS_PATH}/scripts/language-node.sh"                  # Node
 
 
 # fuck year! https://news.ycombinator.com/item?id=26946093
-shuf -n 1 unsoliced.txt | cowsay -f small
+shuf -n 1 ~/unsoliced.txt | cowsay -f small
 
 
 
