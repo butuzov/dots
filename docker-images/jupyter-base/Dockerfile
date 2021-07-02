@@ -4,7 +4,7 @@
 # Ubuntu 20.04 (focal)
 # https://hub.docker.com/_/ubuntu/?tab=tags&name=focal
 # OS/ARCH: linux/amd64
-ARG ROOT_CONTAINER=ubuntu:focal-20210401@sha256:5403064f94b617f7975a19ba4d1a1299fd584397f6ee4393d0e16744ed11aab1
+ARG ROOT_CONTAINER=ubuntu:focal-20210609@sha256:376209074d481dca0a9cf4282710cd30a9e7ff402dea8261acdaaf57a18971dd
 
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
@@ -17,6 +17,9 @@ ARG NB_GID="100"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
+
+RUN apt update && apt install build-essential -y
+
 
 # ---- Miniforge installer ----
 # Default values can be overridden at build time
@@ -47,6 +50,7 @@ RUN apt-get -q update \
  && apt-get install -yq --no-install-recommends \
     wget \
     ca-certificates \
+    curl \
     sudo \
     locales \
     fonts-liberation \

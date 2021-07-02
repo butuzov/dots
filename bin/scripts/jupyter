@@ -21,14 +21,15 @@ jupyter_subcmd() {
         "jl") jupyter julia ;;
         "go") jupyter golang ;;
 
-        "convert")
+        # "convert")
 
+        #     echo $1
+        #     docker run -it --rm -v $(pwd):/share butuzov/jupyter \
+        #         python3 -m nbconvert --to markdown "*.ipynb"
 
-            docker run -it --rm -v $(pwd):/share butuzov/jupyter \
-                python3 -m nbconvert --to markdown "*.ipynb"
+        #     # todo(): write cleanup script
 
-            echo "convert"
-        ;;
+        # ;;
 
 
         *)
