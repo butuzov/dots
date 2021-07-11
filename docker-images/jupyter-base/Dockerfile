@@ -4,6 +4,7 @@
 # Ubuntu 20.04 (focal)
 # https://hub.docker.com/_/ubuntu/?tab=tags&name=focal
 # OS/ARCH: linux/amd64
+# ARG ROOT_CONTAINER=ubuntu:focal-20210609@sha256:376209074d481dca0a9cf4282710cd30a9e7ff402dea8261acdaaf57a18971dd
 ARG ROOT_CONTAINER=ubuntu:focal-20210609@sha256:376209074d481dca0a9cf4282710cd30a9e7ff402dea8261acdaaf57a18971dd
 
 ARG BASE_CONTAINER=$ROOT_CONTAINER
@@ -172,6 +173,11 @@ RUN sed -re "s/c.NotebookApp/c.ServerApp/g" \
 
 RUN fix-permissions /etc/jupyter/
 
+
+
+# psycopg2
+RUN apt update && apt install libpq-dev -y
+
 # Switch back to jovyan tdocker o avoid accidental container runs as root
 USER $NB_UID
 
@@ -181,4 +187,4 @@ RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
 
-RUN python3 -m pip install icecream psycopg2-binary pandas numpy jupyter_nbextensions_configurator
+RUN python3 -m pip install psycopg2 pandas numpy pgspecial nbconvert==5.6.1

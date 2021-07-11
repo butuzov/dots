@@ -10,3 +10,5 @@ docker build -t butuzov/jupyter-rust:latest \
             #  -t butuzov/jupyter-rust:${RUST_VERSION} \
              --build-arg VERSION=${RUST_VERSION} \
              -f Dockerfile .
+
+docker push butuzov/jupyter-rust:latest

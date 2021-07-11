@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 
+export DOCKER_BUILDKIT=0
 
 split() {
    # Usage: split "string" "delimiter"
@@ -37,15 +38,22 @@ top() {
   unlink .seen
 }
 
+IMAGE=catthehacker/ubuntu:act-latest
+# IMAGE=catthehacker/ubuntu:act-20.04-20210620
+IMAGE=catthehacker/ubuntu:act-20.04-20210608
+# IMAGE=catthehacker/ubuntu:act-20.04-20210601
+# IMAGE=catthehacker/ubuntu:act-20.04-20210528
+
+
 
 echo "# Generated, do not edit"                                                 > Dockerfile
-echo "FROM catthehacker/ubuntu:act-latest"                                      >> Dockerfile
+echo "FROM ${IMAGE}"                                                            >> Dockerfile
 echo "ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache"                            >> Dockerfile
 echo "ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache"                               >> Dockerfile
 
 curl -l https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json -o versions.json
 
-for version in $(top 8); do
+for version in $(top 1); do
   URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep $version)
 
   echo ""                                                                       >> Dockerfile
