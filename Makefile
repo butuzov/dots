@@ -12,7 +12,7 @@ include scripts/Makefile/Makefile
 ACT_VERSION:=0.2.21
 install_tools: act
 
-AIR_VERSION:=1.15.1
+AIR_VERSION:=1.27.3
 install_tools: air
 
 EVANS_VERSION:=0.9.2
@@ -21,7 +21,7 @@ install_tools: evans
 # DOCKER_SQUASH_VERSION:=0.2.0
 # install_tools: docker-squash
 
-GOLANGCI-LINT_VERSION:=1.40.0
+GOLANGCI-LINT_VERSION:=1.41.1
 install_tools: golangci-lint
 
 GOTESTSUM_VERSION:=1.6.4
@@ -33,7 +33,7 @@ install_tools: grpcurl
 # GOSEC_VERSION:=2.6.1
 # install_tools: gosec
 
-MOCKERY_VERSION:=2.7.4
+MOCKERY_VERSION:=2.5.1
 install_tools: mockery
 
 PROTOC_VERSION:=3.14.0
@@ -75,11 +75,14 @@ install_tools: tern
 ALI_VERSION:=0.5.4
 install_tools: ali
 
+HUGO_VERSION:=0.85.0
+install_tools: hugo
+
 # VELERO_VERSION:=1.5.3
 # install_tools: velero
 
-# MINIKUBE_VERSION:=1.17.1
-# install_tools: minikube
+MINIKUBE_VERSION:=1.22.0
+install_tools: minikube
 
 # HELM_VERSION:=3.2.1
 # install_tools: helm
@@ -559,7 +562,6 @@ kubectl: bin/kubectl-$(KUBECTL_VERSION)
 	@ cd "bin"
 	@ ln -sf kubectl-$(KUBECTL_VERSION) ./bin/$@
 
-
 bin/kubectl-$(KUBECTL_VERSION):
 	@ $(MAKE) bin/kubectl
 
@@ -570,6 +572,21 @@ bin/kubectl: ARCHIVE_PATH=kubernetes/client/bin/kubectl
 bin/kubectl:
 	$(call install/remote/release/tgz,$@)
 
+# --- bin/octant -------------------------------------------------------------------------
+hugo: bin/hugo-$(HUGO_VERSION)
+	@ cd "bin"
+	@ ln -sf hugo-$(HUGO_VERSION) ./bin/$@
+
+bin/hugo-$(HUGO_VERSION):
+	@ $(MAKE) bin/hugo
+
+.PHONY: bin/hugo
+bin/hugo: GITHUB_REPOSITORY=gohugoio/hugo
+bin/hugo: GITHUB_VERSION=v$(HUGO_VERSION)
+bin/hugo: GITHUB_ARCHIVE=$(shell printf hugo_%s_macOS-64bit.tar.gz $(subst v,,$(GITHUB_VERSION)))
+bin/hugo: ARCHIVE_PATH=$(shell printf hugo $(subst v,,$(GITHUB_VERSION)))
+bin/hugo:
+	$(call install/github/release/tgz,$@)
 
 # --- bin/octant -------------------------------------------------------------------------
 octant: bin/octant-$(OCTANT_VERSION)
