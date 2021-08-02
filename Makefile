@@ -75,7 +75,7 @@ install_tools: tern
 ALI_VERSION:=0.5.4
 install_tools: ali
 
-HUGO_VERSION:=0.85.0
+HUGO_VERSION:=0.86.1
 install_tools: hugo
 
 # VELERO_VERSION:=1.5.3
@@ -583,7 +583,7 @@ bin/hugo-$(HUGO_VERSION):
 .PHONY: bin/hugo
 bin/hugo: GITHUB_REPOSITORY=gohugoio/hugo
 bin/hugo: GITHUB_VERSION=v$(HUGO_VERSION)
-bin/hugo: GITHUB_ARCHIVE=$(shell printf hugo_%s_macOS-64bit.tar.gz $(subst v,,$(GITHUB_VERSION)))
+bin/hugo: GITHUB_ARCHIVE=$(shell printf hugo_extended_%s_macOS-64bit.tar.gz $(subst v,,$(GITHUB_VERSION)))
 bin/hugo: ARCHIVE_PATH=$(shell printf hugo $(subst v,,$(GITHUB_VERSION)))
 bin/hugo:
 	$(call install/github/release/tgz,$@)
