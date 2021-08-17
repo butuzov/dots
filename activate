@@ -36,7 +36,8 @@ gvm install go1.13 --binary
 gvm install go1.14 --binary
 gvm install go1.15 --binary
 gvm install go1.16 --binary
-gvm use go1.16 --default
+gvm install go1.17 --binary
+gvm use go1.17 --default
 
 install_dot .golangci.yaml
 
