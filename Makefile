@@ -9,7 +9,7 @@ version = $(or $(word 2,$(subst v, ,$1)),$(word 1,$(subst v, ,$1)))
 include scripts/Makefile/Makefile
 
 # ========= Install Tools ============================================================== #
-ACT_VERSION:=0.2.21
+ACT_VERSION:=0.2.24
 install_tools: act
 
 AIR_VERSION:=1.27.3
