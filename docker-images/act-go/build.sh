@@ -40,7 +40,7 @@ top() {
 
 IMAGE=catthehacker/ubuntu:act-latest
 # IMAGE=catthehacker/ubuntu:act-20.04-20210620
-IMAGE=catthehacker/ubuntu:act-20.04-20210608
+# IMAGE=catthehacker/ubuntu:act-20.04-20210608 - will work with act 0.2.21
 # IMAGE=catthehacker/ubuntu:act-20.04-20210601
 # IMAGE=catthehacker/ubuntu:act-20.04-20210528
 
@@ -53,7 +53,7 @@ echo "ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache"                               
 
 curl -l https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json -o versions.json
 
-for version in $(top 1); do
+for version in $(top 6); do
   URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep $version)
 
   echo ""                                                                       >> Dockerfile
