@@ -13,9 +13,8 @@ run_co_code(){
             | sed -n 's/func \(.*\)(.*/\1/p'| xargs | sed 's/ /|/g')
 
         go test -v \
-                -timeout=30s \
+                -timeout=10s \
                 -count=1 \
-                -parallel 4  \
                 -race \
                 -run "$TESTS"
 
