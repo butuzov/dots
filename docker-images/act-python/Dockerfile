@@ -3,9 +3,9 @@ FROM catthehacker/ubuntu:act-latest
 ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
 ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache
 
-# Python (3.9.5)
-RUN PYTHON_VERSION=3.9.5 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.9.5-109482/python-3.9.5-linux-20.04-x64.tar.gz \ 
+# Python (3.9.7)
+RUN PYTHON_VERSION=3.9.7 \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.9.7-116077/python-3.9.7-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -15,9 +15,9 @@ RUN PYTHON_VERSION=3.9.5 \
  && ./setup.sh \
  && cd .. && rm -rf install && unlink $(basename $URL)
 
-# Python (3.8.10)
-RUN PYTHON_VERSION=3.8.10 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.8.10-109483/python-3.8.10-linux-20.04-x64.tar.gz \ 
+# Python (3.8.12)
+RUN PYTHON_VERSION=3.8.12 \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.8.12-116385/python-3.8.12-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -27,9 +27,9 @@ RUN PYTHON_VERSION=3.8.10 \
  && ./setup.sh \
  && cd .. && rm -rf install && unlink $(basename $URL)
 
-# Python (3.7.10)
-RUN PYTHON_VERSION=3.7.10 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.7.10-99135/python-3.7.10-linux-20.04-x64.tar.gz \ 
+# Python (3.7.12)
+RUN PYTHON_VERSION=3.7.12 \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.7.12-116024/python-3.7.12-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -39,9 +39,9 @@ RUN PYTHON_VERSION=3.7.10 \
  && ./setup.sh \
  && cd .. && rm -rf install && unlink $(basename $URL)
 
-# Python (3.6.13)
-RUN PYTHON_VERSION=3.6.13 \ 
- && URL=https://github.com/actions/python-versions/releases/download/3.6.13-99136/python-3.6.13-linux-20.04-x64.tar.gz \ 
+# Python (3.6.15)
+RUN PYTHON_VERSION=3.6.15 \ 
+ && URL=https://github.com/actions/python-versions/releases/download/3.6.15-116025/python-3.6.15-linux-20.04-x64.tar.gz \ 
  && echo "Install Python ${PYTHON_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \

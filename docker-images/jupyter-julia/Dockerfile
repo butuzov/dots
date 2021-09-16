@@ -1,4 +1,4 @@
-ARG VERSION=1.5.3
+ARG VERSION=1.6.2
 FROM docker.io/julia:${VERSION}-buster as julia
 
 FROM butuzov/jupyter as base

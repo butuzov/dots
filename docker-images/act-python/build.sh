@@ -52,7 +52,7 @@ curl -l https://raw.githubusercontent.com/actions/python-versions/main/versions-
 
 for version in $(top 5); do
   echo $version
-  URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep 20.04 | grep $version)
+  URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep 20.04 | grep "python-$version")
 
   echo ""                                                                       >> Dockerfile
   echo "# Python ($version)"                                                    >> Dockerfile

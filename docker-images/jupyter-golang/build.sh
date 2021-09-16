@@ -6,7 +6,7 @@ export DOCKER_BUILDKIT=0
 
 
 
-export GOLANG_VERSION=1.17.0
+export GOLANG_VERSION=1.17.1
 docker build -t butuzov/jupyter-golang:latest \
              -t butuzov/jupyter-golang:${GOLANG_VERSION} \
              --build-arg VERSION=${GOLANG_VERSION} \

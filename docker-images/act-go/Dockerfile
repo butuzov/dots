@@ -3,9 +3,9 @@ FROM catthehacker/ubuntu:act-latest
 ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
 ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache
 
-# Go (1.17.0)
-RUN GO_VERSION=1.17.0 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.17.0-1138146562/go-1.17.0-linux-x64.tar.gz \ 
+# Go (1.17.1)
+RUN GO_VERSION=1.17.1 \ 
+ && URL=https://github.com/actions/go-versions/releases/download/1.17.1-1220318589/go-1.17.1-linux-x64.tar.gz \ 
  && echo "Install Go ${GO_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -15,9 +15,9 @@ RUN GO_VERSION=1.17.0 \
  && ./setup.sh \
  && cd .. && rm -rf install && unlink $(basename $URL)
 
-# Go (1.16.7)
-RUN GO_VERSION=1.16.7 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.16.7-1104053924/go-1.16.7-linux-x64.tar.gz \ 
+# Go (1.16.8)
+RUN GO_VERSION=1.16.8 \ 
+ && URL=https://github.com/actions/go-versions/releases/download/1.16.8-1220319069/go-1.16.8-linux-x64.tar.gz \ 
  && echo "Install Go ${GO_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \

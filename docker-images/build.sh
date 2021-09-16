@@ -8,7 +8,7 @@ export DOCKER_BUILDKIT=0
 docker build -t butuzov/jupyter -f jupyter-base/Dockerfile jupyter-base
 docker push butuzov/jupyter
 
-pushd jupyter-julia
+pushd jupyter-typescript
    ./build.sh
 popd
 
@@ -16,7 +16,7 @@ pushd jupyter-golang
    ./build.sh
 popd
 
-pushd jupyter-typescript
+pushd jupyter-julia
    ./build.sh
 popd
 
