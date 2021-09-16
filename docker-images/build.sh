@@ -16,7 +16,6 @@ pushd jupyter-golang
    ./build.sh
 popd
 
-
 pushd jupyter-typescript
    ./build.sh
 popd
@@ -26,12 +25,12 @@ pushd jupyter-rust
 popd
 
 
-# docker build -t butuzov/toolbox -f toolbox/Dockerfile toolbox
+docker build -t butuzov/toolbox -f toolbox/Dockerfile toolbox
 
 pushd act-go
   ./build.sh
 popd
 
-# pushd act-python
-#   ./build.sh
-# popd
+pushd act-python
+  ./build.sh
+popd
