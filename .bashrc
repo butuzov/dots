@@ -39,9 +39,8 @@ export PS1=$PS1
 export SUDO_PS1="${RESET}${WHITE} # \u@\h ${GREEN} \w ${RESET} \n${YELLO} > ${RESET}";
 
 
-# # the rest of sources
-# # TODO: Make it faster
-# # source "${DOTS_PATH}/scripts/complete.sh"             # auto complete/bash complete
+# the rest of sources
+source "${DOTS_PATH}/scripts/complete.sh"             # auto complete/bash complete
 
 source "${DOTS_PATH}/scripts/aliases.sh"               # General Aliases File
 

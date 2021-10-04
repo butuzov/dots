@@ -1,6 +1,12 @@
 
 
-# # completion
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] &&  . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+# completion
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
-[[ -f "$(brew --prefix)/etc/bash_completion" ]] && . "$(brew --prefix)/etc/bash_completion"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && \
+  . "/usr/local/etc/profile.d/bash_completion.sh"
+
+
+[[ -f "$(brew --prefix)/etc/bash_completion" ]] && \
+  . "$(brew --prefix)/etc/bash_completion"
+
