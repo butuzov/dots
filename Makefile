@@ -36,10 +36,10 @@ install_tools: grpcurl
 MOCKERY_VERSION:=2.5.1
 install_tools: mockery
 
-PROTOC_VERSION:=3.14.0
+PROTOC_VERSION:=3.18.0
 install_tools: protoc
 
-PROTOC_GEN_GO_VERSION:=1.25.0
+PROTOC_GEN_GO_VERSION:=1.27.1
 install_tools: protoc-gen-go
 
 PROTOC_GET_GO_GRPC_VERSION:=1.1.0
