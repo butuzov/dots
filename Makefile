@@ -100,8 +100,8 @@ install: install_tools
 
 # ========= Tools ====================================================================== #
 # --- chamber ----------------------------------------------------------------------------
-# CHAMBER_VERSION:=2.9.1
-# install_tools: chamber
+CHAMBER_VERSION:=2.9.1
+install_tools: chamber
 
 chamber: bin/chamber-$(CHAMBER_VERSION)
 	@ ln -sf chamber-$(CHAMBER_VERSION) ./bin/$@
