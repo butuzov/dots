@@ -49,10 +49,12 @@ linters:
   - forbidigo        # nothing to forbid now
   - gomnd
 
-  - wsl              # fuckit 1
-  - whitespace       # fuckit 2
+  - wsl
+  - whitespace
 
-  # - godot            # practically, unused
+  # errors....
+  - errcheck
+
   - godox            # practically, unused
 
 # Note: Issues ---------------------------------------------------------------------------------------------------------
@@ -70,16 +72,11 @@ linters-settings:
   maligned: {"suggest-new": true}
 
   nolintlint:
-    allow-leading-space: false
+    allow-leading-space: true
     allow-unused: true
     require-explanation: false
     require-specific: false
 
-  errcheck:
-
-    check-type-assertions: false
-    check-blank: false
-    ignore: fmt:.*,io/ioutil:^Read.*
 
   revive:
     # see https://github.com/mgechev/revive#available-rules for details.
