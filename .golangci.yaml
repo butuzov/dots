@@ -13,6 +13,7 @@ run:
 
   allow-parallel-runners: true
 
+
 # Note: Output --------------------------------------------------------------------------------------------------------
 
 output:
@@ -35,7 +36,6 @@ issues:
 
   fix: false
 
-  # Note: Linters --------------------------------------------------------------------------------------------------------
 
 linters:
   enable-all: true
@@ -54,10 +54,13 @@ linters:
 
   # errors....
   - errcheck
-
   - godox            # practically, unused
 
-# Note: Issues ---------------------------------------------------------------------------------------------------------
+  # useless, from my point of view.
+  - gci
+
+  # untested
+  - tagliatelle
 
 linters-settings:
 
@@ -67,7 +70,9 @@ linters-settings:
       - whyNoLint
       - emptyStringTest
 
-  lll: { "line-length": 120, "tabwidth": 4 }
+  lll:
+    ine-length: 120
+    tabwidth: 4
 
   maligned: {"suggest-new": true}
 
@@ -76,7 +81,6 @@ linters-settings:
     allow-unused: true
     require-explanation: false
     require-specific: false
-
 
   revive:
     # see https://github.com/mgechev/revive#available-rules for details.
@@ -267,6 +271,7 @@ linters-settings:
       - name: unexported-return
         severity: warning
 
+      # TODO(butuzov):
       - name: unhandled-error
         severity: warning
         arguments:
