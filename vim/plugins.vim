@@ -35,8 +35,7 @@ set statusline=%=%P\ %f\ %m
 "set fillchars=vert:\ ,stl:\ ,stlnc:\
 "set laststatus=2
 
-Plugin 'editorconfig/editorconfig-vim'       " .editorcofig
-Plugin 'tpope/vim-fugitive'                  "
+Plugin 'editorconfig/editorconfig-vim'       " .editorcofig              "
 Plugin 'ervandew/supertab'
 
 
