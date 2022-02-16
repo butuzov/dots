@@ -51,7 +51,7 @@ issues:
       - bodyclose
 
   - linters:
-      - lll
+      - lllgit rebase
     source: "^//go:generate "
 
 linters:
@@ -72,6 +72,10 @@ linters:
   - testpackage        # @useless
   - gochecknoglobals   # @useless
   - paralleltest       # @todo
+  - scopelint          # @deprecated
+  - maligned           # @deprecated
+  - golint             # @deprecated
+  - interfacer         # @deprecated
 
 
 linters-settings:
@@ -174,6 +178,9 @@ linters-settings:
       - name: file-header
         disabled: true
 
+      - name: struct-tag # better error message by `govet`
+        disabled: true
+
       - name: get-return
         severity: warning
 
@@ -229,6 +236,7 @@ linters-settings:
     - c echo.Context
     - e *echo.Echo
     - db *gorm.DB
+    - db *database.Db
 
   wrapcheck:
     ignoreSigRegexps:
