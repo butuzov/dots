@@ -4,6 +4,7 @@ docker_compose_subcmd() {
 
     cmd=/usr/local/bin/docker-compose
 
+
     if [ -z "$1" ]; then
         $cmd help
     else

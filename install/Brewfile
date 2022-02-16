@@ -9,8 +9,6 @@ tap "homebrew/cask-fonts"
 [
     # BASH & GNU Compatible tooling
     "bash",
-    # "pstree",
-    # "psgrep",
     # "shellcheck",
     "htop",
     "coreutils",
@@ -24,12 +22,12 @@ tap "homebrew/cask-fonts"
     "yq",
     "bash-completion",
     "git",
-    "git-lfs",
+    #"git-lfs",
     "bat", # https://formulae.brew.sh/formula/bat
     "fd", # finder alternative, https://github.com/sharkdp/fd
 
     # "mtr",
-    "di", #  disc info https://formulae.brew.sh/formula/di
+    #"di", #  disc info https://formulae.brew.sh/formula/di
 
     # CLi other
     "ffmpeg",
@@ -41,43 +39,52 @@ tap "homebrew/cask-fonts"
     # DevOps - Kubernetes
     "krew",
     "clang-format",
-    "istioctl",
-    "skaffold",
 
     # typescript/node,js
-    "deno",
+    #"deno",
 
     # DevOps - rest
-    # "ansible",
-    # "ansible-lint",
-    # "serverless",
     "dive",
     "mitmproxy",
-    "upx",
+    # "upx",
+
+    # kube
+    "helm",
+    "minikube",
+    "chamber",
+    "docker-squash",
+
+    # go
+
+    "hugo",
+    "octant",
 
     # Development
     "pre-commit",
     "ctags",
     "tmux",
     "graphviz",
-    "gh",
+    "act",
+    "grpcurl",
+    "golangci-lint",
+    "mockery",
+    "golangci-lint",
+    "hey",
+    "go-task",
+    # "gh",
 
     # Clouds
     "awscli",
-    "cfn-lint",
+    # "cfn-lint",
     # "aws-shell",
     "yamllint",
-
-    # Terraform
-    "tflint",
-    "terragrunt",
 
     # Other hasicorp tooling
     # "consul",
     # "vault",
     # "packer",
 
-     # Golang
+    # Golang
     # "hugo",
     # "gotop",
 
@@ -89,59 +96,55 @@ end
 #  CASK's
 ################################################################################
 [
-    # TODO - RESEARCH
-    # "sampler",              # https://github.com/sqshq/sampler
 
     # DevOps - Tooling
-    "google-cloud-sdk",
     "docker",
-    "vagrant",
-    "virtualbox",
+    # "virtualbox",
 
     # Programming - Tooling
-    "visual-studio-code",
-    "cronnix",
+    # "visual-studio-code",
     "sourcetree",
-
+    "stats",
 
     # Fonts
     "font-fira-code",
     "font-fira-sans",
     "font-fira-mono",
+    "font-jetbrains-mono",
+    "font-jetbrains-mono-nerd-font",
 
     # Messangers
     "slack",
-    "skype",
     "telegram-desktop",
 
     # DevOps
     "aws-vault",
 
     # Mac App Tools
-    # "dropbox",
+    "dropbox",
     "appcleaner",
-    "istat-menus",
-    # "little-snitch",
+    # "istat-menus",
+    "little-snitch",
     "keka",
     "iina",
-    "handbrake",
+    # "handbrake",
     "imageoptim",
     "google-chrome",
 
     # Dev
-    # "iterm2",
-
-
-
+    "iterm2"
 ].each do |pkg|
     cask pkg
 end
 
 
 # Mac Applications - AppStore
-# mas "Apple Remote Desktop",        id: 409907375      # ARD
-# mas "Audiobook Builder",           id: 406226796      # Older Version
-# mas "Helium",                      id: 1054607607     # Helium
+mas "Apple Remote Desktop",        id: 409907375      # ARD
+mas "Helium",                      id: 1054607607     # Helium
 mas "Divvy - Window Manager",      id: 413857545      # Divvy
+mas "Bitwarden",                   id: 1352778147     # Divvy
 
+mas "Pandan",                      id: 1569600264     # Time awareness app
+mas "MeetingsBar",                 id: 1532419400     # meetings
+mas "Hidenbar",                    id: 1452453066     # hide icons
 

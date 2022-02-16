@@ -50,7 +50,7 @@ echo "ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache"                               
 
 curl -l https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json -o versions.json
 
-for version in $(top 5); do
+for version in $(top 3); do
   echo $version
   URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep 20.04 | grep "python-$version")
 

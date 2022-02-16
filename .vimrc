@@ -24,7 +24,7 @@ let os=GetRunningOS()                     " Operating System Name
 " -- Colors -------------------------------------------------------------------|
 
 " -- Editor -------------------------------------------------------------------|
-syntax      enable                        " Enables Syntax Highlight
+syntax      on                            " Enables Syntax Highlight
 colorscheme onedark
 
 set         number                        " Shows Line Numbers

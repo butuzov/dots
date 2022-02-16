@@ -10,17 +10,17 @@ BREW_URL="https://raw.githubusercontent.com/Homebrew/install/master/install"
 
 ### Brew & Installation
 header "# Brew"
-install_brew $1
+# install_brew $1
 brew bundle --file=install/Brewfile
 
 
-NWD=$(dirname $(realpath $0))
-DOTS_PATH=$NWD
+# NWD=$(dirname $(realpath $0))
+# DOTS_PATH=$NWD
 
 
-# Bash and Some of the tools configutation
+# Zsh and Some of the tools configutation
 header "# .dot files"
-install_bashrc
+install_zshrc
 install_dot .gitconfig
 install_dot .gitignore_global
 install_dot .gitattributes
@@ -29,30 +29,14 @@ install_dot .editorconfig
 
 # Go & Tooling
 header "# Go"
-if [[ ! -d "$HOME/.gvm/" ]]; then
-    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-fi
-gvm install go1.13 --binary
-gvm install go1.14 --binary
-gvm install go1.15 --binary
-gvm install go1.16 --binary
-gvm install go1.17 --binary
-gvm use go1.17 --default
-
+# brew install go
 install_dot .golangci.yaml
 
 header "# Python"
-brew install python@3.7
-brew install python@3.8
-brew install python@3.9
 
 python3 -m pip install -q pip==21.0.1
 python3 -m pip install --upgrade -q -r install/requirments.txt
-
-# PHP & Tooling
-header "# PHP"
-brew install php@7.4
-message 2 "$( printf "installed: %s " "$(php -version | head -n 1)" )"
+install_dot .pylintrc
 
 
 # vim settings & initial Vundle.vim
@@ -60,7 +44,7 @@ header "# vim"
 brew install vim > /dev/null 2>&1
 message 2 "$(vim --version | head -n 1 )"
 install_dot .vimrc
-install_git_repository "https://github.com/VundleVim/Vundle.vim" "vim/bundle/Vundle.vim"
+install_git_repository "https://github.com/VundleVim/Vundle.vim" "$(pwd)/vim/bundle/Vundle.vim"
 vim -e -c ":PluginInstall" -c ":q" -c ":q"
 
 # tmux

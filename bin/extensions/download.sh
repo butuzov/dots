@@ -10,23 +10,27 @@ dlhelp() {
     printf "\t Media\n"
     printf "\t - audiobook <youtube-url>\n"
     printf "\t - youtube <youtube-url>\n"
-    printf "\t - coursehunters <coursehunters-url>\n"
     printf "\t - mp3 <youtube-url>\n"
+    printf "\t - vl \n"
 
-    printf "\t Converters\n"
-    printf "\t - vc -n 1 -e mp4\n"
 
     printf "\n"
 }
 alias helpdl=dlhelp
+alias ytact=". ~/.ytdl/bin/activate"
 
 # curl - doenload as
 alias dl="curl -LO ${1}"
 
 
 # Download and convert video to mp3 and put it to mp3 folder.
+mp4(){
+     ytact && yt-dlp -f 22 -o '%(title)s.%(ext)s' $1
+}
+
+# Download and convert video to mp3 and put it to mp3 folder.
 mp3(){
-     youtube-dl -o '%(playlist_index)s %(title)s.%(ext)s'  \
+     yt-dlp -o '%(playlist_index)s %(title)s.%(ext)s'  \
         --extract-audio \
         --audio-format mp3 \
         $1
@@ -34,7 +38,10 @@ mp3(){
 
 # Download and convert video to mp3 and put it to mp3 folder.
 linkedin(){
-     youtube-dl -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" \
+    # alternative
+    # yt-dlp  --cookies linkedin.com_cookies.txt  -o '%(playlist_title)s/%(playlist_index)s ( %(chapter)s )  %(title)s.%(ext)s.mp4' --verbose --add-metadata --write-sub --limit-rate 2M --min-sleep-interval 5 --max-sleep-interval 10 https://www.linkedin.com/learning/monitoring-aws-with-cloudwatch
+
+     yt-dlp -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" \
       --username $LINKEDIN_USER \
       --password $LINKEDIN_PASS \
       --retries 10 \
@@ -80,7 +87,7 @@ youtube() {
     IDX=1
     # you can additionaly add
     # --playlist-reverse
-    for video in $( youtube-dl --flat-playlist -j $URL | \
+    for video in $( yt-dlp --flat-playlist -j $URL | \
                     jq -r '.id' | \
                     sed 's_^_https://youtube.com/v/_'); do
 
@@ -88,7 +95,7 @@ youtube() {
         # video of playlist failed
         # additional options
         # -r 700K // speed limit
-        youtube-dl -f 22 \
+        yt-dlp -f 22 \
                    --write-info-json \
                    -o "${IDX} %(title)s.%(ext)s" $video
         if [[ $? == 0 ]]; then
@@ -117,5 +124,3 @@ vl(){
     printf "Total Time of course is : %s\n" $(convertsecs $SEC)
 }
 
-# Video compressing
-alias vc='cd $(dirname $VIDEO_DIRECTORY) && go run converter.go -directory=$(basename $VIDEO_DIRECTORY) -e=mp4'

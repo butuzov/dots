@@ -5,20 +5,22 @@ set -o pipefail
 
 export DOCKER_BUILDKIT=0
 
+# --platform=linux/amd64
+
 docker build -t butuzov/jupyter -f jupyter-base/Dockerfile jupyter-base
 docker push butuzov/jupyter
 
-pushd jupyter-typescript
-   ./build.sh
-popd
+# pushd jupyter-typescript
+#    ./build.sh
+# popd
 
 pushd jupyter-golang
    ./build.sh
 popd
 
-pushd jupyter-julia
-   ./build.sh
-popd
+# pushd jupyter-julia
+#    ./build.sh
+# popd
 
 pushd jupyter-rust
    ./build.sh
@@ -31,6 +33,6 @@ pushd act-go
   ./build.sh
 popd
 
-pushd act-python
-  ./build.sh
-popd
+# pushd act-python
+#   ./build.sh
+# popd

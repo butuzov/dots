@@ -3,7 +3,7 @@
 # Local bin directory
 GNUTILS=( "gnu-sed" "coreutils" "gnu-indent" "findutils" "grep")
 for CMD in "${GNUTILS[@]}"  ; do
-  BIN_DIR=$(printf /usr/local/opt/%s/libexec/gnubin $CMD )
+  BIN_DIR=$(printf /opt/homebrew/opt/%s/libexec/gnubin $CMD )
   if [[ $PATH != *$BIN_DIR* ]]; then
     export PATH="$BIN_DIR:$PATH"
   fi

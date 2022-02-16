@@ -3,7 +3,7 @@
 
 run:
   issues-exit-code: 0
-  timeout: 1m
+  timeout: 10m
   modules-download-mode: mod
 
   skip-dirs-use-default: false
@@ -17,64 +17,97 @@ run:
 # Note: Output --------------------------------------------------------------------------------------------------------
 
 output:
-  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
   format: colored-line-number
 
   # print lines of code with issue, default is true
   print-issued-lines: false
   print-linter-name: true
-  uniq-by-line: true
+  uniq-by-line: false
   sort-results: true
 
 # Issues: -------------------------------------------------------------------------------------------------------------
 
 issues:
+  # alternativly - --new-from-rev=HEAD
+  # new-from-rev: HEAD
+  max-same-issues: 10
+  fix: false
+
   exclude-rules:
   - path: ".*_test.go"
     linters:
-    - funlen
+    - revive
 
-  fix: false
+  - text: "use an underscore in package name"
+    linters:
+    - revive # revive@var-naming rule
 
+  - path: _test\.go
+    linters:
+      - gocyclo
+      - errcheck
+      - dupl
+      - gosec
+      - bodyclose
+
+  - linters:
+      - lll
+    source: "^//go:generate "
 
 linters:
   enable-all: true
 
   disable:
-  - gochecknoglobals # i know, but sometimes its required.
-  - deadcode         # covered by `unused` and `varcheck`
-  - testpackage      # opinionated
-  - paralleltest     # covered by scopelint and tparalell
-  - exhaustivestruct # to noisy and don't respect zero values
-  - forbidigo        # nothing to forbid now
-  - gomnd
+  - deadcode           # covered by `unused` and `govet@varcheck`
+  - funlen             # revive@function-length (alternative)
+  - gocognit           # revive@cognitive-complexity (alternative)
+  - gocyclo            # revive@cyclomatic (alternative)
+  - cyclop             # revive@cyclomatic (alternative)
+  - lll                # revive@line-length-limit (alternative)
+  - gci                # note: we have to walk long way to it.
+  - godox              # not really useful to react to FIXME/TODO/etc...
+  - ineffassign        # staticcheck@SA4006
+  - varcheck           # covered by `unused`
+  - ireturn            # its not a time
+  - testpackage        # @useless
+  - gochecknoglobals   # @useless
+  - paralleltest       # @todo
 
-  - wsl
-  - whitespace
-
-  # errors....
-  - errcheck
-  - godox            # practically, unused
-
-  # useless, from my point of view.
-  - gci
-
-  # untested
-  - tagliatelle
 
 linters-settings:
+
+  forbidigo:
+    # Forbid the following identifiers (list of regexp).
+    forbid:
+      - ^print.*$
+      - '\.Debug\(\)\.' # db Debug()
+
+  gci:
+    local-prefixes: wing.security/nest
 
   gocritic:
     enabled-tags: [ experimental, diagnostic, opinionated, performance, style ]
     disabled-checks:
       - whyNoLint
       - emptyStringTest
+      - hugeParam         # don't applied to existing codebase.
+      - commentFormatting # should be handled automatically by gofumpt
 
-  lll:
-    ine-length: 120
-    tabwidth: 4
+  godot:
+    scope: declarations
+    period: false
+    capital: true
+    exclude:
+      # Exclude todo and fixme comments.
+      - "^fixme:"
+      - "^note:"
+      - "^todo:"
 
-  maligned: {"suggest-new": true}
+  maligned:
+    suggest-new: true
+
+  nlreturn:
+    block-size: 2
 
   nolintlint:
     allow-leading-space: true
@@ -83,63 +116,39 @@ linters-settings:
     require-specific: false
 
   revive:
-    # see https://github.com/mgechev/revive#available-rules for details.
+    enable-all-rules: true
     ignore-generated-header: true
-    confidence: 0.5
+    confidence: 0.01
     severity: warning
     rules:
       - name: add-constant
         severity: warning
         arguments:
         - maxLitCount: "3"
-          allowStrs: '""'
+          allowStrs: ''
           allowInts: "0,1,2"
           allowFloats: "0.0,0.,1.0,1.,2.0,2."
 
       - name: argument-limit
         severity: warning
-        arguments: 3
+        arguments: [ 3 ]
 
-      - name: atomic
+      - name: banned-characters
         severity: warning
+        disabled: true
 
-      - name: bare-return
+      - name: add-constant
+        disabled: true
         severity: warning
-
-      - name: blank-imports
-        severity: warning
-
-      - name: bool-literal-in-expr
-        severity: warning
-
-      - name: call-to-gc
-        severity: warning
+        arguments: [ 30 ]
 
       - name: cognitive-complexity
         severity: warning
-        arguments: 20
-
-      - name: confusing-naming
-        severity: warning
-
-      - name: confusing-results
-        severity: warning
-
-      - name: constant-logical-expr
-        severity: warning
-
-      - name: context-as-argument
-        severity: warning
-
-      - name: context-keys-type
-        severity: warning
+        arguments: [ 30 ]
 
       - name: cyclomatic
         severity: warning
-        arguments: 20
-
-      - name: deep-exit
-        severity: warning
+        arguments: [ 30 ]
 
       - name: defer
         severity: warning
@@ -150,65 +159,27 @@ linters-settings:
           - "return"
           - "method-call"
 
-      - name: dot-imports
-        severity: warning
-
-      - name: duplicated-imports
-        severity: warning
-
-      - name: early-return
-        severity: warning
-
-      - name: empty-block
-        severity: warning
-
-      - name: empty-lines
-        severity: warning
-
-      - name: error-naming
-        severity: warning
-
-      - name: error-return
-        severity: warning
-
-      # doesn't trigger
-      - name: error-strings
-        severity: warning
-
-      - name: errorf
-        severity: warning
-
       - name: exported
         severity: warning
         arguments:
           - "checkPrivateReceivers"
-          # - "disableStutteringCheck"
           - "sayRepetitiveInsteadOfStutters"
-
-      - name: flag-parameter
-        severity: warning
 
       - name: function-length
         severity: warning
         arguments:
-        - 20
-        - 0
+        - 40     # max statements
+        - 60     # max lines
+
+      - name: file-header
+        disabled: true
 
       - name: get-return
         severity: warning
 
       - name: function-result-limit
         severity: warning
-        arguments: 2
-
-      - name: identical-branches
-        severity: warning
-
-      - name: if-return
-        severity: warning
-
-      - name: import-shadowing
-        severity: warning
+        arguments: [ 2 ]
 
       - name: imports-blacklist
         severity: warning
@@ -216,60 +187,18 @@ linters-settings:
         - "crypto/md5"
         - "crypto/sha1"
 
-      - name: indent-error-flow
-        severity: warning
+      - name: line-length-limit
+        arguments: [ 120 ]
 
       - name: max-public-structs
         severity: warning
-        arguments: 2
-
-      - name: modifies-value-receiver
-        severity: warning
-
-      - name: modifies-parameter
-        severity: warning
-
-      - name: range-val-address
-        severity: warning
-
-      - name: range-val-in-closure
-        severity: warning
-
-      # - name: nested-structs
-      #   severity: warning
-
-      - name: receiver-naming
-        severity: warning
-
-
-      - name: redefines-builtin-id
-        severity: warning
+        arguments: [ 2 ]
 
       - name: string-format
         severity: warning
         arguments:
         - [ "stringFormatMethod1", "/^([^A-Z]|$)/", "must not start with a capital letter"]
 
-      - name: string-of-int
-        severity: warning
-
-      - name: struct-tag
-        severity: warning
-
-      - name: superfluous-else
-        severity: warning
-
-      - name: time-naming
-        severity: warning
-
-      - name: unconditional-recursion
-        severity: warning
-
-      - name: unexported-naming
-        severity: warning
-
-      - name: unexported-return
-        severity: warning
 
       # TODO(butuzov):
       - name: unhandled-error
@@ -279,54 +208,45 @@ linters-settings:
           - fmt.Print
           - fmt.Println
 
-      # doens't trigger
-      - name: unnecessary-stmt
-        severity: warning
-
-      - name: unused-parameter
-        severity: warning
-
-      - name: package-comments
-        severity: warning
-
-      - name: increment-decrement
-        severity: warning
-
-      - name: range
-        severity: warning
-
-      - name: unreachable-code
-        severity: warning
-
-      - name: unused-receiver
-        severity: warning
-
-      # - name: useless-break
-      #   severity: warning
-
       - name: var-naming
         severity: warning
         arguments:
-        - - "ID"
-          - "VM"
+        - - "ID" # allow
+        - - "VM" # deny
 
-      - name: var-declaration
-        severity: warning
+  tagliatelle:
+    # Check the struck tag name case.
+    case:
+      use-field-name: true
+      rules:
+        # Possible Values: `camel`, `pascal`, `kebab`, `snake`,
+        # `goCamel`, `goPascal`, `goKebab`, `goSnake`, `upper`, `lower`
+        json: snake
 
-      - name: waitgroup-by-value
-        severity: warning
+  varnamelen:
+    max-distance: 5 # five lives of code (see book)
+    ignore-decls:
+    - c echo.Context
+    - e *echo.Echo
+    - db *gorm.DB
 
+  wrapcheck:
+    ignoreSigRegexps:
+      # All responses from the echo's Context
+      - \(github\.com\/labstack\/echo\/v4\.Context\).(NoContent|Redirect|Stream|Blob|String)
+      - \(github\.com\/labstack\/echo\/v4\.Context\).(JSON(P(retty)|Blob)?|File|Attachment)
+      - \(github\.com\/labstack\/echo\/v4\.Context\).(HTML|XML(P(retty)|Blob)?|Inline)
+      - \(github\.com\/labstack\/echo\/v4\.Context\)\.(HTML|XML(P(retty)|Blob)?|Inline)
 # Severity: -----------------------------------------------------------------------------------------------------------
 
 severity:
   default-severity: error
   case-sensitive: false
 
-  # Coloring According Severity.
+  # Coloring According Severity (not implemented, WIP)
   colors:
     error: red
     warn: yellow
-
     info: blue
 
   rules:

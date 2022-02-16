@@ -3,9 +3,9 @@ FROM catthehacker/ubuntu:act-latest
 ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
 ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache
 
-# Go (1.17.1)
-RUN GO_VERSION=1.17.1 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.17.1-1220318589/go-1.17.1-linux-x64.tar.gz \ 
+# Go (1.17.6)
+RUN GO_VERSION=1.17.6 \ 
+ && URL=https://github.com/actions/go-versions/releases/download/1.17.6-1668090892/go-1.17.6-linux-x64.tar.gz \ 
  && echo "Install Go ${GO_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -15,9 +15,9 @@ RUN GO_VERSION=1.17.1 \
  && ./setup.sh \
  && cd .. && rm -rf install && unlink $(basename $URL)
 
-# Go (1.16.8)
-RUN GO_VERSION=1.16.8 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.16.8-1220319069/go-1.16.8-linux-x64.tar.gz \ 
+# Go (1.16.13)
+RUN GO_VERSION=1.16.13 \ 
+ && URL=https://github.com/actions/go-versions/releases/download/1.16.13-1668091716/go-1.16.13-linux-x64.tar.gz \ 
  && echo "Install Go ${GO_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \
@@ -30,42 +30,6 @@ RUN GO_VERSION=1.16.8 \
 # Go (1.15.15)
 RUN GO_VERSION=1.15.15 \ 
  && URL=https://github.com/actions/go-versions/releases/download/1.15.15-1104054180/go-1.15.15-linux-x64.tar.gz \ 
- && echo "Install Go ${GO_VERSION}" \
- && curl -L $URL > $(basename $URL) \
- && mkdir -p install \
- && tar -xf $(basename $URL) -C install \
- && chmod +x ./install/setup.sh \
- && cd ./install/ \
- && ./setup.sh \
- && cd .. && rm -rf install && unlink $(basename $URL)
-
-# Go (1.14.15)
-RUN GO_VERSION=1.14.15 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.14.15-539663618/go-1.14.15-linux-x64.tar.gz \ 
- && echo "Install Go ${GO_VERSION}" \
- && curl -L $URL > $(basename $URL) \
- && mkdir -p install \
- && tar -xf $(basename $URL) -C install \
- && chmod +x ./install/setup.sh \
- && cd ./install/ \
- && ./setup.sh \
- && cd .. && rm -rf install && unlink $(basename $URL)
-
-# Go (1.13.15)
-RUN GO_VERSION=1.13.15 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.13.15-20200806.4/go-1.13.15-linux-x64.tar.gz \ 
- && echo "Install Go ${GO_VERSION}" \
- && curl -L $URL > $(basename $URL) \
- && mkdir -p install \
- && tar -xf $(basename $URL) -C install \
- && chmod +x ./install/setup.sh \
- && cd ./install/ \
- && ./setup.sh \
- && cd .. && rm -rf install && unlink $(basename $URL)
-
-# Go (1.12.17)
-RUN GO_VERSION=1.12.17 \ 
- && URL=https://github.com/actions/go-versions/releases/download/1.12.17-20200616.21/go-1.12.17-linux-x64.tar.gz \ 
  && echo "Install Go ${GO_VERSION}" \
  && curl -L $URL > $(basename $URL) \
  && mkdir -p install \

@@ -20,11 +20,7 @@ pip_cleanup() {
 alias rmpyc='find . -type f -name "*.pyc" -exec rm -r {} \;'
 
 # Python
-
-# python 3.6 can be found
-# https://github.com/sashkab/homebrew-python
-
-for version in  3.{6,7,8,9}; do
+for version in  3.{8}; do
   PY_PATH="/usr/local/opt/python@${version}/bin"
   if [[ -d $PY_PATH ]] && [[ $PATH != "*$PY_PATH*" ]]; then
     PATH="/usr/local/opt/python@${version}/bin:${PATH}"

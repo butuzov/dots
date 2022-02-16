@@ -6,10 +6,11 @@ if [[ -f ~/.dropbox/info.json ]]; then
 fi
 
 alias .dots='code ~/.dotfiles'
+alias docs='cd $DROPBOX/Projects/todayilearned && jupyter'
+alias today='code $DROPBOX/today.md'
+alias pg='cd $DROPBOX/Projects/todayilearned/sandbox-pg && task up'
 
-alias today='code ~/Dropbox/today.md'
-alias til='cd ~/Dropbox/todayilearned && jupyter'
-alias pg='cd ~/Dropbox/todayilearned/sandbox-pg && task up'
+alias awssso="aws sso login"
 
 alias dropbox="cd $DROPBOX"
 alias dp=dropbox
@@ -50,23 +51,16 @@ alias diga="dig +nocmd "$1" any +multiline +noall +answer"
 alias sudo='sudo '
 
 
-# Realod Config
-if [[ -f ~/.dropbox/info.json ]]; then
-    DROPBOX="$(cat ~/.dropbox/info.json | jq .personal.path | sed -e 's/"//g' )"
-fi
-
 
 # Navigation
 alias desk="cd ~/Desktop"
-alias docs="cd ${DROPBOX}/Docs && jupyter"
-
 
 
 # Time and Date
-#   Get week number
+#  Get week number
 alias week='date +%V'
 # Stopwatch
-alias timer='echo "Timer started. <crtl+d> to breack." && date && time cat && date'
+alias timer='echo "Timer started. <crtl+d> to breck." && date && time cat && date'
 
 
 # Hide/show all desktop icons (useful when presenting)
@@ -79,23 +73,9 @@ alias focusoff="defaults write com.apple.dock single-app -bool false && killall 
 
 # misc
 alias shrug='echo "¯\_(ツ)_/¯"'
-alias udemy='printf "https://www.udemy.com/api-2.0/courses/%d/public-curriculum-sections\n" $1'
-alias vmp='cd "/Library/Preferences/VMware Fusion/"'
 
 # extensions
 alias grep='grep --color=auto '
-
-
-# scrape
-alias isgziped="curl -sH 'Accept-encoding: gzip' $1"
-
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias .......="cd ../../../../../.."
 
 
 # All Bew Updates

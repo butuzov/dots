@@ -53,7 +53,7 @@ echo "ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache"                               
 
 curl -l https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json -o versions.json
 
-for version in $(top 6); do
+for version in $(top 3); do
   URL=$(cat versions.json | jq --raw-output '.[].files[].download_url' | grep linux | grep $version)
 
   echo ""                                                                       >> Dockerfile

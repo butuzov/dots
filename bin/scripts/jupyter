@@ -9,33 +9,26 @@ navigate() {
 jupyter_subcmd() {
 
     lang=$1
+    if [[ -z $1 ]]; then
+
+        lang=go
+    fi
+
     image=butuzov/jupyter
 
-    case "$1" in
+    case "$lang" in
         "ls")
             docker images | grep butuzov/jupyter | awk '{print $1}'
             return
         ;;
-        "ts") jupyter typescript ;;
-        "rs") jupyter rust ;;
-        "jl") jupyter julia ;;
-        "go") jupyter golang ;;
-
-        # "convert")
-
-        #     echo $1
-        #     docker run -it --rm -v $(pwd):/share butuzov/jupyter \
-        #         python3 -m nbconvert --to markdown "*.ipynb"
-
-        #     # todo(): write cleanup script
-
-        # ;;
-
-
+        # "ts") jupyter typescript ;;
+        # "rs") jupyter rust       ;;
+        # "jl") jupyter julia      ;;
+        "go") jupyter golang     ;;
         *)
 
             image=butuzov/jupyter
-            if [[ ! -z $1 ]]; then
+            if [[ ! -z $lang ]]; then
                 image=$(printf "%s-%s" $image $lang)
             fi
             navigate &

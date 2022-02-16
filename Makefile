@@ -9,41 +9,41 @@ version = $(or $(word 2,$(subst v, ,$1)),$(word 1,$(subst v, ,$1)))
 include scripts/Makefile/Makefile
 
 # ========= Install Tools ============================================================== #
-ACT_VERSION:=0.2.24
-install_tools: act
+# ACT_VERSION:=0.2.24
+# install_tools: act
 
 AIR_VERSION:=1.27.3
 install_tools: air
 
-EVANS_VERSION:=0.9.2
-install_tools: evans
+# EVANS_VERSION:=0.9.2
+# install_tools: evans
 
 # DOCKER_SQUASH_VERSION:=0.2.0
 # install_tools: docker-squash
 
-GOLANGCI-LINT_VERSION:=1.42.1
-install_tools: golangci-lint
+# GOLANGCI-LINT_VERSION:=1.42.1
+# install_tools: golangci-lint
 
-GOTESTSUM_VERSION:=1.6.4
-install_tools: gotestsum
+# GOTESTSUM_VERSION:=1.6.4
+# install_tools: gotestsum
 
-GRPCURL_VERSION:=1.8.0
-install_tools: grpcurl
+# GRPCURL_VERSION:=1.8.0
+# install_tools: grpcurl
 
-# GOSEC_VERSION:=2.6.1
-# install_tools: gosec
+# # GOSEC_VERSION:=2.6.1
+# # install_tools: gosec
 
-MOCKERY_VERSION:=2.5.1
-install_tools: mockery
+# MOCKERY_VERSION:=2.5.1
+# install_tools: mockery
 
-PROTOC_VERSION:=3.18.0
-install_tools: protoc
+# PROTOC_VERSION:=3.18.0
+# install_tools: protoc
 
-PROTOC_GEN_GO_VERSION:=1.27.1
-install_tools: protoc-gen-go
+# PROTOC_GEN_GO_VERSION:=1.27.1
+# install_tools: protoc-gen-go
 
-PROTOC_GET_GO_GRPC_VERSION:=1.1.0
-install_tools: protoc-gen-go-grpc
+# PROTOC_GET_GO_GRPC_VERSION:=1.1.0
+# install_tools: protoc-gen-go-grpc
 
 # # PROTOC-GEN-BQ-SCHEMA_VERSION:=1.0
 # # install_tools: protoc-gen-bq-schema
@@ -60,80 +60,37 @@ install_tools: protoc-gen-go-grpc
 # PROTOC_GEN_VALIDATE_VERSION:=0.4.1
 # install_tools: protoc-gen-validate
 
-TPARSE_VERSION:=0.8.3
-install_tools: tparse
+# TPARSE_VERSION:=0.8.3
+# install_tools: tparse
 
 # WIRE_VERSION:=0.5.0
 # install_tools: wire
 
-MIGRATE_VERSION:=4.14.1
-install_tools: migrate
+# MIGRATE_VERSION:=4.14.1
+# install_tools: migrate
 
-TERN_VERSION:=0.12.3
-install_tools: tern
+# TERN_VERSION:=0.12.3
+# install_tools: tern
 
-ALI_VERSION:=0.5.4
-install_tools: ali
+# ALI_VERSION:=0.5.4
+# install_tools: ali
 
-HUGO_VERSION:=0.86.1
-install_tools: hugo
+# HUGO_VERSION:=0.86.1
+# install_tools: hugo
 
 # VELERO_VERSION:=1.5.3
 # install_tools: velero
 
-MINIKUBE_VERSION:=1.22.0
-install_tools: minikube
 
-# HELM_VERSION:=3.2.1
-# install_tools: helm
-
-# KUBECTL_VERSION:=1.18.2
-# install_tools: kubectl
-
-# OCTANT_VERSION:=0.16.3
-# install_tools: octant
-
-TASK_VERSION:=3.2.2
-install_tools: task
+# TASK_VERSION:=3.2.2
+# install_tools: task
 
 install: install_tools
 
-# ========= Tools ====================================================================== #
-# --- chamber ----------------------------------------------------------------------------
-CHAMBER_VERSION:=2.9.1
-install_tools: chamber
-
-chamber: bin/chamber-$(CHAMBER_VERSION)
-	@ ln -sf chamber-$(CHAMBER_VERSION) ./bin/$@
-
-bin/chamber-$(CHAMBER_VERSION):
-	@ $(MAKE) bin/chamber
-
-.PHONY: bin/chamber
-bin/chamber: GITHUB=segmentio/chamber
-bin/chamber: VERSION=$(CHAMBER_VERSION)
-bin/chamber: ARCHIVE=chamber-v$(VERSION)-darwin-amd64
-bin/chamber: ARCHIVE_PATH=chamber
-bin/chamber:
-	@ printf "Install chamber... \n"
-	@ curl -Ls $(shell echo $(call github_url) | tr A-Z a-z) > $@ && chmod +x $@
-	@ echo "done."
 
 
 # --- act --------------------------------------------------------------------------------
-act: bin/act-$(ACT_VERSION)
-	@ ln -sf act-$(ACT_VERSION) ./bin/$@
 
-bin/act-$(ACT_VERSION):
-	@ $(MAKE) bin/act
-
-.PHONY: bin/act
-bin/act: GITHUB_REPOSITORY=nektos/act
-bin/act: GITHUB_VERSION=v$(ACT_VERSION)
-bin/act: GITHUB_ARCHIVE=act_Darwin_x86_64.tar.gz
-bin/act: ARCHIVE_PATH=act
-bin/act:
-	$(call install/github/release/tgz,$@)
 
 
 # --- air --------------------------------------------------------------------------------
@@ -146,7 +103,7 @@ bin/air-$(AIR_VERSION):
 .PHONY: bin/air
 bin/air: GITHUB_REPOSITORY=cosmtrek/air
 bin/air: GITHUB_VERSION=v$(AIR_VERSION)
-bin/air: GITHUB_ARCHIVE=air_%s_darwin_amd64.tar.gz
+bin/air: GITHUB_ARCHIVE=air_%s_darwin_arm64.tar.gz
 bin/air: ARCHIVE_PATH=air
 bin/air:
 	$(call install/github/release/tgz,$@)
@@ -167,35 +124,7 @@ bin/evans:
 	$(call install/github/release/tgz,$@)
 
 
-# --- docker squash ----------------------------------------------------------------------
-docker-squash: bin/docker-squash-$(DOCKER_SQUASH_VERSION)
-	@ ln -sf docker-squash-$(DOCKER_SQUASH_VERSION) ./bin/$@
 
-bin/docker-squash-$(DOCKER_SQUASH_VERSION):
-	@ $(MAKE) bin/docker-squash
-
-.PHONY: bin/docker-squash
-bin/docker-squash: GITHUB_REPOSITORY=jwilder/docker-squash
-bin/docker-squash: GITHUB_VERSION=v$(DOCKER_SQUASH_VERSION)
-bin/docker-squash: GITHUB_ARCHIVE=docker-squash-darwin-amd64-$(GITHUB_VERSION).tar.gz
-bin/docker-squash: ARCHIVE_PATH=docker-squash
-bin/docker-squash:
-	$(call install/github/release/tgz,$@)
-
-# --- golangci-lint ----------------------------------------------------------------------
-golangci-lint: bin/golangci-lint-$(GOLANGCI-LINT_VERSION)
-	@ ln -sf golangci-lint-$(GOLANGCI-LINT_VERSION) ./bin/$@
-
-bin/golangci-lint-$(GOLANGCI-LINT_VERSION):
-	@ $(MAKE) bin/golangci-lint
-
-.PHONY: bin/golangci-lint
-bin/golangci-lint: GITHUB_REPOSITORY=golangci/golangci-lint
-bin/golangci-lint: GITHUB_VERSION=v$(GOLANGCI-LINT_VERSION)
-bin/golangci-lint: GITHUB_ARCHIVE="golangci-lint-%s-darwin-amd64.tar.gz"
-bin/golangci-lint: ARCHIVE_PATH=$(shell printf golangci-lint-%s-darwin-amd64/golangci-lint $(subst v,,$(GITHUB_VERSION)))
-bin/golangci-lint:
-	$(call install/github/release/tgz,$@)
 
 
 # --- gotestsum --------------------------------------------------------------------------
@@ -213,50 +142,7 @@ bin/gotestsum: ARCHIVE_PATH=gotestsum
 bin/gotestsum:
 	$(call install/github/release/tgz,$@)
 
-# --- grpcurl ----------------------------------------------------------------------------
-grpcurl: bin/grpcurl-$(GRPCURL_VERSION)
-	@ ln -sf grpcurl-$(GRPCURL_VERSION) ./bin/$@
 
-bin/grpcurl-$(GRPCURL_VERSION):
-	@ $(MAKE) bin/grpcurl
-
-.PHONY: bin/grpcurl
-bin/grpcurl: GITHUB_REPOSITORY=fullstorydev/grpcurl
-bin/grpcurl: GITHUB_VERSION=v$(GRPCURL_VERSION)
-bin/grpcurl: GITHUB_ARCHIVE=grpcurl_%s_osx_x86_64.tar.gz
-bin/grpcurl: ARCHIVE_PATH=grpcurl
-bin/grpcurl:
-	$(call install/github/release/tgz,$@)
-
-# --- gosec ------------------------------------------------------------------------------
-gosec: bin/gosec-$(GOSEC_VERSION)
-	@ ln -sf gosec-$(GOSEC_VERSION) ./bin/$@
-
-bin/gosec-$(GOSEC_VERSION):
-	@ $(MAKE) bin/gosec
-
-.PHONY: bin/gosec
-bin/gosec: GITHUB_REPOSITORY=securego/gosec
-bin/gosec: GITHUB_VERSION=v$(GOSEC_VERSION)
-bin/gosec: GITHUB_ARCHIVE=gosec_%s_darwin_amd64.tar.gz
-bin/gosec: ARCHIVE_PATH=gosec
-bin/gosec:
-	$(call install/github/release/tgz,$@)
-
-# --- mockery ----------------------------------------------------------------------------
-mockery: bin/mockery-$(MOCKERY_VERSION)
-	@ ln -sf mockery-$(MOCKERY_VERSION) ./bin/$@
-
-bin/mockery-$(MOCKERY_VERSION):
-	@ $(MAKE) bin/mockery
-
-.PHONY: bin/mockery
-bin/mockery: GITHUB_REPOSITORY=vektra/mockery
-bin/mockery: GITHUB_VERSION=v$(MOCKERY_VERSION)
-bin/mockery: GITHUB_ARCHIVE=mockery_%s_Darwin_x86_64.tar.gz
-bin/mockery: ARCHIVE_PATH=mockery
-bin/mockery:
-	$(call install/github/release/tgz,$@)
 
 
 # --- protoc -----------------------------------------------------------------------------
@@ -360,20 +246,6 @@ bin/protoc-gen-micro:
 	$(call install/github/release/go/get/ver,$@)
 
 
-# --- gocritic --------- -----------------------------------------------------------------
-gocritic: bin/gocritic-$(GOCRITIC_VERSION)
-	@ ln -sf gocritic-$(GOCRITIC_VERSION) ./bin/$@
-
-bin/gocritic-$(GOCRITIC_VERSION):
-	@ $(MAKE) bin/gocritic
-
-.PHONY: bin/go-critic
-bin/gocritic: GITHUB_REPOSITORY=go-critic/go-critic
-bin/gocritic: GITHUB_PATH=cmd/gocritic
-bin/gocritic: BINARY_NAME=gocritic
-bin/gocritic: GITHUB_VERSION=$(GOCRITIC_VERSION)
-bin/gocritic:
-	$(call install/github/release/go/get,$@)
 
 # --- protoc-gen-openapi -----------------------------------------------------------------
 protoc-gen-openapi: bin/protoc-gen-openapi-$(PROTOC_GEN_OPENAPI_VERSION)
@@ -432,21 +304,7 @@ bin/tparse:
 	$(call install/github/release/tgz,$@)
 
 
-# --- wire -------------------------------------------------------------------------------
-wire: bin/wire-$(WIRE_VERSION)
-	@ cd "bin"
-	@ ln -sf wire-$(WIRE_VERSION) ./bin/$@
 
-bin/wire-$(WIRE_VERSION):
-	@ $(MAKE) bin/wire
-
-.PHONY: bin/wire
-bin/wire: GITHUB_REPOSITORY=google/wire
-bin/wire: GITHUB_VERSION=v$(WIRE_VERSION)
-bin/wire: GITHUB_PATH=cmd/wire
-bin/wire: BINARY_NAME=wire
-bin/wire:
-	$(call install/github/release/go/get,$@)
 
 
 # --- migrate ----------------------------------------------------------------------------
@@ -482,21 +340,6 @@ bin/tern:
 	$(call install/github/release/go/get,$@)
 
 
-# --- ali --------------------------------------------------------------------------------
-ali: bin/ali-$(ALI_VERSION)
-	@ cd "bin"
-	@ ln -sf "ali-$(ALI_VERSION)" "bin/$@"
-
-bin/ali-$(ALI_VERSION):
-	@ $(MAKE) bin/ali
-
-.PHONY: bin/ali
-bin/ali: GITHUB_REPOSITORY=nakabonne/ali
-bin/ali: GITHUB_VERSION=v$(ALI_VERSION)
-bin/ali: GITHUB_ARCHIVE=ali_%s_darwin_amd64.tar.gz
-bin/ali: ARCHIVE_PATH=ali
-bin/ali:
-	$(call install/github/release/tgz,$@)
 
 
 # --- bin/velero -------------------------------------------------------------------------
@@ -514,96 +357,6 @@ bin/velero: GITHUB_ARCHIVE=velero-v%s-darwin-amd64.tar.gz
 bin/velero: ARCHIVE_PATH=$(shell printf velero-%s-darwin-amd64/velero  $(GITHUB_VERSION))
 bin/velero:
 	$(call install/github/release/tgz,$@)
-
-
-# --- bin/minikube -----------------------------------------------------------------------
-minikube: bin/minikube-$(MINIKUBE_VERSION)
-	@ cd "bin"
-	@ ln -sf minikube-$(MINIKUBE_VERSION) ./bin/$@
-
-
-bin/minikube-$(MINIKUBE_VERSION):
-	@ $(MAKE) bin/minikube
-
-.PHONY: bin/minikube
-bin/minikube: GITHUB_REPOSITORY=kubernetes/minikube
-bin/minikube: GITHUB_VERSION=v$(MINIKUBE_VERSION)
-bin/minikube: GITHUB_ARCHIVE=minikube-darwin-amd64.tar.gz
-bin/minikube: ARCHIVE_PATH=out/minikube-darwin-amd64
-bin/minikube:
-	$(call install/github/release/tgz,$@)
-
-
-# --- bin/yq -----------------------------------------------------------------------------
-
-YQ_VERSION=4.5.1
-yq: install_yq
-	echo "dont install it manually. just brew isntall yq@3"
-
-# --- bin/helm ---------------------------------------------------------------------------
-helm: bin/helm-$(HELM_VERSION)
-	@ cd "bin"
-	@ ln -sf helm-$(HELM_VERSION) ./bin/$@
-
-
-bin/helm-$(HELM_VERSION):
-	@ $(MAKE) bin/helm
-
-.PHONY: bin/helm
-bin/helm: VERSION=v$(HELM_VERSION)
-bin/helm: ARCHIVE=$(shell printf https://get.helm.sh/helm-%s-darwin-amd64.tar.gz $(VERSION))
-bin/helm: ARCHIVE_PATH=darwin-amd64/helm
-bin/helm:
-	$(call install/remote/release/tgz,$@)
-
-
-# --- bin/kubectl ------------------------------------------------------------------------
-kubectl: bin/kubectl-$(KUBECTL_VERSION)
-	@ cd "bin"
-	@ ln -sf kubectl-$(KUBECTL_VERSION) ./bin/$@
-
-bin/kubectl-$(KUBECTL_VERSION):
-	@ $(MAKE) bin/kubectl
-
-.PHONY: bin/kubectl
-bin/kubectl: VERSION=v$(KUBECTL_VERSION)
-bin/kubectl: ARCHIVE=$(shell printf https://dl.k8s.io/%s/kubernetes-client-darwin-amd64.tar.gz $(VERSION))
-bin/kubectl: ARCHIVE_PATH=kubernetes/client/bin/kubectl
-bin/kubectl:
-	$(call install/remote/release/tgz,$@)
-
-# --- bin/octant -------------------------------------------------------------------------
-hugo: bin/hugo-$(HUGO_VERSION)
-	@ cd "bin"
-	@ ln -sf hugo-$(HUGO_VERSION) ./bin/$@
-
-bin/hugo-$(HUGO_VERSION):
-	@ $(MAKE) bin/hugo
-
-.PHONY: bin/hugo
-bin/hugo: GITHUB_REPOSITORY=gohugoio/hugo
-bin/hugo: GITHUB_VERSION=v$(HUGO_VERSION)
-bin/hugo: GITHUB_ARCHIVE=$(shell printf hugo_extended_%s_macOS-64bit.tar.gz $(subst v,,$(GITHUB_VERSION)))
-bin/hugo: ARCHIVE_PATH=$(shell printf hugo $(subst v,,$(GITHUB_VERSION)))
-bin/hugo:
-	$(call install/github/release/tgz,$@)
-
-# --- bin/octant -------------------------------------------------------------------------
-octant: bin/octant-$(OCTANT_VERSION)
-	@ cd "bin"
-	@ ln -sf octant-$(OCTANT_VERSION) ./bin/$@
-
-bin/octant-$(OCTANT_VERSION):
-	@ $(MAKE) bin/octant
-
-.PHONY: bin/octant
-bin/octant: GITHUB_REPOSITORY=vmware-tanzu/octant
-bin/octant: GITHUB_VERSION=v$(OCTANT_VERSION)
-bin/octant: GITHUB_ARCHIVE=$(shell printf octant_%s_macOS-64bit.tar.gz $(subst v,,$(GITHUB_VERSION)))
-bin/octant: ARCHIVE_PATH=$(shell printf octant_%s_macOS-64bit/octant $(subst v,,$(GITHUB_VERSION)))
-bin/octant:
-	$(call install/github/release/tgz,$@)
-
 
 # --- bin/task -------------------------------------------------------------------------
 task: bin/task-$(TASK_VERSION)

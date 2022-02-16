@@ -12,7 +12,7 @@ COPY --from=golang  /go/bin/gophernotes    /usr/local/go/bin/gophernotes
 
 RUN mkdir -p /home/butuzov/.local/share/jupyter/kernels/gophernotes/
 
-COPY --from=golang --chown=butuzov:users  /go/pkg/mod/github.com/gopherdata/gophernotes@v0.7.3/kernel/*    /home/butuzov/.local/share/jupyter/kernels/gophernotes/
+COPY --from=golang --chown=butuzov:users  /go/pkg/mod/github.com/gopherdata/gophernotes@v0.7.4/kernel/*    /home/butuzov/.local/share/jupyter/kernels/gophernotes/
 
 RUN cd /home/butuzov/.local/share/jupyter/kernels/gophernotes/ && \
     unlink kernel.json && \
