@@ -217,7 +217,13 @@ RUN mkdir /home/$NB_USER/.jupyter/custom/
 COPY custom.css    /home/$NB_USER/.jupyter/custom/
 COPY notebook.json /home/$NB_USER/.jupyter/nbconfig/
 
-RUN python3 -m pip install psycopg2 pandas numpy pgspecial nbconvert==5.6.1
+RUN python3 -m pip install \
+    psycopg2 \
+    pymysql \
+    pandas \
+    numpy \
+    pgspecial \
+    nbconvert==5.6.1
 
 
 RUN ls /home/butuzov

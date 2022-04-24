@@ -21,9 +21,6 @@ install_tools: air
 # DOCKER_SQUASH_VERSION:=0.2.0
 # install_tools: docker-squash
 
-# GOLANGCI-LINT_VERSION:=1.42.1
-# install_tools: golangci-lint
-
 # GOTESTSUM_VERSION:=1.6.4
 # install_tools: gotestsum
 

@@ -50,7 +50,9 @@ alias diga="dig +nocmd "$1" any +multiline +noall +answer"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-
+alias ..="cd .."
+alias ...="cd ../.. "
+alias ....="cd ../../.. "
 
 # Navigation
 alias desk="cd ~/Desktop"

@@ -2,15 +2,13 @@
 # Note: Run -----------------------------------------------------------------------------------------------------------
 
 run:
-  issues-exit-code: 0
+  issues-exit-code: 1
   timeout: 10m
   modules-download-mode: mod
 
   skip-dirs-use-default: false
   skip-files:
-    - ".*\\.weirdfile\\.go$"
-    - lib/bad.go
-
+    - ".+\\.main\\.go$"
   allow-parallel-runners: true
 
 
@@ -34,25 +32,24 @@ issues:
   fix: false
 
   exclude-rules:
+
+
   - path: ".*_test.go"
     linters:
+    - gocyclo
+    - errcheck
+    - dupl
+    - gosec
     - revive
+    - bodyclose
+    - errorlint
+    - varnamelen
 
-  - text: "use an underscore in package name"
+  - source: "^//go:generate "
     linters:
-    - revive # revive@var-naming rule
-
-  - path: _test\.go
-    linters:
+      - lll
       - gocyclo
-      - errcheck
-      - dupl
-      - gosec
-      - bodyclose
 
-  - linters:
-      - lllgit rebase
-    source: "^//go:generate "
 
 linters:
   enable-all: true
@@ -84,7 +81,7 @@ linters-settings:
     # Forbid the following identifiers (list of regexp).
     forbid:
       - ^print.*$
-      - '\.Debug\(\)\.' # db Debug()
+      - '\.Debug\(\)\.(# Do not commit Debug code)?' # db Debug()
 
   gci:
     local-prefixes: wing.security/nest
@@ -106,6 +103,13 @@ linters-settings:
       - "^fixme:"
       - "^note:"
       - "^todo:"
+
+  # gomodguard:
+  #   blocked:
+  #     - github.com/gobuffalo/packr:
+  #       recommendations:
+  #       - embed
+  #       reason: "you should use `embed` library instead."
 
   maligned:
     suggest-new: true
@@ -135,16 +139,13 @@ linters-settings:
 
       - name: argument-limit
         severity: warning
-        arguments: [ 3 ]
+        arguments: [ 4 ]
 
       - name: banned-characters
-        severity: warning
         disabled: true
 
       - name: add-constant
         disabled: true
-        severity: warning
-        arguments: [ 30 ]
 
       - name: cognitive-complexity
         severity: warning
@@ -201,28 +202,13 @@ linters-settings:
         severity: warning
         arguments: [ 2 ]
 
-      - name: string-format
-        severity: warning
-        arguments:
-        - [ "stringFormatMethod1", "/^([^A-Z]|$)/", "must not start with a capital letter"]
-
-
-      # TODO(butuzov):
-      - name: unhandled-error
-        severity: warning
-        arguments:
-          - fmt.Printf
-          - fmt.Print
-          - fmt.Println
-
       - name: var-naming
-        severity: warning
-        arguments:
-        - - "ID" # allow
-        - - "VM" # deny
+        disabled: true
+
+  stylecheck:
+    checks: [ "all", "-ST1003" ]
 
   tagliatelle:
-    # Check the struck tag name case.
     case:
       use-field-name: true
       rules:
@@ -245,6 +231,10 @@ linters-settings:
       - \(github\.com\/labstack\/echo\/v4\.Context\).(JSON(P(retty)|Blob)?|File|Attachment)
       - \(github\.com\/labstack\/echo\/v4\.Context\).(HTML|XML(P(retty)|Blob)?|Inline)
       - \(github\.com\/labstack\/echo\/v4\.Context\)\.(HTML|XML(P(retty)|Blob)?|Inline)
+
+  wsl:
+     allow-assign-and-anything: true
+
 # Severity: -----------------------------------------------------------------------------------------------------------
 
 severity:
